@@ -63,8 +63,6 @@ community-release
 manjaro-system
 manjaro-tools-base
 mdadm
-mhwd
-mhwd-db
 mkinitcpio-openswap
 nano
 nfs-utils
@@ -189,7 +187,6 @@ sshx
 
 
 ## Video and Driver Support
-mhwd-biglinux
 biglinux-vaapi
 libxvmc
 lib32-mesa-vdpau
