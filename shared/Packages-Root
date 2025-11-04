@@ -188,6 +188,7 @@ sshx
 
 ## Video and Driver Support
 biglinux-vaapi
+mhwd-biglinux
 libxvmc
 lib32-mesa-vdpau
 lib32-vulkan-intel
@@ -198,6 +199,8 @@ lib32-vulkan-nouveau
 libva-nvidia-driver
 vpl-gpu-rt # Hardware accelerated video on newer Intel GPUs
 mesa-vdpau
+mhwd
+mhwd-db
 vulkan-mesa-layers
 vulkan-intel
 vulkan-nouveau
