@@ -277,10 +277,8 @@ lib32-fontconfig
 lib32-giflib
 lib32-gettext
 lib32-libcups
-lib32-libjpeg6-turbo
 lib32-libltdl
 lib32-libpcap
-lib32-libpng12
 lib32-libpulse
 lib32-lcms2
 lib32-libsm
