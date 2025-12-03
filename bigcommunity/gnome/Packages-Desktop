@@ -124,11 +124,8 @@ lib32-glu
 lib32-lcms2
 lib32-libcups
 lib32-libice
-lib32-libjpeg6-turbo
-lib32-libjpeg6-turbo
 lib32-libltdl
 lib32-libpcap
-lib32-libpng12
 lib32-libpulse
 lib32-libxcomposite
 lib32-libxinerama
@@ -217,7 +214,6 @@ comm-shell-orchis
 bibata-cursor-theme
 breeze-icons
 gnome-themes-extra
-gtk-engine-murrine
 qadwaitadecorations-qt6
 qt6-svg
 bigicons-papient
