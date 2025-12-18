@@ -286,7 +286,6 @@ sshfs  # remote filesystem browser
 # Multilib
 >multilib lib32-libva-intel-driver
 >multilib lib32-mesa
->multilib lib32-mesa-vdpau
 #>multilib lib32-libva-vdpau-driver
 >multilib lib32-mesa-utils
 mesa
