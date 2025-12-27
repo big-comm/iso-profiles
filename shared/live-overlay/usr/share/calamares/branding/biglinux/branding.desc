@@ -18,7 +18,7 @@ strings:
     releaseNotesUrl:     https://communitybig.org
 
 images:
-    productLogo:         "logo.png"
+    productLogo:         "logo.svg"
     productIcon:         "/usr/share/icons/hicolor/scalable/apps/icon-big-hd-install.svg"
     productWelcome:      "big-welcome.svg"
 
