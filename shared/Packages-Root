@@ -143,6 +143,7 @@ update-grub
 auto-unlock-pacman-git
 bigcommunity-name
 biglinux-l18n
+bpftune-git # Oracle
 faster-mkinitcpio
 biglinux-hibernate-in-swapfile-btrfs
 biglinux-improve-compatibility
