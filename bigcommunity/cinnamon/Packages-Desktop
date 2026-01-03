@@ -47,7 +47,6 @@ gnome-disk-utility
 gnome-keyring
 gnome-online-accounts-gtk
 gnome-screenshot
-gnome-system-monitor
 #gnome-terminal
 gpaste
 nemo
@@ -63,6 +62,7 @@ nemo-share
 pavucontrol
 papers
 pix
+resources
 simple-scan
 simplescreenrecorder
 sync-gnome-theme-to-qt # Pacote Biglinux
