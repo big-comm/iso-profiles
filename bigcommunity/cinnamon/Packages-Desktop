@@ -31,7 +31,7 @@ ttf-roboto-slab
 # CINNAMON Applications
 adw-gtk-theme
 big-video-converter # App Biglinux
-blueberry
+blueman
 celluloid
 cinnamon
 cinnamon-applet-cinnamenu
@@ -55,9 +55,7 @@ nemo-emblems
 nemo-image-converter
 nemo-fileroller
 nemo-pastebin
-nemo-preview
 nemo-python
-nemo-seahorse
 nemo-share
 pavucontrol
 papers
