@@ -117,7 +117,7 @@ biglinux-bash-config
 biglinux-keyring
 biglinux-driver-manager
 biglinux-nano-config
-biglinux-vim-config
+#biglinux-vim-config
 big-preload
 biglinux-hibernate-in-swapfile-btrfs
 
