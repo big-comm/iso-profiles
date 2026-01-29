@@ -153,7 +153,6 @@ system-config-printer-jobs
 thermald
 
 # Themes and Icons
-qadwaitadecorations-qt6
 bigicons-papient
 qt6-svg
 
