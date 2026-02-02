@@ -144,6 +144,8 @@ big-hardware-info
 biglinux-mime
 biglinux-webapps
 bigocrpdf
+big-network-info
+big-audio-converter
 dmidecode # for inxi -m output
 espeak-ng
 htop
