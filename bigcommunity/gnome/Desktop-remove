@@ -1,3 +1,5 @@
->multilib lib32-mesa-demos
+lib32-mesa-demos
 mesa-demos
+ex-vi-compat
 vim
+vim-runtime
