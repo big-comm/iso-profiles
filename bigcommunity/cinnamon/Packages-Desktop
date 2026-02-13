@@ -42,6 +42,7 @@ cinnamon-sounds
 cinnamon-translations
 folder-color-nemo
 gapless
+gedit
 gnome-calculator
 gnome-disk-utility
 gnome-keyring
@@ -71,7 +72,7 @@ xapp-gimp-thumbnailer
 xapp-jxl-thumbnailer
 xapp-thumbnailers-common
 xdg-user-dirs-gtk
-xed
+#xed
 
 # Change Default Terminal
 xdg-terminal-exec
