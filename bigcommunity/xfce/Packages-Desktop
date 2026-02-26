@@ -78,6 +78,9 @@ xfwm4
 xfwm4-themes
 xarchiver
 
+# Packages Biglinux
+biglinux-settings
+
 # Change Default Terminal
 xdg-terminal-exec
 

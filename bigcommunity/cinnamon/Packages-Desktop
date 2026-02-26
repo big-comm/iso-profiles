@@ -77,8 +77,9 @@ xdg-user-dirs-gtk
 # Change Default Terminal
 xdg-terminal-exec
 
-# Comm Apps
+# Packages Biglinux
 ashyterm
+biglinux-settings
 
 # Games
 aisleriot
