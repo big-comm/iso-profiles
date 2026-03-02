@@ -105,6 +105,7 @@ Item {
     property var particles: []
     property var explosions: []
     property var floatingTexts: []
+    property bool hasActiveAnimations: particles.length > 0 || floatingTexts.length > 0
 
     // Settings for persistence
     Settings {
@@ -149,14 +150,14 @@ Item {
             GradientStop { position: 1.0; color: "#0a0e27" }
         }
         
-        // Animated background particles
+        // Animated background particles (reduced count, slower animations)
         Repeater {
-            model: 30
+            model: 8
             Rectangle {
                 width: 2
                 height: 2
                 radius: 1
-                color: Qt.rgba(0.5, 0.7, 1, 0.3)
+                color: Qt.rgba(0.5, 0.7, 1, 0.25)
                 x: Math.random() * root.width
                 y: Math.random() * root.height
                 
@@ -165,14 +166,8 @@ Item {
                     NumberAnimation {
                         from: root.height + 10
                         to: -10
-                        duration: 10000 + Math.random() * 20000
+                        duration: 20000 + Math.random() * 30000
                     }
-                }
-                
-                SequentialAnimation on opacity {
-                    loops: Animation.Infinite
-                    NumberAnimation { to: 0.1; duration: 2000 }
-                    NumberAnimation { to: 0.3; duration: 2000 }
                 }
             }
         }
@@ -202,31 +197,29 @@ Item {
                 border.width: 2
             }
             
-            // Grid lines
+            // Grid lines (static — painted once)
             Canvas {
+                id: gridCanvas
                 anchors.fill: parent
                 opacity: 0.1
+                renderStrategy: Canvas.Cooperative
                 
                 onPaint: {
                     var ctx = getContext("2d");
+                    ctx.clearRect(0, 0, width, height);
                     ctx.strokeStyle = "white";
                     ctx.lineWidth = 1;
+                    ctx.beginPath();
                     
-                    // Vertical lines
                     for (var x = 0; x <= gridWidth; x++) {
-                        ctx.beginPath();
                         ctx.moveTo(x * cellSize, 0);
                         ctx.lineTo(x * cellSize, height);
-                        ctx.stroke();
                     }
-                    
-                    // Horizontal lines
                     for (var y = 0; y <= gridHeight; y++) {
-                        ctx.beginPath();
                         ctx.moveTo(0, y * cellSize);
                         ctx.lineTo(width, y * cellSize);
-                        ctx.stroke();
                     }
+                    ctx.stroke();
                 }
             }
             
@@ -237,58 +230,38 @@ Item {
                 Rectangle {
                     property int row: Math.floor(index / gridWidth)
                     property int col: index % gridWidth
+                    property int cellValue: grid[row] ? grid[row][col] : 0
                     
                     x: col * cellSize
                     y: row * cellSize
                     width: cellSize
                     height: cellSize
-                    color: {
-                        var value = grid[row] ? grid[row][col] : 0;
-                        if (value > 0 && value <= distroThemes.length) {
-                            return distroThemes[value - 1].color;
-                        }
-                        return "transparent";
-                    }
-                    border.color: color !== "transparent" ? Qt.lighter(color, 1.5) : "transparent"
-                    border.width: 1
-                    visible: {
-                        var value = grid[row] ? grid[row][col] : 0;
-                        return value > 0;
-                    }
+                    color: cellValue > 0 && cellValue <= distroThemes.length ?
+                        distroThemes[cellValue - 1].color : "transparent"
+                    border.color: cellValue > 0 ? Qt.lighter(color, 1.5) : "transparent"
+                    border.width: cellValue > 0 ? 1 : 0
+                    visible: cellValue > 0
                     
                     // Distro symbol
                     Text {
                         anchors.centerIn: parent
-                        text: {
-                            var value = grid[parent.row] ? grid[parent.row][parent.col] : 0;
-                            if (value > 0 && value <= distroThemes.length) {
-                                return distroThemes[value - 1].symbol;
-                            }
-                            return "";
-                        }
+                        text: parent.cellValue > 0 && parent.cellValue <= distroThemes.length ?
+                            distroThemes[parent.cellValue - 1].symbol : ""
                         color: "white"
                         font.pixelSize: cellSize * 0.5
                         font.bold: true
                         opacity: 0.7
+                        visible: parent.cellValue > 0
                     }
                     
-                    // Glow effect for BigLinux blocks
+                    // Static glow for BigLinux blocks (no animation)
                     Rectangle {
                         anchors.fill: parent
                         color: "transparent"
                         border.color: "gold"
                         border.width: 2
-                        opacity: {
-                            var value = grid[parent.parent.row] ? grid[parent.parent.row][parent.parent.col] : 0;
-                            return value === 7 ? 0.8 : 0; // BigLinux blocks glow
-                        }
-                        
-                        SequentialAnimation on opacity {
-                            running: opacity > 0
-                            loops: Animation.Infinite
-                            NumberAnimation { to: 0.3; duration: 500 }
-                            NumberAnimation { to: 0.8; duration: 500 }
-                        }
+                        opacity: parent.cellValue === 7 ? 0.6 : 0
+                        visible: parent.cellValue === 7
                     }
                 }
             }
@@ -346,21 +319,14 @@ Item {
                         visible: parent.isBlock
                     }
                     
-                    // Special glow for BigLinux piece
+                    // Static glow for BigLinux piece (no animation)
                     Rectangle {
                         anchors.fill: parent
                         color: "transparent"
                         border.color: "gold"
                         border.width: 2
-                        opacity: parent.pieceType === 6 ? 0.8 : 0
-                        visible: parent.isBlock
-                        
-                        SequentialAnimation on opacity {
-                            running: parent.parent.pieceType === 6
-                            loops: Animation.Infinite
-                            NumberAnimation { to: 0.3; duration: 300 }
-                            NumberAnimation { to: 0.8; duration: 300 }
-                        }
+                        opacity: parent.pieceType === 6 ? 0.7 : 0
+                        visible: parent.isBlock && parent.pieceType === 6
                     }
                 }
             }
@@ -645,8 +611,8 @@ Item {
                         SequentialAnimation on opacity {
                             running: bigLinuxPower >= maxBigLinuxPower
                             loops: Animation.Infinite
-                            NumberAnimation { to: 0.3; duration: 500 }
-                            NumberAnimation { to: 1.0; duration: 500 }
+                            NumberAnimation { to: 0.3; duration: 1000 }
+                            NumberAnimation { to: 1.0; duration: 1000 }
                         }
                     }
                 }
@@ -750,8 +716,8 @@ Item {
                     SequentialAnimation on scale {
                         running: startScreen.visible
                         loops: Animation.Infinite
-                        NumberAnimation { to: 1.05; duration: 2000; easing.type: Easing.InOutQuad }
-                        NumberAnimation { to: 1.0; duration: 2000; easing.type: Easing.InOutQuad }
+                        NumberAnimation { to: 1.03; duration: 3000; easing.type: Easing.InOutQuad }
+                        NumberAnimation { to: 1.0; duration: 3000; easing.type: Easing.InOutQuad }
                     }
                 }
                 
@@ -767,7 +733,7 @@ Item {
             // Instructions
             Rectangle {
                 width: Math.min(500, root.width - 100)
-                height: Math.min(290, root.height * 0.5)
+                height: Math.min(310, root.height * 0.5)
                 color: Qt.rgba(0, 0, 0, 0.5)
                 border.color: "#333"
                 radius: 10
@@ -1134,14 +1100,7 @@ Item {
         Rectangle {
             anchors.fill: parent
             color: "gold"
-            opacity: 0.1
-            
-            SequentialAnimation on opacity {
-                running: superModeActive
-                loops: Animation.Infinite
-                NumberAnimation { to: 0.05; duration: 500 }
-                NumberAnimation { to: 0.15; duration: 500 }
-            }
+            opacity: superModeActive ? 0.1 : 0
         }
         
         Text {
@@ -1151,17 +1110,12 @@ Item {
             font.bold: true
             font.family: "monospace"
             color: "#FFD700"
-            
-            SequentialAnimation on scale {
-                running: superModeActive
-                NumberAnimation { from: 0.5; to: 1.0; duration: 300; easing.type: Easing.OutBack }
-                PauseAnimation { duration: 2000 }
-                NumberAnimation { to: 0; duration: 200 }
-            }
+            opacity: superModeActive ? 1.0 : 0
+            visible: superModeActive
         }
     }
     
-    // Floating text animations
+    // Floating text animations (simplified)
     Repeater {
         model: floatingTexts.length
         
@@ -1173,18 +1127,7 @@ Item {
             font.pixelSize: 24
             font.bold: true
             font.family: "monospace"
-            
-            NumberAnimation on y {
-                from: y
-                to: y - 50
-                duration: 1000
-            }
-            
-            NumberAnimation on opacity {
-                from: 1.0
-                to: 0
-                duration: 1000
-            }
+            opacity: floatingTexts[index] ? floatingTexts[index].time / 60.0 : 0
         }
     }
     
@@ -1197,19 +1140,17 @@ Item {
         onTriggered: moveDownAuto()
     }
     
-    // Animation timer
+    // Animation timer (only active when needed)
     Timer {
         id: animationTimer
-        interval: 16 // 60 FPS
-        running: true
+        interval: 50 // ~20 FPS — sufficient for particle effects
+        running: hasActiveAnimations || superModeActive
         repeat: true
         onTriggered: {
-            // Update animations
             updateAnimations();
             
-            // Update super mode
             if (superModeActive) {
-                superModeTime--;
+                superModeTime -= 3; // Compensate for lower tick rate
                 if (superModeTime <= 0) {
                     endSuperMode();
                 }
@@ -1586,7 +1527,7 @@ Item {
         
         bigLinuxPower = 0;
         superModeActive = true;
-        superModeTime = 180; // 3 seconds at 60 FPS
+        superModeTime = 60; // ~3 seconds at ~20 FPS tick rate
         stats.superUses++;
         sessionStats.superUses++;
         // Force QML binding update for sessionStats
@@ -1638,8 +1579,8 @@ Item {
     }
     
     function createExplosion(x, y) {
-        // Create particle explosion effect
-        for (var i = 0; i < 10; i++) {
+        // Create particle explosion effect (reduced count)
+        for (var i = 0; i < 3; i++) {
             particles.push({
                 x: x,
                 y: y,
@@ -1647,12 +1588,15 @@ Item {
                 vy: (Math.random() - 0.5) * 5,
                 color: "#FFD700",
                 size: Math.random() * 5 + 2,
-                life: 30
+                life: 15
             });
         }
     }
     
     function updateAnimations() {
+        var particlesChanged = false;
+        var textsChanged = false;
+        
         // Update particles
         for (var i = particles.length - 1; i >= 0; i--) {
             var p = particles[i];
@@ -1662,16 +1606,23 @@ Item {
             
             if (p.life <= 0) {
                 particles.splice(i, 1);
+                particlesChanged = true;
             }
         }
         
         // Update floating texts
         for (var j = floatingTexts.length - 1; j >= 0; j--) {
-            floatingTexts[j].time--;
+            floatingTexts[j].time -= 3; // Compensate for lower tick rate
+            floatingTexts[j].y -= 2;
             if (floatingTexts[j].time <= 0) {
                 floatingTexts.splice(j, 1);
+                textsChanged = true;
             }
         }
+        
+        // Only trigger binding updates when arrays actually changed
+        if (particlesChanged) particles = particles.slice();
+        if (textsChanged) floatingTexts = floatingTexts.slice();
     }
     
     function endGame() {
