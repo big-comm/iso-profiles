@@ -176,7 +176,7 @@ Item {
     // Game container to center both panels
     Item {
         id: gameContainer
-        width: Math.min(boardWidth + 250 + 120, root.width - 40)
+        width: boardWidth + 30 + 250
         height: Math.min(boardHeight, root.height - 80)
         anchors.centerIn: parent
     
@@ -186,7 +186,6 @@ Item {
             width: boardWidth
             height: boardHeight
             anchors.left: parent.left
-            anchors.leftMargin: 50
             anchors.verticalCenter: parent.verticalCenter
             
             // Board background
@@ -733,7 +732,7 @@ Item {
             // Instructions
             Rectangle {
                 width: Math.min(500, root.width - 100)
-                height: Math.min(310, root.height * 0.5)
+                height: Math.min(320, root.height * 0.5)
                 color: Qt.rgba(0, 0, 0, 0.5)
                 border.color: "#333"
                 radius: 10

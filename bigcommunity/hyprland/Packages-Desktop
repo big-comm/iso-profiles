@@ -1,75 +1,64 @@
-### Hyprland Applications ###
-# Essential System Utilities
-blueberry
-ffmpegthumbnailer
-gnome-disk-utility
-hyprlock
-network-manager-applet
-nm-connection-editor
-numlockx
-pavucontrol
-playerctl
-tumbler
-blueman
-brightnessctl
-
-# File Manager and Plugins
-dolphin
-
 # Hyprland Core Components
 hyprland
 hyprcursor
 hypridle
 hyprlock
-hyprutils
+hyprpaper
 hyprshade
+hyprutils
 hyprwayland-scanner
 xdg-desktop-portal-hyprland
 
-# Hyprland Additional Utilities
+# Hyprland Utilities
+cliphist
+dunst
+fuzzel
+grim
+grimblast-git
+hyprpicker
+mako
 nwg-displays
 nwg-dock-hyprland
 nwg-panel
-#swaylock-effects-git
-wlogout
-grimblast-git
-hyprpicker
+rofi
 slurp
 swappy
-cliphist
-
-# Wayland Native Replacements
-#alacritty
-fuzzel
-kitty
-dunst
-grim
-mako
-rofi-wayland
-slurp
 swayidle
 swaylock
+#swaylock-effects-git
 waybar
+wlogout
 wofi
-hyde-cli-git
 
-# Legacy Applications
-mugshot
-pix
-vlc
+# Hyprland Applications
+blueman
+brightnessctl
+celluloid
+dolphin
+ffmpegthumbnailer
+gnome-disk-utility
 kate
+kitty
+mugshot
+network-manager-applet
+nm-connection-editor
+numlockx
+pavucontrol
+pix
+playerctl
 polkit-gnome
-#pacman-contrib
-#python-pyamdgpuinfo
-#parallel
-#jq
-qt5-imageformats
-#kde-cli-tools
+tumbler
+vlc
 
-# Games
-gnuchess
-gnome-mines
-aisleriot
+# Apps BigLinux/Community
+auto-tweaks-browser
+biglinux-mime
+biglinux-settings
+biglinux-webapps
+bigocrpdf
+comm-hyprland-config
+comm-wallpapers-hyprland
+xdg-terminal-exec
 
 # Browsers
 brave-browser
@@ -77,6 +66,10 @@ brave-browser
 # Development Tools
 autoconf
 automake
+
+# Display Manager
+sddm
+sddm-theme-biglinux
 
 # Fonts
 >extra noto-fonts-emoji
@@ -87,155 +80,47 @@ automake
 adobe-source-han-sans-cn-fonts
 adobe-source-han-sans-jp-fonts
 adobe-source-han-sans-kr-fonts
-adobe-source-sans-pro-fonts
-cantarell-fonts # Installed as gnome-themes-standard dependency
-noto-fonts-lite # New default font
+adobe-source-sans-fonts
+cantarell-fonts
+noto-fonts-lite
 noto-nerd-fonts-lite
-# terminus-font
-# ttf-caladea
-# ttf-carlito
-# ttf-dejavu
-# ttf-fira-code
-# ttf-icomoon-feather
-# ttf-liberation
 ttf-roboto
 ttf-roboto-mono
 ttf-roboto-slab
 
-# Office
-libreoffice-fresh-pt-br
+# Games
+aisleriot
+gnuchess
+gnome-mines
 
-# Themes and Icons
-adw-gtk-theme
-bibata-cursor-theme
-#breeze-icons
-qt6-svg
-bigicons-papient
-lsd
-swww
-nwg-look
-qt5ct
-qt6ct
-kvantum
-kvantum-qt5
-qt5-wayland
-qt6-wayland
-hyde-cli-git
-hyprpaper
-comm-wallpapers-hyprland
-
-# Utilities
-biglinux-settings
-comm-wallpapers-hyprland
-comm-hyprland-config
-ds4-disable-led
-retroarch-tweaks
-ark
-imagemagick
-ffmpegthumbs
-libnotify
-udiskie
-kate
-git
-
-# System Configuration
->extra python-pillow
->extra python-pip
->extra python-pyqt5
-appmenu-gtk-module
-auto-tweaks-browser # Pacote Biglinux
-biglinux-mime
-biglinux-webapps
-bigocrpdf
-dmidecode # for inxi -m output
-espeak-ng
-htop
-inxi
-libappindicator-gtk3
-orca
-p7zip  # 7Z format support
-perl-file-mimeinfo
-pipewire-biglinux-config
-powertop
-python-pysmbc # SMB browser support
-speech-dispatcher
-tts-biglinux
-unarchiver  # RAR format support
-xdg-desktop-portal-gtk
-xdg-user-dirs-gtk
-zensu
-
-## Display manager
-sddm
-sddm-theme-biglinux
-
-# System Utilities
->extra fwupd
-android-tools
-# biglinux-updates-tweaks
-bluez-cups
-compsize
-debtap-mod
-hplip
-ipp-usb
-iso2usb
-manjaro-application-utility
-manjaro-printer
-pamac-updates-menu
-pamac-flatpak-plugin
-qt5-quickcontrols2
-#qt6-wayland
-rpmtoarch
-sane-airscan
-splix
-system-config-printer
-system-config-printer-jobs
-thermald
-
-# Wayland
-#wayland-protocols
-#wayland-utils
-egl-wayland
-
-# Miscellaneous
-libdnet
-gdk-pixbuf-xlib
-uriparser
-libmspack
-
-# Additional Packages
-fatresize
-gamemode
-grilo-plugins
-gvfs
-gvfs-afc
-gvfs-dnssd
-gvfs-goa
-gvfs-google
-gvfs-gphoto2
-gvfs-mtp
-gvfs-nfs
-gvfs-onedrive
-gvfs-smb
-gvfs-wsdd
-jamesdsp
-manjaro-settings-samba
-mtools
-mtpfs
-rustdesk-bin
-steam
-udiskie
-
-## Virtual Machines
-libdnet
-gdk-pixbuf-xlib
-uriparser
-libmspack
+# Input Devices
 xf86-input-vmmouse
-compsize
-mtools
-fatresize
-thermald
+
+# Multilib
+>multilib lib32-libva-intel-driver
+>multilib lib32-mesa
+#>multilib lib32-libva-vdpau-driver
+>multilib lib32-mesa-utils
+lib32-fontconfig
+lib32-gettext
+lib32-glu
+lib32-lcms2
+lib32-libcups
+lib32-libice
+lib32-libltdl
+lib32-libpcap
+lib32-libpulse
+lib32-libxcomposite
+lib32-libxinerama
+lib32-libxrandr
+lib32-libxslt
+lib32-mpg123
+lib32-openal
+lib32-pipewire-jack
+lib32-sdl12-compat
+lib32-sdl2-compat
+lib32-v4l-utils
+mesa
 
 # Network Tools
 modemmanager
@@ -244,12 +129,95 @@ network-manager-prefer-ipv4-dns
 networkmanager-openvpn
 networkmanager-pptp
 networkmanager-vpnc
-nss-mdns # NSS support for mDNS (optdepend for avahi)
+nss-mdns
 ntp
 openresolv
 openssh
+rustdesk-bin
 sysctl-network
 usb_modeswitch
+
+# Office
+libreoffice-fresh-pt-br
+
+# Printing
+hplip
+ipp-usb
+manjaro-printer
+sane-airscan
+splix
+system-config-printer
+system-config-printer-jobs
+
+# System Configuration
+>extra python-pillow
+>extra python-pip
+>extra python-pyqt5
+appmenu-gtk-module
+dmidecode
+htop
+inxi
+libappindicator
+7zip
+perl-file-mimeinfo
+pipewire-biglinux-config
+powertop
+python-pysmbc
+unarchiver
+xdg-desktop-portal-gtk
+xdg-user-dirs-gtk
+zensu
+
+# System Utilities
+>extra fwupd
+android-tools
+# biglinux-updates-tweaks
+ark
+bluez-cups
+bluez-utils
+compsize
+debtap-mod
+ds4-disable-led
+fatresize
+ffmpegthumbs
+gamemode
+git
+imagemagick
+jamesdsp
+libnotify
+lsd
+mtools
+mtpfs
+libpamac-flatpak-plugin
+pamac-updates-menu
+qt5-quickcontrols2
+retroarch-tweaks
+rpmtoarch
+sshfs
+steam
+thermald
+udiskie
+
+# Themes and Icons
+adw-gtk-theme
+bibata-cursor-theme
+bigicons-papient
+hyde-cli-git
+kvantum
+kvantum-qt5
+nwg-look
+qt5-wayland
+qt5ct
+qt6ct
+qt6-svg
+qt6-wayland
+swww
+
+# TTS
+espeak-ng
+orca
+speech-dispatcher
+tts-biglinux
 
 # Udev Rules
 adafruit-boards-udev
@@ -277,32 +245,27 @@ usb-dirty-pages-udev
 usbasp-udev
 usbtinyisp-udev
 
-# Virtualization
-bluez-utils
-sshfs  # remote filesystem browser
+# Virtual Filesystem
+grilo-plugins
+gvfs
+gvfs-afc
+gvfs-dnssd
+gvfs-goa
+gvfs-google
+gvfs-gphoto2
+gvfs-mtp
+gvfs-nfs
+gvfs-onedrive
+gvfs-smb
+gvfs-wsdd
+manjaro-settings-samba
 
-# Multilib
->multilib lib32-libva-intel-driver
->multilib lib32-mesa
-#>multilib lib32-libva-vdpau-driver
->multilib lib32-mesa-utils
-mesa
-lib32-fontconfig
-lib32-gettext
-lib32-glu
-lib32-lcms2
-lib32-libcups
-lib32-libice
-lib32-libltdl
-lib32-libpcap
-lib32-libpulse
-lib32-libxcomposite
-lib32-libxinerama
-lib32-libxrandr
-lib32-libxslt
-lib32-mpg123
-lib32-openal
-lib32-pipewire-jack
-lib32-sdl12-compat
-lib32-sdl2-compat
-lib32-v4l-utils
+# Wayland
+egl-wayland
+
+# Miscellaneous
+gdk-pixbuf-xlib
+libdnet
+libmspack
+qt5-imageformats
+uriparser

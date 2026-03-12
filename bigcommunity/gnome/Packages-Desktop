@@ -1,28 +1,3 @@
-brave-browser
-
-# Development Tools
-autoconf
-automake
-make
-glib2-devel
-
-# Fonts
->extra noto-fonts-emoji
->extra ttf-droid
->extra ttf-inconsolata
->extra ttf-indic-otf
->extra ttf-liberation
-adobe-source-han-sans-cn-fonts
-adobe-source-han-sans-jp-fonts
-adobe-source-han-sans-kr-fonts
-adobe-source-sans-pro-fonts
-cantarell-fonts # Installed as gnome-themes-standard dependency
-noto-fonts-lite # New default font
-noto-nerd-fonts-lite
-ttf-roboto
-ttf-roboto-mono
-ttf-roboto-slab
-
 # GNOME Applications
 adw-gtk-theme
 apostrophe
@@ -60,11 +35,11 @@ gnome-weather
 loupe
 malcontent
 mutter
-nautilus-with-terminal
 nautilus-admin
 nautilus-empty-file
 nautilus-image-converter
 nautilus-share
+nautilus-with-terminal
 papers
 power-profiles-daemon
 python-nautilus
@@ -76,37 +51,71 @@ sync-gnome-theme-to-qt # Package Biglinux
 tracker3-miners
 xdg-user-dirs-gtk
 
-# Community extra config
-custom-tweaks
-luminance
-# Change Default Terminal
-xdg-terminal-exec
-
-# Comm Apps
-ashyterm
-
-# Apps BigLinux
-big-video-converter
-big-hardware-info
-biglinux-settings
-
-# Games
-aisleriot
-bigblocks
-gnome-mines
-gnome-mahjongg
-
 # GNOME Shell Extensions
-gnome-shell-extension-arc-menu
+gnome-shell-big-shot
 gnome-shell-extension-appindicator
+gnome-shell-extension-arc-menu
 gnome-shell-extension-blur-my-shell
+gnome-shell-extension-copyous
 gnome-shell-extension-dash-to-dock
 gnome-shell-extension-dash-to-panel
 gnome-shell-extension-gsconnect
 gnome-shell-extension-legacy-theme-auto-switcher
-gnome-shell-extension-copyous
 gnome-shell-extension-simpleweather
 gnome-shell-extensions
+
+# Apps BigLinux/Community
+ashyterm
+auto-tweaks-browser
+big-audio-converter
+big-hardware-info
+big-network-info
+big-video-converter
+biglinux-mime
+biglinux-settings
+biglinux-webapps
+bigocrpdf
+comm-gnome-config
+#comm-settings-gnome
+comm-wallpapers-gnome
+custom-tweaks
+luminance
+xdg-terminal-exec
+
+# Browsers
+brave-browser
+
+# Development Tools
+autoconf
+automake
+glib2-devel
+make
+
+# Display Manager
+gdm
+
+# Fonts
+>extra noto-fonts-emoji
+>extra ttf-droid
+>extra ttf-inconsolata
+>extra ttf-indic-otf
+>extra ttf-liberation
+adobe-source-han-sans-cn-fonts
+adobe-source-han-sans-jp-fonts
+adobe-source-han-sans-kr-fonts
+adobe-source-sans-fonts
+cantarell-fonts # Installed as gnome-themes-standard dependency
+noto-fonts-lite
+noto-nerd-fonts-lite
+ttf-roboto
+ttf-roboto-mono
+ttf-roboto-slab
+
+# Games
+aisleriot
+bigblocks
+gnome-mahjongg
+gnome-mines
 
 # Input Devices
 #xf86-input-elographics
@@ -119,7 +128,6 @@ xf86-input-vmmouse
 >multilib lib32-mesa
 #>multilib lib32-libva-vdpau-driver
 >multilib lib32-mesa-utils
-mesa
 lib32-fontconfig
 lib32-gettext
 lib32-glu
@@ -139,6 +147,7 @@ lib32-pipewire-jack
 lib32-sdl12-compat
 lib32-sdl2-compat
 lib32-v4l-utils
+mesa
 
 # Network Tools
 modemmanager
@@ -147,79 +156,87 @@ network-manager-prefer-ipv4-dns
 networkmanager-openvpn
 networkmanager-pptp
 networkmanager-vpnc
-nss-mdns # NSS support for mDNS (optdepend for avahi)
+nss-mdns
 ntp
 openresolv
 openssh
+rustdesk-bin
 sysctl-network
 usb_modeswitch
 
 # Office
 libreoffice-fresh-pt-br
 
+# Printing
+hplip
+ipp-usb
+manjaro-printer
+sane-airscan
+splix
+system-config-printer
+system-config-printer-jobs
+
 # System Configuration
 >extra python-pillow
 >extra python-pip
 >extra python-pyqt5
 appmenu-gtk-module
-auto-tweaks-browser # Pacote Biglinux
-biglinux-mime
-biglinux-webapps
-bigocrpdf
-big-network-info
-big-audio-converter
-dmidecode # for inxi -m output
-espeak-ng
-gdm
+dmidecode
 htop
 inxi
-libappindicator-gtk3
-orca
-p7zip  # 7Z format support
+libappindicator
+7zip
 perl-file-mimeinfo
 pipewire-biglinux-config
 powertop
-python-pysmbc # SMB browser support
-speech-dispatcher
-unarchiver  # RAR format support
+python-pysmbc
+unarchiver
 xdg-desktop-portal-gtk
 zensu
-
-# TTS rhvoice
-tts-biglinux
-rhvoice-voice-leticia-f123
-rhvoice-brazilian-portuguese-complementary-dict-biglinux
-rhvoice-voice-evgeniy-eng
 
 # System Utilities
 >extra fwupd
 android-tools
 # biglinux-updates-tweaks
 bluez-cups
+bluez-utils
 compsize
 debtap-mod
-hplip
-ipp-usb
-manjaro-printer
+ds4-disable-led
+fatresize
+ffmpegthumbnailer
+gamemode
+jamesdsp
+mtools
+mtpfs
+libpamac-flatpak-plugin
 pamac-updates-menu
-pamac-flatpak-plugin
 qt5-quickcontrols2
 qt6-wayland
+retroarch-tweaks
 rpmtoarch
-sane-airscan
-splix
-system-config-printer
-system-config-printer-jobs
+sshfs
+steam
 thermald
+udiskie
 
 # Themes and Icons
-comm-shell-orchis
 bibata-cursor-theme
+bigicons-papient
 breeze-icons
+comm-shell-orchis
 gnome-themes-extra
 qt6-svg
-bigicons-papient
-sassc # Para o Tema Orchis
+sassc
+
+# TTS
+espeak-ng
+orca
+rhvoice-brazilian-portuguese-complementary-dict-biglinux
+rhvoice-voice-evgeniy-eng
+rhvoice-voice-leticia-f123
+speech-dispatcher
+tts-biglinux
 
 # Udev Rules
 adafruit-boards-udev
@@ -247,40 +264,7 @@ usb-dirty-pages-udev
 usbasp-udev
 usbtinyisp-udev
 
-# Utilities
-comm-gnome-config
-#comm-settings-gnome
-comm-wallpapers-gnome
-ds4-disable-led
-jamesdsp
-retroarch-tweaks
-
-# Virtualization
-bluez-utils
-sshfs  # remote filesystem browser
-
-# Xorg
-numlockx
-xorg-mkfontscale
-xorg-server
-xorg-twm
-xorg-xinit
-xorg-xkill
-
-# Wayland
-wayland-protocols
-wayland-utils
-
-# Miscellaneous
-libdnet
-gdk-pixbuf-xlib
-uriparser
-libmspack
-ffmpegthumbnailer # show video preview in file manager
-
-# Additional Packages
-fatresize
-gamemode
+# Virtual Filesystem
 grilo-plugins
 gvfs
 gvfs-afc
@@ -294,8 +278,21 @@ gvfs-onedrive
 gvfs-smb
 gvfs-wsdd
 manjaro-settings-samba
-mtools
-mtpfs
-rustdesk-bin
-steam
-udiskie
+
+# Wayland
+wayland-protocols
+wayland-utils
+
+# Xorg
+numlockx
+xorg-mkfontscale
+xorg-server
+xorg-twm
+xorg-xinit
+xorg-xkill
+
+# Miscellaneous
+gdk-pixbuf-xlib
+libdnet
+libmspack
+uriparser

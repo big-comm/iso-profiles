@@ -1,34 +1,4 @@
-# Browsers
-brave-browser
-
-# Development Tools
-autoconf
-automake
-
-# Fonts
->extra noto-fonts-emoji
->extra ttf-droid
->extra ttf-inconsolata
->extra ttf-indic-otf
->extra ttf-liberation
-adobe-source-han-sans-cn-fonts
-adobe-source-han-sans-jp-fonts
-adobe-source-han-sans-kr-fonts
-adobe-source-sans-pro-fonts
-noto-fonts-lite # New default font
-noto-nerd-fonts-lite
-# terminus-font
-# ttf-caladea
-# ttf-carlito
-# ttf-dejavu
-# ttf-fira-code
-# ttf-icomoon-feather
-# ttf-liberation
-ttf-roboto
-ttf-roboto-mono
-ttf-roboto-slab
-
-# COSMIC Applications
+# Cosmic Applications
 cosmic-app-library
 cosmic-applets
 cosmic-bg
@@ -50,10 +20,46 @@ cosmic-terminal
 cosmic-text-editor
 cosmic-wallpapers
 cosmic-workspaces
-xdg-desktop-portal-cosmic
 simple-scan
-#sync-gnome-theme-to-qt # Pacote Biglinux
-# xdg-user-dirs-gtk
+#sync-gnome-theme-to-qt
+xdg-desktop-portal-cosmic
+#xdg-user-dirs-gtk
+
+# Apps BigLinux/Community
+auto-tweaks-browser
+biglinux-mime
+biglinux-webapps
+bigocrpdf
+#comm-cosmic-config
+xdg-terminal-exec
+
+# Browsers
+brave-browser
+
+# Development Tools
+autoconf
+automake
+
+# Display Manager
+lightdm
+lightdm-webkit2-greeter
+lightdm-webkit2-theme-community
+
+# Fonts
+>extra noto-fonts-emoji
+>extra ttf-droid
+>extra ttf-inconsolata
+>extra ttf-indic-otf
+>extra ttf-liberation
+adobe-source-han-sans-cn-fonts
+adobe-source-han-sans-jp-fonts
+adobe-source-han-sans-kr-fonts
+adobe-source-sans-fonts
+noto-fonts-lite
+noto-nerd-fonts-lite
+ttf-roboto
+ttf-roboto-mono
+ttf-roboto-slab
 
 # Input Devices
 xf86-input-elographics
@@ -63,9 +69,8 @@ xf86-input-vmmouse
 # Multilib
 >multilib lib32-libva-intel-driver
 >multilib lib32-mesa
-# >multilib lib32-libva-vdpau-driver
+#>multilib lib32-libva-vdpau-driver
 >multilib lib32-mesa-utils
-mesa
 lib32-fontconfig
 lib32-gettext
 lib32-glu
@@ -85,6 +90,7 @@ lib32-pipewire-jack
 lib32-sdl12-compat
 lib32-sdl2-compat
 lib32-v4l-utils
+mesa
 
 # Network Tools
 modemmanager
@@ -93,73 +99,78 @@ network-manager-prefer-ipv4-dns
 networkmanager-openvpn
 networkmanager-pptp
 networkmanager-vpnc
-nss-mdns # NSS support for mDNS (optdepend for avahi)
+nss-mdns
 ntp
 openresolv
 openssh
+rustdesk-bin
 sysctl-network
 usb_modeswitch
 
 # Office
 libreoffice-fresh-pt-br
 
+# Printing
+hplip
+ipp-usb
+manjaro-printer
+sane-airscan
+splix
+system-config-printer
+system-config-printer-jobs
+
 # System Configuration
 >extra python-pillow
 >extra python-pip
 >extra python-pyqt5
-# appmenu-gtk-module
-auto-tweaks-browser # Pacote Biglinux
-biglinux-mime
-biglinux-webapps
-bigocrpdf
-dmidecode # for inxi -m output
-espeak-ng
+#appmenu-gtk-module
+dmidecode
 htop
 inxi
-# libappindicator-gtk3
-7zip  # 7Z format support
+#libappindicator-gtk3
+7zip
 perl-file-mimeinfo
 pipewire-biglinux-config
 powertop
-python-pysmbc # SMB browser support
-speech-dispatcher
-tts-biglinux
-unarchiver  # RAR format support
+python-pysmbc
+unarchiver
 zensu
-
-## Display manager
-lightdm
-lightdm-webkit2-greeter
-lightdm-webkit2-theme-community
 
 # System Utilities
 >extra fwupd
 android-tools
 # biglinux-updates-tweaks
 bluez-cups
+bluez-utils
 compsize
 debtap-mod
-hplip
-ipp-usb
-iso2usb
-manjaro-application-utility
-manjaro-printer
+ds4-disable-led
+fatresize
+gamemode
+jamesdsp
+mtools
+mtpfs
+libpamac-flatpak-plugin
 pamac-updates-menu
-pamac-flatpak-plugin
 qt6-wayland
+retroarch-tweaks
 rpmtoarch
-sane-airscan
-splix
-system-config-printer
-system-config-printer-jobs
+sshfs
+steam
 thermald
+udiskie
 
 # Themes and Icons
 bibata-cursor-theme
+bigicons-papient
 breeze-icons
 qt6-svg
-bigicons-papient
-sassc # Para o Tema Orchis
+sassc
+
+# TTS
+espeak-ng
+speech-dispatcher
+tts-biglinux
 
 # Udev Rules
 adafruit-boards-udev
@@ -187,15 +198,12 @@ usb-dirty-pages-udev
 usbasp-udev
 usbtinyisp-udev
 
-# Utilities
-# comm-cosmic-config
-ds4-disable-led
-jamesdsp
-retroarch-tweaks
+# Virtual Filesystem
+manjaro-settings-samba
 
-# Virtualization
-bluez-utils
-sshfs  # remote filesystem browser
+# Wayland
+wayland-protocols
+wayland-utils
 
 # Xorg
 numlockx
@@ -205,23 +213,9 @@ xorg-twm
 xorg-xinit
 xorg-xkill
 
-# Wayland
-wayland-protocols
-wayland-utils
-
 # Miscellaneous
-libdnet
 gdk-pixbuf-xlib
-uriparser
+libdnet
 libmspack
-
-# Additional Packages
-fatresize
-gamemode
-manjaro-settings-samba
-mtools
-mtpfs
-rustdesk-bin
-steam
-udiskie
-# llvm16-libs
+uriparser
+#llvm16-libs

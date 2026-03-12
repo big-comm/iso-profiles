@@ -1,305 +1,171 @@
-# Accessibility
-libqaccessibilityclient-qt6
-
-# Android Tools
-android-tools
-
-# App Launchers
-appmenu-gtk-module
-
-# Audio Tools
-pavucontrol-qt
-phonon-qt6-vlc
-pipewire-biglinux-config
-
-# Browsers
-brave-browser
-
-# Calculator
-gnome-calculator
-
-# Compression Tools
-ark
-
-# Development Tools
-autoconf
-automake
-kdsoap-ws-discovery-client
-ktexttemplate
-python-pygdbmi
-python-sentry_sdk
-
-# Document Viewers
-okular
-
-# Emulators
-retroarch-tweaks
-
-# File Managers
-dolphin-plugins
-
-# File Sharing Tools
+## BigLinux
 qbittorrent
-
-# Fonts
-adobe-source-han-sans-cn-fonts
-adobe-source-han-sans-jp-fonts
-adobe-source-han-sans-kr-fonts
-adobe-source-sans-pro-fonts
-noto-fonts-lite
-terminus-font
-ttf-caladea
-ttf-carlito
-ttf-croscore
-ttf-dejavu
-ttf-droid
-ttf-font-awesome
-ttf-liberation
-ttf-roboto
-
-# Games
+big-preload
+kfind
+kdialog
+pavucontrol-qt
+kscreen
+wacomtablet
+plasma-thunderbolt
+kio-gdrive
+mintstick
+filelight
+biglinux-config
+lutris
 open-in-lutris-git
 steam
-
-# Graphics Tools
-feh
-filelight
-gdk-pixbuf-xlib
-gparted
-guvcview
-kdegraphics-thumbnailers
-kgamma
-kimageformats
-kscreen
-skanpage
-spectacle
-
-# KDE Applications
-kamera
-kalarm
-kate
-kde-color-folder
-kde-gtk-config
-kde-snap-assist
-kde-servicemenus-officeconverter
 kde-service-menu-reimage
-kdeconnect
-kdenetwork-filesharing
+kde-servicemenus-officeconverter
+libwebp-utils
+big-audio-converter
+big-video-converter
+rustdesk-bin
+kdegraphics-mobipocket
+gtk3
+big-skel
+powerdevil
+biglinux-plasmoids
+# # # packagekit-qt5
+bigcontrolcenter
+rootactions-servicemenu-biglinux
+biglinux-session-and-themes
+biglinux-themes-gui
+sddm-theme-biglinux
+sddm-xorg-failsafe
+libreoffice-fresh
+libreoffice-fresh-pt-br
+brave-browser
 keditbookmarks
-kdnssd
-kfind
-kglobalacceld
+plasma-appsmenu-biglinux
+big-executable
+gimp #Add 30 MB to the ISO file to include GIMP.
+
+## Network
+gufw
+
+## Libraries for Sound/Audio/Video
+# # #phonon-qt5-vlc
+
+## Connect Packages
+kamera
+
+## Package management
+pamac-tray-icon-plasma
+
+## Display manager
+sddm
+sddm-kcm
+
+## Plasma
+bluedevil
+kde-gtk-config
+kdeplasma-addons
+kgamma
 kinfocenter
-kio-gdrive
-kldap
 kmenuedit
+kscreenlocker
+ksshaskpass
+kwallet-pam
+kwayland-integration
+qt6-virtualkeyboard  # Virtual keyboard support for kwin-wayland
+fcitx5 # To fix problem in browsers in US Intl like 'c to ç
+fcitx5-qt
+fcitx5-gtk
+# # # kwrited
+plasma-desktop
+plasma-nm
+plasma-pa
+plasma-workspace
+systemsettings
+plasma-vault
+# # # kwin-scripts-virtual-desktops-only-on-primary
+guvcview
 kmines
 kpat
-ksshaskpass
 ksystemlog
-kwallet-pam
+# # # kwin-window-positioning-scripts
+plasma-applet-window-buttons
+plasma6-applets-panel-colorizer
+plasma6-applets-netspeed
+plasma6-applets-resources-monitor
+plasma6-applets-window-title
+plymouth-kcm
+
+## KDE Applications
+ark
+dolphin
+dolphin-plugins
+kate
+gnome-calculator
+kfind
+kdeconnect
+okular
+kdenetwork-filesharing
+ashyterm
+konsole
 kwalletmanager
+gwenview
+gparted
+spectacle
+smplayer
+smplayer-themes
+mpv
+strawberry # VLC replaced by smplayer and strawberry, like a old times
+geoclue # Night Light automatic location mode
+gocryptfs # plasma-vault, for new vaults
+hspell # sonnet
+icoutils # kio-extras, for .exe thumbnails
+jxrlib # kimageformats
+libappimage # kio-extras, for AppImage app thumbnails
+openexr # kimageformats
 
-# LibreOffice
-libreoffice-fresh-pt-br
+## Optional dependencies for dolphin
+kdegraphics-thumbnailers  # PDF and PS thumbnails
+ffmpegthumbs              # video thumbnails
 
-# Manjaro Tools
-manjaro-printer
-manjaro-settings-manager
+## Optional dependencies for gwenview
+kimageformats     # support for dds, xcf, exr, psd, and more image formats
+qt6-imageformats  # support for tiff, webp, and more image formats
+
+## Optional dependencies for kaccounts-integration
+kaccounts-providers
+
+## Optional dependencies for okular
+poppler-data  # encoding data to display PDF documents containing CJK characters
+
+## Applications
+#manjaro-application-utility
+# # # manjaro-settings-manager-kcm
 manjaro-settings-manager-knotifier
-manjaro-settings-samba
+resources
 
-# Multimedia
-ffmpegthumbs
-phonon-qt6-vlc
-pipewire-biglinux-config-git
-qt6-multimedia-ffmpeg
-qpwgraph
+## Flatpak support
+libpamac-flatpak-plugin
+flatpak-kcm  # ou flatseal
+## Printing
+>extra manjaro-printer
+>extra gtk3-print-backends
 
-# Network Tools
-cryfs
-network-manager-disable-random-mac
-network-manager-prefer-ipv4-dns
-networkmanager-openvpn
-networkmanager-pptp
-networkmanager-vpnc
-ntp
-openresolv
-rustdesk-bin
-sshfs
-
-# Package Managers
-mintstick
-pamac-cli
-pamac-flatpak-plugin
-pamac-tray-icon-plasma
-pamac-updates-menu
-packagekit-qt6
-rpmtoarch
-rpm-sequoia
-
-# Printing Tools
-ipp-usb
-splix
-sane-airscan
-system-config-printer-jobs
-
-# System Tools
-apparmor
-aria2
-auto-tweaks-browser
-bigcontrolcenter
-big-executable
-big-video-converter
-big-skel
-biglinux-mime
-biglinux-themes-gui
-biglinux-updates-tweaks
-biglinux-webapps
-bigocrpdf
-compsize
-cryfs
-debtap-mod
-ds4-disable-led
-extra-biglinux-wallpapers
-fatresize
-flatpak-kcm
-gconf
-geticons
-gnome-keyring
-htop
-intel-media-driver
-kwayland-integration
-lib32-xcb-util-keysyms
-libappindicator-gtk3
-libdnet
-libdisplay-info
-libmspack
+## Xorg Server and Graphics
+>multilib lib32-libva-intel-driver
+>multilib lib32-libva-mesa-driver
 libva-intel-driver
 libva-mesa-driver
-#llvm16-libs
-mtools
-#mystiq
+mesa-utils
+>multilib lib32-mesa-utils
 numlockx
-openucx
-open-in-lutris-git
-perl-file-mimeinfo
-powertop
-python-steam
-qt6-webview
-rootactions-servicemenu-biglinux
-sd
-spice-vdagent-autostart-kde
-sync-kde-and-gtk-places
-sysctl-network
-thermald
-tts-biglinux
-udiskie
-unarchiver
-uriparser
-usb_modeswitch
-wacomtablet
-xdg-user-dirs-gtk
-zensu
-
-# Udev Rules
-adafruit-boards-udev
-allow-input-accelerometer-udev
-apple-superdrive-udev
-avrisp-udev
-bitbox-udev
-btchip-udev
-crazyflie-udev
-crazyradio-udev
-duckypad-udev
-game-devices-udev
-keepkey-udev
-mooltipass-udev
-nintendo-udev
-numworks-udev
-nx-udev
-onlykey-udev
-openrgb-udev-rules
-osc-udev-storage
-signal-hound-udev
-stadia-controller-udev
-trezor-udev
-usb-dirty-pages-udev
-usbasp-udev
-usbtinyisp-udev
-
-# Xorg Input Drivers
-xf86-input-elographics
-xf86-input-evdev
-xf86-input-vmmouse
-
-# Xorg Tools
-xorg-mkfontscale
+xdg-user-dirs
+xorg-server
 xorg-twm
 xorg-xinit
 xorg-xkill
+xorg-mkfontscale
 
-# KDE Plasma Add-ons
-plasma6-applets-netspeed
-plasma6-applets-resources-monitor
-plasma-browser-integration
-plasma-disks
-plasma-firewall
-plasma-nm
-plasma-pa
-plasma-systemmonitor
-plasma-thunderbolt
-plasma-vault
-plymouth-kcm
-polkit-kde-agent
-powerdevil
-sddm-kcm
-sddm-theme-biglinux
-sddm-xorg-failsafe
+## Xorg Input Drivers
+xf86-input-elographics
+xf86-input-evdev
+xf86-input-libinput
 
-# Others
-bluedevil
-bluez-cups
-bluez-plugins
-dolphin-plugins
-gvfs
-gvfs-afc
-gvfs-dnssd
-gvfs-goa
-gvfs-google
-gvfs-gphoto2
-gvfs-mtp
-gvfs-nfs
-gvfs-onedrive
-gvfs-smb
-gvfs-wsdd
-lib32-fontconfig
-lib32-giflib
-lib32-gettext
-lib32-libcups
-lib32-libltdl
-lib32-libpcap
-lib32-libpulse
-lib32-lcms2
-lib32-libsm
-lib32-libunwind
-lib32-libva-intel-driver
-lib32-libxcomposite
-lib32-libxinerama
-lib32-libxrandr
-lib32-libxslt
-lib32-mesa-utils
-lib32-mpg123
-lib32-openal
-lib32-pipewire-jack
-lib32-sdl12-compat
-lib32-v4l-utils
-lutris
-mtpfs
-plasma-framework5
-plasma-wayland-protocols
-source-highlight
-tesseract-data-eng
-tesseract-data-por
-wl-clipboard-rs
-wl-mirror
+
+## Misc
+

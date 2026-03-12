@@ -11,52 +11,7 @@ menuentry "2 Boot With Open Source Drivers (support for OLD Nvidia GPUs or AMD, 
 
 
 submenu "3 Advanced options with Proprietary Drivers ->" {
-
-    submenu "3.0.0 Options to Hybrid GPU ->" {
-
-        menuentry "3.0.1 Intel as Primary + Nvidia ModeSetting - PAT" --class=@DIST_NAME@.@ARCH@ {
-        set gfxpayload=keep
-        linux /boot/vmlinuz-x86_64 misobasedir=bigcommunity misolabel=BIGCOMMUNITYLIVE wayland driver=nonfree nouveau.modeset=0 nvidia-drm.modeset=1 radeon.modeset=1 nowatchdog tsc=nowatchdog cryptomgr.notests no_timer_check rcupdate.rcu_expedited=1 rw nosoftlockup audit=0 nomce skew_tick=1 intremap=off split_lock_detect=off clearcpuid=514 quiet loglevel=3 systemd.show_status=auto rd.udev.log_level=3 splash bignvidia=1
-        initrd /boot/amd_ucode.img /boot/intel_ucode.img /boot/initramfs-@ARCH@.img
-        }
-
-        menuentry "3.0.2 Intel as Primary + Nvidia ModeSetting + PAT" --class=@DIST_NAME@.@ARCH@ {
-        set gfxpayload=keep
-        linux /boot/vmlinuz-x86_64 misobasedir=bigcommunity misolabel=BIGCOMMUNITYLIVE wayland driver=nonfree nouveau.modeset=0 nvidia-drm.modeset=1 radeon.modeset=1 nowatchdog tsc=nowatchdog cryptomgr.notests no_timer_check rcupdate.rcu_expedited=1 rw nosoftlockup audit=0 nomce skew_tick=1 intremap=off split_lock_detect=off clearcpuid=514 quiet loglevel=3 systemd.show_status=auto rd.udev.log_level=3 splash bignvidia=2
-        initrd /boot/amd_ucode.img /boot/intel_ucode.img /boot/initramfs-@ARCH@.img
-        }
-
-        menuentry "3.0.3 Intel ModeSetting as Primary + Nvidia ModeSetting - PAT" --class=@DIST_NAME@.@ARCH@ {
-        set gfxpayload=keep
-        linux /boot/vmlinuz-x86_64 misobasedir=bigcommunity misolabel=BIGCOMMUNITYLIVE wayland driver=nonfree nouveau.modeset=0 nvidia-drm.modeset=1 i915.modeset=1 radeon.modeset=1 nowatchdog tsc=nowatchdog cryptomgr.notests no_timer_check rcupdate.rcu_expedited=1 rw nosoftlockup audit=0 nomce skew_tick=1 intremap=off split_lock_detect=off clearcpuid=514 quiet loglevel=3 systemd.show_status=auto rd.udev.log_level=3 splash bignvidia=3
-        initrd /boot/amd_ucode.img /boot/intel_ucode.img /boot/initramfs-@ARCH@.img
-        }
-
-        menuentry "3.0.4 Intel ModeSetting as Primary + Nvidia ModeSetting + PAT" --class=@DIST_NAME@.@ARCH@ {
-        set gfxpayload=keep
-        linux /boot/vmlinuz-x86_64 misobasedir=bigcommunity misolabel=BIGCOMMUNITYLIVE wayland driver=nonfree nouveau.modeset=0 nvidia-drm.modeset=1 i915.modeset=1 radeon.modeset=1 nowatchdog tsc=nowatchdog cryptomgr.notests no_timer_check rcupdate.rcu_expedited=1 rw nosoftlockup audit=0 nomce skew_tick=1 intremap=off split_lock_detect=off clearcpuid=514 quiet loglevel=3 systemd.show_status=auto rd.udev.log_level=3 splash bignvidia=4
-        initrd /boot/amd_ucode.img /boot/intel_ucode.img /boot/initramfs-@ARCH@.img
-        }
-
-        menuentry "3.0.5 Nvidia ModeSetting - PAT as Primary + Intel Xorg" --class=@DIST_NAME@.@ARCH@ {
-        set gfxpayload=keep
-        linux /boot/vmlinuz-x86_64 misobasedir=bigcommunity misolabel=BIGCOMMUNITYLIVE wayland driver=nonfree nouveau.modeset=0 nvidia-drm.modeset=1 radeon.modeset=1 nowatchdog tsc=nowatchdog cryptomgr.notests no_timer_check rcupdate.rcu_expedited=1 rw nosoftlockup audit=0 nomce skew_tick=1 intremap=off split_lock_detect=off clearcpuid=514 quiet loglevel=3 systemd.show_status=auto rd.udev.log_level=3 splash bignvidia=9
-        initrd /boot/amd_ucode.img /boot/intel_ucode.img /boot/initramfs-@ARCH@.img
-        }
-
-        menuentry "3.0.6 Nvidia ModeSetting + PAT as Primary + Intel Xorg" --class=@DIST_NAME@.@ARCH@ {
-        set gfxpayload=keep
-        linux /boot/vmlinuz-x86_64 misobasedir=bigcommunity misolabel=BIGCOMMUNITYLIVE wayland driver=nonfree nouveau.modeset=0 nvidia-drm.modeset=1 radeon.modeset=1 nowatchdog tsc=nowatchdog cryptomgr.notests no_timer_check rcupdate.rcu_expedited=1 rw nosoftlockup audit=0 nomce skew_tick=1 intremap=off split_lock_detect=off clearcpuid=514 quiet loglevel=3 systemd.show_status=auto rd.udev.log_level=3 splash bignvidia=10
-        initrd /boot/amd_ucode.img /boot/intel_ucode.img /boot/initramfs-@ARCH@.img
-        }
-
-        menuentry "3.0.7 Nvidia ModeSetting - PAT as Primary + Intel ModeSetting" --class=@DIST_NAME@.@ARCH@ {
-        set gfxpayload=keep
-        linux /boot/vmlinuz-x86_64 misobasedir=bigcommunity misolabel=BIGCOMMUNITYLIVE wayland driver=nonfree nouveau.modeset=0 nvidia-drm.modeset=1 i915.modeset=1 radeon.modeset=1 nowatchdog tsc=nowatchdog cryptomgr.notests no_timer_check rcupdate.rcu_expedited=1 rw nosoftlockup audit=0 nomce skew_tick=1 intremap=off split_lock_detect=off clearcpuid=514 quiet loglevel=3 systemd.show_status=auto rd.udev.log_level=3 splash bignvidia=11
-        initrd /boot/amd_ucode.img /boot/intel_ucode.img /boot/initramfs-@ARCH@.img
-        }
-    }
-
+   
     menuentry "3.1 Open in Installer" --class=@DIST_NAME@.@ARCH@ {
     set gfxpayload=keep
     linux /boot/vmlinuz-x86_64 misobasedir=bigcommunity misolabel=BIGCOMMUNITYLIVE wayland driver=nonfree nouveau.modeset=0 i915.modeset=1 radeon.modeset=1 nowatchdog tsc=nowatchdog cryptomgr.notests no_timer_check rcupdate.rcu_expedited=1 rw nosoftlockup audit=0 nomce skew_tick=1 intremap=off split_lock_detect=off clearcpuid=514 quiet loglevel=3 systemd.show_status=auto rd.udev.log_level=3 splash biglinux.bootcmd=only-calamares
