@@ -84,7 +84,8 @@ autoconf
 automake
 
 # Display Manager
-sddm
+lightdm
+lightdm-slick-greeter
 
 # Fonts
 >extra noto-fonts-emoji
