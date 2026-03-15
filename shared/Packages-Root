@@ -145,7 +145,6 @@ bigcommunity-name
 biglinux-l18n
 bpftune-git # Oracle
 faster-mkinitcpio
-biglinux-hibernate-in-swapfile-btrfs
 biglinux-improve-compatibility
 comm-improve-compatibility
 big-mount
@@ -153,7 +152,6 @@ biglinux-systemd-swap
 dbus-broker-enable
 power-profiles-daemon-biglinux
 auto-rules-io
-auto-unlock-pacman-git
 hunspell-pt-br
 uresourced
 bigsudo
@@ -203,7 +201,6 @@ vulkan-mesa-layers
 vulkan-intel
 vulkan-nouveau
 vulkan-radeon
-vulkan-tools
 vulkan-swrast
 xf86-video-amdgpu
 xf86-video-ati
@@ -217,7 +214,6 @@ alsa-oss
 ## Virtualization Support
 open-vm-tools
 qemu-guest-agent
-virtualbox-guest-utils
 spice-vdagent
 
 ## Others
