@@ -1,6 +1,5 @@
 ## BigLinux
 qbittorrent
-big-preload
 kfind
 kdialog
 pavucontrol-qt
@@ -97,7 +96,6 @@ dolphin
 dolphin-plugins
 kate
 gnome-calculator
-kfind
 kdeconnect
 okular
 kdenetwork-filesharing
