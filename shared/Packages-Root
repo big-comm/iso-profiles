@@ -143,7 +143,7 @@ update-grub
 auto-unlock-pacman-git
 bigcommunity-name
 biglinux-l18n
-#bpftune-git # disabled: ships OpenRC init script that crashes biglinux-improve-compatibility on systemd
+bpftune-git
 faster-mkinitcpio
 biglinux-improve-compatibility
 comm-improve-compatibility
