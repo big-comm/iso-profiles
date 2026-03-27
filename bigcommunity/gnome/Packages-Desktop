@@ -54,6 +54,7 @@ xdg-user-dirs-gtk
 gnome-shell-big-shot
 gnome-shell-extension-appindicator
 gnome-shell-extension-arc-menu
+gnome-shell-extension-astra-monitor
 gnome-shell-extension-blur-my-shell
 gnome-shell-extension-copyous
 gnome-shell-extension-dash-to-dock
@@ -61,6 +62,7 @@ gnome-shell-extension-dash-to-panel
 gnome-shell-extension-gsconnect
 gnome-shell-extension-legacy-theme-auto-switcher
 gnome-shell-extension-simpleweather
+gnome-shell-extension-tilingshell
 gnome-shell-extensions
 
 # Apps BigLinux/Community
