@@ -175,8 +175,8 @@ ipp-usb
 manjaro-printer
 sane-airscan
 splix
-system-config-printer
-system-config-printer-jobs
+#system-config-printer
+#system-config-printer-jobs
 
 # System Configuration
 >extra python-pillow
