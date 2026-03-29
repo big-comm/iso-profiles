@@ -16,7 +16,6 @@ gnome-calculator
 gnome-disk-utility
 gnome-keyring
 gnome-online-accounts-gtk
-gnome-screenshot
 #gnome-terminal
 gpaste
 nemo
@@ -55,6 +54,7 @@ biglinux-mime
 biglinux-settings
 biglinux-webapps
 bigocrpdf
+cinnamon-big-shot
 comm-cinnamon-config
 comm-shell-orchis
 comm-wallpapers-cinnamon
