@@ -4,6 +4,7 @@ celluloid
 comm-xfce-datetime
 exo
 garcon
+gedit
 gnome-calculator
 gnome-disk-utility
 gnome-online-accounts-gtk
@@ -30,7 +31,6 @@ thunar-shares-plugin
 thunar-volman
 thunarx-python
 tumbler
-xed
 xfce4-appfinder
 xfce4-artwork
 xfce4-battery-plugin
