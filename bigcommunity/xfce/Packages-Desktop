@@ -32,12 +32,12 @@ thunar-volman
 thunarx-python
 tumbler
 xfce4-appfinder
-xfce4-artwork
+#xfce4-artwork
 xfce4-battery-plugin
 xfce4-clipman-plugin
 xfce4-cpufreq-plugin
 xfce4-cpugraph-plugin
-xfce4-datetime-plugin
+#xfce4-datetime-plugin
 xfce4-dict
 xfce4-diskperf-plugin
 xfce4-docklike-plugin
@@ -73,7 +73,7 @@ xfce4-xkb-plugin
 xfconf
 xfdesktop
 xfwm4
-xfwm4-themes
+#xfwm4-themes
 xarchiver
 
 # Apps BigLinux/Community
