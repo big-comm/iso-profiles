@@ -173,7 +173,6 @@ qt5-quickcontrols2
 qt6-wayland
 #rpmtoarch
 sane-airscan
-splix
 system-config-printer
 system-config-printer-jobs
 thermald
