@@ -83,6 +83,7 @@ comm-gnome-config
 #comm-settings-gnome
 comm-wallpapers-gnome
 custom-tweaks
+layout-switcher
 luminance
 xdg-terminal-exec
 
