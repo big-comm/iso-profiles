@@ -80,6 +80,34 @@ def test_language_selector_covers_catalogs() -> None:
     assert selected == LINGUAS
 
 
+def test_language_selector_expands_inline() -> None:
+    cases = (
+        (CFG / "kernels.cfg", 'menuentry $"4 - Language:', 'menuentry $"6 - Run memory test"', "set default=3"),
+        (MINIMAL_CFG / "kernels.cfg", 'menuentry $"2 - Language:', 'menuentry $"4 - Run memory test"', "set default=1"),
+    )
+    for path, language_label, following_label, selected_default in cases:
+        text = path.read_text(encoding="utf-8")
+        language = text.index(language_label)
+        inline_source = text.index("source /boot/grub/languages.cfg", language)
+        following = text.index(following_label, inline_source)
+        assert language < inline_source < following
+        assert 'set bigcommunity_menu="language"' not in text
+        assert selected_default in text
+
+    selector = CFG.joinpath("languages.cfg").read_text(encoding="utf-8")
+    assert selector.count("unset bigcommunity_language_expanded") == 2
+    assert 'menuentry $"Back to main menu"' in selector
+    assert "menu_reload" in selector
+
+
+def test_dispatcher_reloads_nested_menu_states() -> None:
+    for path in (CFG / "kernels.cfg", MINIMAL_CFG / "kernels.cfg"):
+        text = path.read_text(encoding="utf-8")
+        assert "normal /boot/grub/kernels.cfg" not in text
+        assert "normal_exit" not in text
+        assert "menu_reload" in text
+
+
 def test_catalogs_are_complete_and_compiled() -> None:
     for locale in LINGUAS:
         po = I18N / "po" / f"{locale}.po"
@@ -106,6 +134,10 @@ def test_theme_uses_bigcommunity_palette_and_unicode_fallback() -> None:
     assert 'selected_item_color = "#C7A4FF"' in theme
     assert 'fg_color = "#A97DFF"' in theme
     assert 'terminal-font: "Terminus Bold 22"' in theme
+    assert 'terminal-left: "0"' in theme
+    assert 'terminal-top: "0"' in theme
+    assert 'terminal-width: "100%"' in theme
+    assert 'terminal-height: "100%"' in theme
     assert THEME.joinpath("bigcommunity-grub-live.png").is_file()
     assert 'file = "bigcommunity-grub-live.png"' in theme
     assert "width = 91" in theme

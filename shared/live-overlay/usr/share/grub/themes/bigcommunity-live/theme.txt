@@ -3,10 +3,10 @@
 title-text: ""
 desktop-color: "#120A22"
 terminal-font: "Terminus Bold 22"
-terminal-left: "4%"
-terminal-top: "8%"
-terminal-width: "92%"
-terminal-height: "84%"
+terminal-left: "0"
+terminal-top: "0"
+terminal-width: "100%"
+terminal-height: "100%"
 terminal-border: "0"
 
 + image {
