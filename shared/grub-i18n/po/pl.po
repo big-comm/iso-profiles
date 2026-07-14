@@ -1,0 +1,374 @@
+# Polish translations for bigcommunity-grub package.
+# Copyright (C) 2026 BigCommunity
+# This file is distributed under the same license as the bigcommunity-grub package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: bigcommunity-grub 1\n"
+"Report-Msgid-Bugs-To: https://github.com/BigCommunity/iso-profiles/issues\n"
+"POT-Creation-Date: 2026-07-14 14:48-0300\n"
+"PO-Revision-Date: 2026-07-14 14:48-0300\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:50
+msgid "1 - Start BigCommunity (recommended)"
+msgstr "1 - Uruchom BigCommunity (zalecane)"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:54
+msgid "2 - Start without proprietary drivers"
+msgstr "2 - Uruchom bez sterowników własnościowych"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:58
+msgid "3 - More boot options and hardware fixes  >>"
+msgstr "3 - Więcej opcji rozruchu i poprawek sprzętowych  >>"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:66
+#, sh-format
+msgid "4 - Language: ${language_name}  >>"
+msgstr "4 - Język: ${language_name}  >>"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:72
+msgid "5 - Detect EFI bootloaders  >>"
+msgstr "5 - Wykryj programy rozruchowe EFI  >>"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:80
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:87
+msgid "6 - Run memory test"
+msgstr "6 - Uruchom test pamięci"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:93
+msgid "7 - Restart computer"
+msgstr "7 - Uruchom komputer ponownie"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:98
+msgid "8 - Clear extra boot parameters"
+msgstr "8 - Wyczyść dodatkowe parametry rozruchu"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:105
+msgid "3.0 - Back to main menu"
+msgstr "3.0 - Powrót do menu głównego"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:110
+msgid "3.1 - Graphics and drivers  >>"
+msgstr "3.1 - Grafika i sterowniki  >>"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:115
+msgid "3.2 - Storage, PCI and IOMMU  >>"
+msgstr "3.2 - Pamięć masowa, PCI i IOMMU  >>"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:120
+msgid "3.3 - Firmware and legacy hardware  >>"
+msgstr "3.3 - Oprogramowanie układowe i starszy sprzęt  >>"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:125
+msgid "3.4 - Desktop responsiveness  >>"
+msgstr "3.4 - Szybkość reakcji pulpitu  >>"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:130
+msgid "3.5 - Dual-GPU laptops with NVIDIA  >>"
+msgstr "3.5 - Laptopy z dwoma GPU i kartą NVIDIA  >>"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:135
+msgid "3.6 - Diagnostics  >>"
+msgstr "3.6 - Diagnostyka  >>"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:141
+msgid "3.1.0 - Back to menu 3"
+msgstr "3.1.0 - Powrót do menu 3"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:146
+msgid "3.1.1 - Wayland (proprietary drivers allowed)"
+msgstr "3.1.1 - Wayland (sterowniki własnościowe dozwolone)"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:150
+msgid "3.1.2 - Wayland (no proprietary drivers)"
+msgstr "3.1.2 - Wayland (bez sterowników własnościowych)"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:154
+msgid "3.1.3 - X11 (proprietary drivers allowed)"
+msgstr "3.1.3 - X11 (sterowniki własnościowe dozwolone)"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:158
+msgid "3.1.4 - X11 (no proprietary drivers)"
+msgstr "3.1.4 - X11 (bez sterowników własnościowych)"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:162
+msgid "3.1.5 - Intel display workaround (disable PSR)"
+msgstr "3.1.5 - Obejście problemów z wyświetlaniem Intel (wyłączenie PSR)"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:166
+msgid "3.1.6 - Intel graphics driver selection (expert)  >>"
+msgstr "3.1.6 - Wybór sterownika grafiki Intel (eksperckie)  >>"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:171
+msgid "3.1.7 - AMD APU flicker workaround"
+msgstr "3.1.7 - Obejście migotania AMD APU"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:175
+msgid "3.1.8 - Older AMD GCN driver selection (expert)  >>"
+msgstr "3.1.8 - Wybór sterownika dla starszych AMD GCN (eksperckie)  >>"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:180
+msgid "3.1.9 - AMD GPU hang recovery (experimental)"
+msgstr "3.1.9 - Odzyskiwanie po zawieszeniu AMD GPU (eksperymentalne)"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:185
+msgid "3.1.6.0 - Back to menu 3.1"
+msgstr "3.1.6.0 - Powrót do menu 3.1"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:190
+msgid "3.1.6.1 - Automatic Intel driver selection"
+msgstr "3.1.6.1 - Automatyczny wybór sterownika Intel"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:194
+msgid "3.1.6.2 - Force i915 for recognized Intel GPUs"
+msgstr "3.1.6.2 - Wymuś i915 dla rozpoznanych GPU Intel"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:198
+msgid "3.1.6.3 - Force Xe for recognized Intel GPUs"
+msgstr "3.1.6.3 - Wymuś Xe dla rozpoznanych GPU Intel"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:203
+msgid "3.1.8.0 - Back to menu 3.1"
+msgstr "3.1.8.0 - Powrót do menu 3.1"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:208
+msgid "3.1.8.1 - Prefer AMDGPU for SI/CIK"
+msgstr "3.1.8.1 - Preferuj AMDGPU dla SI/CIK"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:212
+msgid "3.1.8.2 - Prefer Radeon for SI/CIK"
+msgstr "3.1.8.2 - Preferuj Radeon dla SI/CIK"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:217
+msgid "3.2.0 - Back to menu 3"
+msgstr "3.2.0 - Powrót do menu 3"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:222
+msgid "3.2.1 - NVMe power-state workaround"
+msgstr "3.2.1 - Obejście problemów ze stanami zasilania NVMe"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:226
+msgid "3.2.2 - Keep firmware PCIe power settings"
+msgstr "3.2.2 - Zachowaj ustawienia zasilania PCIe z oprogramowania układowego"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:230
+msgid "3.2.3 - Suppress PCIe AER flood"
+msgstr "3.2.3 - Ogranicz zalew błędów PCIe AER"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:234
+msgid "3.2.4 - Intel IOMMU: disable scalable mode"
+msgstr "3.2.4 - Intel IOMMU: wyłącz tryb skalowalny"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:238
+msgid "3.2.5 - Intel IOMMU: bypass integrated graphics"
+msgstr "3.2.5 - Intel IOMMU: pomiń zintegrowaną grafikę"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:242
+msgid "3.2.6 - Disable hardware IOMMU"
+msgstr "3.2.6 - Wyłącz sprzętowe IOMMU"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:246
+msgid "3.2.7 - Use software DMA bounce buffering"
+msgstr "3.2.7 - Użyj programowego buforowania bounce DMA"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:250
+msgid "3.2.8 - Disable PCI MSI interrupts"
+msgstr "3.2.8 - Wyłącz przerwania PCI MSI"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:254
+msgid "3.2.9 - Poll interrupt handlers"
+msgstr "3.2.9 - Odpytuj procedury obsługi przerwań"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:258
+msgid "3.2.10 - Disable PCI MMCONFIG"
+msgstr "3.2.10 - Wyłącz PCI MMCONFIG"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:263
+msgid "3.3.0 - Back to menu 3"
+msgstr "3.3.0 - Powrót do menu 3"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:268
+msgid "3.3.1 - Disable ACPI IRQ routing"
+msgstr "3.3.1 - Wyłącz trasowanie IRQ przez ACPI"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:272
+msgid "3.3.2 - Disable ACPI for PCI routing"
+msgstr "3.3.2 - Wyłącz ACPI dla trasowania PCI"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:276
+msgid "3.3.3 - Disable x2APIC"
+msgstr "3.3.3 - Wyłącz x2APIC"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:280
+msgid "3.3.4 - Disable I/O APIC"
+msgstr "3.3.4 - Wyłącz I/O APIC"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:284
+msgid "3.3.5 - Skip IO-APIC timer test (old boards)"
+msgstr "3.3.5 - Pomiń test czasomierza IO-APIC (stare płyty główne)"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:288
+msgid "3.3.6 - Disable HPET"
+msgstr "3.3.6 - Wyłącz HPET"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:292
+msgid "3.3.7 - Last resort: disable ACPI completely"
+msgstr "3.3.7 - Ostateczność: całkowicie wyłącz ACPI"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:297
+msgid "3.4.0 - Back to menu 3"
+msgstr "3.4.0 - Powrót do menu 3"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:302
+msgid "3.4.1 - Kernel default preemption"
+msgstr "3.4.1 - Domyślne wywłaszczanie jądra"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:306
+msgid "3.4.2 - Force full preemption"
+msgstr "3.4.2 - Wymuś pełne wywłaszczanie"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:310
+msgid "3.4.3 - Full preemption + threaded IRQs"
+msgstr "3.4.3 - Pełne wywłaszczanie + wątkowe IRQ"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:314
+msgid "3.4.4 - Lazy preemption"
+msgstr "3.4.4 - Leniwe wywłaszczanie"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:320
+msgid "3.5.0 - Back to menu 3"
+msgstr "3.5.0 - Powrót do menu 3"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:325
+msgid "3.5.1 - Hybrid mode (Wayland, recommended)"
+msgstr "3.5.1 - Tryb hybrydowy (Wayland, zalecane)"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:329
+msgid "3.5.2 - Hybrid mode (X11 fallback)"
+msgstr "3.5.2 - Tryb hybrydowy (X11 jako tryb awaryjny)"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:333
+msgid "3.5.3 - Integrated GPU only (disable NVIDIA)"
+msgstr "3.5.3 - Tylko zintegrowany GPU (wyłącz NVIDIA)"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:337
+msgid "3.5.4 - NVIDIA as primary GPU (X11)"
+msgstr "3.5.4 - NVIDIA jako główny GPU (X11)"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:343
+msgid "3.6.0 - Back to menu 3"
+msgstr "3.6.0 - Powrót do menu 3"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:348
+msgid "3.6.1 - Verbose boot"
+msgstr "3.6.1 - Szczegółowy rozruch"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:352
+msgid "3.6.2 - Watchdog and clock diagnostics  >>"
+msgstr "3.6.2 - Diagnostyka watchdoga i zegara  >>"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:357
+msgid "3.6.3 - Legacy module: disable kernel IBT"
+msgstr "3.6.3 - Starszy moduł: wyłącz IBT jądra"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:361
+msgid "3.6.4 - Legacy software: disable split-lock detection"
+msgstr "3.6.4 - Starsze oprogramowanie: wyłącz wykrywanie split-lock"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:365
+msgid "3.6.5 - Disable PAT"
+msgstr "3.6.5 - Wyłącz PAT"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:369
+msgid "3.6.6 - Last resort: disable interrupt remapping"
+msgstr "3.6.6 - Ostateczność: wyłącz ponowne mapowanie przerwań"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:374
+msgid "3.6.2.0 - Back to menu 3.6"
+msgstr "3.6.2.0 - Powrót do menu 3.6"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:379
+msgid "3.6.2.1 - Increase lockup timeout"
+msgstr "3.6.2.1 - Zwiększ limit czasu lockup"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:383
+msgid "3.6.2.2 - Disable NMI hard-lockup detector"
+msgstr "3.6.2.2 - Wyłącz detektor NMI hard-lockup"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:387
+msgid "3.6.2.3 - Disable soft-lockup detector"
+msgstr "3.6.2.3 - Wyłącz detektor soft-lockup"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:391
+msgid "3.6.2.4 - Disable both kernel lockup detectors"
+msgstr "3.6.2.4 - Wyłącz oba detektory lockup jądra"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:395
+msgid "3.6.2.5 - Use fallback clocksource (TSC unstable)"
+msgstr "3.6.2.5 - Użyj zapasowego clocksource (niestabilny TSC)"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:399
+msgid "3.6.2.6 - Disable TSC clocksource watchdog"
+msgstr "3.6.2.6 - Wyłącz watchdog clocksource TSC"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:407
+msgid "5.0 - Back to main menu"
+msgstr "5.0 - Powrót do menu głównego"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:427
+#, sh-format
+msgid "5.x - ${efi}"
+msgstr "5.x - Rozruch EFI: ${efi}"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:435
+msgid "5.1 - No EFI files detected"
+msgstr "5.1 - Nie wykryto plików EFI"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:444
+msgid "0 - Back to main menu"
+msgstr "0 - Powrót do menu głównego"
+
+#: shared/live-overlay/usr/share/grub/cfg/languages.cfg:17
+#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:63
+#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:97
+msgid "Back to main menu"
+msgstr "Powrót do menu głównego"
+
+#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:21
+msgid "1 - Start BigCommunity Live Base"
+msgstr "1 - Uruchom BigCommunity Live Base"
+
+#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:28
+#, sh-format
+msgid "2 - Language: ${language_name}  >>"
+msgstr "2 - Język: ${language_name}  >>"
+
+#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:34
+msgid "3 - Detect EFI bootloaders  >>"
+msgstr "3 - Wykryj programy rozruchowe EFI  >>"
+
+#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:42
+#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:49
+msgid "4 - Run memory test"
+msgstr "4 - Uruchom test pamięci"
+
+#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:55
+msgid "5 - Restart computer"
+msgstr "5 - Uruchom komputer ponownie"
+
+#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:82
+#, sh-format
+msgid "EFI: ${efi}"
+msgstr "Plik EFI: ${efi}"
+
+#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:90
+msgid "No EFI files detected"
+msgstr "Nie wykryto plików EFI"

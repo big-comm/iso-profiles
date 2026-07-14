@@ -1,71 +1,86 @@
-# GRUB2 gfxmenu Linux theme
-# Designed for Rafael Ruscher <rruscher@gmail.com>
-# Global Property
+# BigCommunity live GRUB theme
+# Solid-color background: no full-screen PNG decoding or scaling.
 title-text: ""
-desktop-image: "background.png"
-desktop-color: "#001725"
-terminal-font: "Terminus Bold 18"
-terminal-box: "terminal_box_*.png"
-terminal-left: "0"
-terminal-top: "0"
-terminal-width: "100%"
-terminal-height: "100%"
+desktop-color: "#120A22"
+terminal-font: "Terminus Bold 22"
+terminal-left: "4%"
+terminal-top: "8%"
+terminal-width: "92%"
+terminal-height: "84%"
 terminal-border: "0"
 
-#progress bar
-+ progress_bar {
-	# Progress box is 100x16
-	# Progress bar is  96x12 (i.e. border of 2 pixels)
-    id = "__timeout__"
-    left = 50%-100
-    top = 90%-38
-    width = 100
-    #height = 6
-    show_text = true
-    text = ""
-    font = "Terminus Bold 18"
-    bar_style       = "progress_*.png"
-    highlight_style = "progress_hl_*.png"
-}
-
-# logo
 + image {
-    top = 8%
-    left = 50%-50
+    left = 50%-46
+    top = 5%
+    width = 91
+    height = 100
     file = "bigcommunity-grub-live.png"
 }
 
-# Show the boot menu
 + boot_menu {
-  left = 0%
-  top = 28%
-  width = 100%
-  height = 62%
-  
-  item_font = "Terminus Bold 18"
-  item_color = "#ffffff"
-  
-  selected_item_color = "#00ffff"
-  
-  item_icon_space = 5
-  item_height = 36
-  
-  item_padding = 5
-  item_spacing = 5
-  
-  selected_item_pixmap_style = "select_*.png"
-  
-  menu_pixmap_style = "boot_menu_*.png"
-  scrollbar = true
-  scrollbar_width = 20
-  scrollbar_thumb = "slider_*.png"
-  
+    left = 6%
+    top = 22%
+    width = 88%
+    height = 58%
+
+    item_font = "Terminus Bold 22"
+    selected_item_font = "Terminus Bold 22"
+    item_color = "#F3ECFF"
+    selected_item_color = "#C7A4FF"
+
+    icon_width = 30
+    icon_height = 30
+    item_icon_space = 12
+    item_height = 42
+    item_padding = 8
+    item_spacing = 3
+
+    selected_item_pixmap_style = "select_*.png"
+
+    scrollbar = true
+    scrollbar_width = 8
+    scrollbar_frame = "scrollbar_*.png"
+    scrollbar_thumb = "scrollbar_thumb_*.png"
+    scrollbar_thumb_overlay = true
+    scrollbar_slice = center
+    scrollbar_left_pad = 4
+    scrollbar_right_pad = 2
+    scrollbar_top_pad = 4
+    scrollbar_bottom_pad = 4
 }
 
-+ image {
-  top = 100%-50
-  left = 50%-240
-  width = 480
-  height = 42
-  file = "info.png"
++ progress_bar {
+    id = "__timeout__"
+    left = 50%-210
+    top = 84%
+    width = 420
+    height = 26
+    fg_color = "#A97DFF"
+    bg_color = "#2A2141"
+    border_color = "#4A3E68"
+    text_color = "#EEE7FF"
+    font = "Terminus Bold 22"
+    text = "@TIMEOUT_NOTIFICATION_SHORT@"
+}
+
++ label {
+    left = 5%
+    top = 89%
+    width = 90%
+    height = 24
+    align = "center"
+    text = "Entries ending in >> open another menu"
+    color = "#B8A6D3"
+    font = "Terminus Bold 22"
+}
+
++ label {
+    left = 5%
+    top = 94%
+    width = 90%
+    height = 24
+    align = "center"
+    text = "Enter: select  |  E: edit  |  C: command line  |  Esc: back"
+    color = "#CBBFE0"
+    font = "Terminus Bold 22"
 }
