@@ -127,21 +127,27 @@ def test_catalogs_are_complete_and_compiled() -> None:
         assert minimal_mo.read_bytes() == shared_mo.read_bytes()
 
 
-def test_theme_uses_bigcommunity_palette_and_unicode_fallback() -> None:
+def test_theme_assets_and_unicode_fallback() -> None:
     theme = THEME.joinpath("theme.txt").read_text(encoding="utf-8")
     grub = CFG.joinpath("grub.cfg").read_text(encoding="utf-8")
-    assert 'desktop-color: "#120A22"' in theme
-    assert 'selected_item_color = "#C7A4FF"' in theme
-    assert 'fg_color = "#A97DFF"' in theme
     assert 'terminal-font: "Terminus Bold 22"' in theme
     assert 'terminal-left: "0"' in theme
     assert 'terminal-top: "0"' in theme
     assert 'terminal-width: "100%"' in theme
     assert 'terminal-height: "100%"' in theme
-    assert THEME.joinpath("bigcommunity-grub-live.png").is_file()
-    assert 'file = "bigcommunity-grub-live.png"' in theme
-    assert "width = 91" in theme
-    assert "height = 100" in theme
+    assets = re.findall(
+        r'^\s*(?:file|selected_item_pixmap_style|scrollbar_frame|scrollbar_thumb)\s*=\s*"([^"]+)"',
+        theme,
+        re.MULTILINE,
+    )
+    assert assets
+    for asset in assets:
+        if "*" in asset:
+            assert list(THEME.glob(asset)), asset
+        else:
+            assert THEME.joinpath(asset).is_file(), asset
+    assert 'set grub_theme="/boot/grub/themes/bigcommunity-live/theme.txt"' in grub
+    assert "loadfont /boot/grub/themes/bigcommunity-live/ter-u22b.pf2" in grub
     assert THEME.joinpath("ter-u22b.pf2").read_bytes().startswith(b"FILE")
     assert "loadfont /boot/grub/unicode.pf2" in grub
 

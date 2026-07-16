@@ -1,7 +1,6 @@
-# BigCommunity live GRUB theme
-# Solid-color background: no full-screen PNG decoding or scaling.
+# BigCommunity Concept 2 - Orbital Glow
 title-text: ""
-desktop-color: "#120A22"
+desktop-color: "#050812"
 terminal-font: "Terminus Bold 22"
 terminal-left: "0"
 terminal-top: "0"
@@ -10,33 +9,37 @@ terminal-height: "100%"
 terminal-border: "0"
 
 + image {
-    left = 50%-46
-    top = 5%
-    width = 91
-    height = 100
-    file = "bigcommunity-grub-live.png"
+    left = 0
+    top = 0
+    width = 1024
+    height = 768
+    file = "background_fx.png"
+}
+
++ image {
+    left = 50%-262
+    top = 2%
+    width = 524
+    height = 230
+    file = "header.png"
 }
 
 + boot_menu {
-    left = 6%
-    top = 22%
-    width = 88%
-    height = 58%
-
+    left = 12%
+    top = 31%
+    width = 76%
+    height = 40%
     item_font = "Terminus Bold 22"
     selected_item_font = "Terminus Bold 22"
-    item_color = "#F3ECFF"
-    selected_item_color = "#C7A4FF"
-
+    item_color = "#F8FAFF"
+    selected_item_color = "#FFFFFF"
     icon_width = 30
     icon_height = 30
     item_icon_space = 12
-    item_height = 42
-    item_padding = 8
-    item_spacing = 3
-
+    item_height = 44
+    item_padding = 9
+    item_spacing = 6
     selected_item_pixmap_style = "select_*.png"
-
     scrollbar = true
     scrollbar_width = 8
     scrollbar_frame = "scrollbar_*.png"
@@ -52,35 +55,35 @@ terminal-border: "0"
 + progress_bar {
     id = "__timeout__"
     left = 50%-210
-    top = 84%
+    top = 82%
     width = 420
-    height = 26
-    fg_color = "#A97DFF"
-    bg_color = "#2A2141"
-    border_color = "#4A3E68"
-    text_color = "#EEE7FF"
+    height = 22
+    fg_color = "#FF5ABF"
+    bg_color = "#0B0E19"
+    border_color = "#6178FF"
+    text_color = "#F7F7FF"
     font = "Terminus Bold 22"
     text = "@TIMEOUT_NOTIFICATION_SHORT@"
 }
 
 + label {
     left = 5%
-    top = 89%
+    top = 87%
     width = 90%
     height = 24
     align = "center"
     text = "Entries ending in >> open another menu"
-    color = "#B8A6D3"
+    color = "#8ED4FF"
     font = "Terminus Bold 22"
 }
 
 + label {
     left = 5%
-    top = 94%
+    top = 92%
     width = 90%
     height = 24
     align = "center"
     text = "Enter: select  |  E: edit  |  C: command line  |  Esc: back"
-    color = "#CBBFE0"
+    color = "#CFC6FF"
     font = "Terminus Bold 22"
 }
