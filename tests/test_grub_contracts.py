@@ -135,6 +135,9 @@ def test_theme_assets_and_unicode_fallback() -> None:
     assert 'terminal-top: "0"' in theme
     assert 'terminal-width: "100%"' in theme
     assert 'terminal-height: "100%"' in theme
+    assert "PREVIEW-concept.png" not in theme
+    assert "bigcommunity-grub-live.png" not in theme
+    assert not THEME.joinpath("bigcommunity-grub-live.png").exists()
     assets = re.findall(
         r'^\s*(?:file|selected_item_pixmap_style|scrollbar_frame|scrollbar_thumb)\s*=\s*"([^"]+)"',
         theme,
