@@ -138,7 +138,8 @@ def test_theme_assets_and_unicode_fallback() -> None:
     assert "PREVIEW-concept.png" not in theme
     assert "bigcommunity-grub-live.png" not in theme
     assert not THEME.joinpath("bigcommunity-grub-live.png").exists()
-    assets = re.findall(
+    assets = re.findall(r'^desktop-image:\s*"([^"]+)"', theme, re.MULTILINE)
+    assets += re.findall(
         r'^\s*(?:file|selected_item_pixmap_style|scrollbar_frame|scrollbar_thumb)\s*=\s*"([^"]+)"',
         theme,
         re.MULTILINE,

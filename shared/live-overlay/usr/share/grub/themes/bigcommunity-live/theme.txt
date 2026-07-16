@@ -1,20 +1,14 @@
 # bigcommunity-concept-1-neon-fusion
 title-text: ""
 desktop-color: "#030711"
+desktop-image: "background_fx.png"
+desktop-image-scale-method: "stretch"
 terminal-font: "Terminus Bold 22"
 terminal-left: "0"
 terminal-top: "0"
 terminal-width: "100%"
 terminal-height: "100%"
 terminal-border: "0"
-
-+ image {
-    left = 0
-    top = 0
-    width = 1024
-    height = 768
-    file = "background_fx.png"
-}
 
 + image {
     left = 50%-212
