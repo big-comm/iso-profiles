@@ -1,4 +1,3 @@
-BigCommunity Neon Fusion - clean test variant
+bigcommunity-elegant-glass
 
-Uses the standalone header and GRUB-rendered menu. No baked preview,
-full-screen background, Live Mode artwork, or standalone logo.
+Updated theme with embedded LIVE MODE in header, improved minimalist selection, and refined icons.
