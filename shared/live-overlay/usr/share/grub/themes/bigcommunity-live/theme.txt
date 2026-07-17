@@ -1,8 +1,6 @@
-# bigcommunity-concept-1-neon-fusion
+# BigCommunity Neon Fusion - clean test variant
 title-text: ""
-desktop-color: "#030711"
-desktop-image: "background_fx.png"
-desktop-image-scale-method: "stretch"
+desktop-color: "#04070F"
 terminal-font: "Terminus Bold 22"
 terminal-left: "0"
 terminal-top: "0"
@@ -11,28 +9,28 @@ terminal-height: "100%"
 terminal-border: "0"
 
 + image {
-    left = 50%-212
-    top = 3%
-    width = 424
-    height = 180
+    left = 50%-262
+    top = 2%
+    width = 524
+    height = 230
     file = "header.png"
 }
 
 + boot_menu {
-    left = 14%
-    top = 37%
-    width = 72%
-    height = 39%
+    left = 12%
+    top = 32%
+    width = 76%
+    height = 40%
     item_font = "Terminus Bold 22"
     selected_item_font = "Terminus Bold 22"
-    item_color = "#F3F7FF"
+    item_color = "#F5F8FF"
     selected_item_color = "#FFFFFF"
     icon_width = 30
     icon_height = 30
     item_icon_space = 12
     item_height = 44
-    item_padding = 8
-    item_spacing = 4
+    item_padding = 9
+    item_spacing = 6
     selected_item_pixmap_style = "select_*.png"
     scrollbar = true
     scrollbar_width = 8
@@ -49,35 +47,35 @@ terminal-border: "0"
 + progress_bar {
     id = "__timeout__"
     left = 50%-210
-    top = 83%
+    top = 82%
     width = 420
-    height = 24
+    height = 22
     fg_color = "#2AA6FF"
-    bg_color = "#0B1020"
-    border_color = "#5E63D6"
-    text_color = "#F3F7FF"
+    bg_color = "#090D1A"
+    border_color = "#C445C8"
+    text_color = "#F6F7FF"
     font = "Terminus Bold 22"
     text = "@TIMEOUT_NOTIFICATION_SHORT@"
 }
 
 + label {
     left = 5%
-    top = 88%
+    top = 87%
     width = 90%
     height = 24
     align = "center"
     text = "Entries ending in >> open another menu"
-    color = "#8EC6FF"
+    color = "#A8C7FF"
     font = "Terminus Bold 22"
 }
 
 + label {
     left = 5%
-    top = 93%
+    top = 92%
     width = 90%
     height = 24
     align = "center"
     text = "Enter: select  |  E: edit  |  C: command line  |  Esc: back"
-    color = "#D9C8FF"
+    color = "#D7C8FF"
     font = "Terminus Bold 22"
 }
