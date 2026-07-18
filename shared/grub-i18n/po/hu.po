@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bigcommunity-grub 1\n"
 "Report-Msgid-Bugs-To: https://github.com/BigCommunity/iso-profiles/issues\n"
-"POT-Creation-Date: 2026-07-14 14:48-0300\n"
+"POT-Creation-Date: 2026-07-18 20:42-0300\n"
 "PO-Revision-Date: 2026-07-14 14:48-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,358 +17,334 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:50
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:57
 msgid "1 - Start BigCommunity (recommended)"
 msgstr "1 - BigCommunity indítása (ajánlott)"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:54
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:61
 msgid "2 - Start without proprietary drivers"
 msgstr "2 - Indítás zárt illesztőprogramok nélkül"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:58
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:65
 msgid "3 - More boot options and hardware fixes  >>"
 msgstr "3 - További indítási lehetőségek és hardveres hibajavítások  >>"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:66
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:73
 #, sh-format
 msgid "4 - Language: ${language_name}  >>"
 msgstr "4 - Nyelv: ${language_name}  >>"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:72
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:83
 msgid "5 - Detect EFI bootloaders  >>"
 msgstr "5 - EFI-rendszerbetöltők észlelése  >>"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:80
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:87
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:91
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:98
 msgid "6 - Run memory test"
 msgstr "6 - Memóriateszt futtatása"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:93
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:104
 msgid "7 - Restart computer"
 msgstr "7 - Számítógép újraindítása"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:98
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:109
 msgid "8 - Clear extra boot parameters"
 msgstr "8 - További indítási paraméterek törlése"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:105
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:116
 msgid "3.0 - Back to main menu"
 msgstr "3.0 - Vissza a főmenübe"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:110
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:121
 msgid "3.1 - Graphics and drivers  >>"
 msgstr "3.1 - Grafika és illesztőprogramok  >>"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:115
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:126
 msgid "3.2 - Storage, PCI and IOMMU  >>"
 msgstr "3.2 - Tárolás, PCI és IOMMU  >>"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:120
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:131
 msgid "3.3 - Firmware and legacy hardware  >>"
 msgstr "3.3 - Firmware és régi hardver  >>"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:125
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:136
 msgid "3.4 - Desktop responsiveness  >>"
 msgstr "3.4 - Asztali környezet válaszkészsége  >>"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:130
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:141
 msgid "3.5 - Dual-GPU laptops with NVIDIA  >>"
 msgstr "3.5 - Két GPU-s, NVIDIA-s laptopok  >>"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:135
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:146
 msgid "3.6 - Diagnostics  >>"
 msgstr "3.6 - Diagnosztika  >>"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:141
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:152
 msgid "3.1.0 - Back to menu 3"
 msgstr "3.1.0 - Vissza a 3. menübe"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:146
-msgid "3.1.1 - Wayland (proprietary drivers allowed)"
-msgstr "3.1.1 - Wayland (zárt illesztőprogramok engedélyezve)"
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:157
+msgid "3.1.1 - Intel display workaround (disable PSR)"
+msgstr "3.1.1 - Intel megjelenítési problémájának kerülőmegoldása (PSR letiltása)"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:150
-msgid "3.1.2 - Wayland (no proprietary drivers)"
-msgstr "3.1.2 - Wayland (zárt illesztőprogramok nélkül)"
-
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:154
-msgid "3.1.3 - X11 (proprietary drivers allowed)"
-msgstr "3.1.3 - X11 (zárt illesztőprogramok engedélyezve)"
-
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:158
-msgid "3.1.4 - X11 (no proprietary drivers)"
-msgstr "3.1.4 - X11 (zárt illesztőprogramok nélkül)"
-
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:162
-msgid "3.1.5 - Intel display workaround (disable PSR)"
-msgstr "3.1.5 - Intel megjelenítési problémájának kerülőmegoldása (PSR letiltása)"
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:161
+msgid "3.1.2 - Intel graphics driver selection (expert)  >>"
+msgstr "3.1.2 - Intel grafikus illesztőprogram kiválasztása (szakértőknek)  >>"
 
 #: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:166
-msgid "3.1.6 - Intel graphics driver selection (expert)  >>"
-msgstr "3.1.6 - Intel grafikus illesztőprogram kiválasztása (szakértőknek)  >>"
+msgid "3.1.3 - AMD APU flicker workaround"
+msgstr "3.1.3 - AMD APU-k villogásának kerülőmegoldása"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:171
-msgid "3.1.7 - AMD APU flicker workaround"
-msgstr "3.1.7 - AMD APU-k villogásának kerülőmegoldása"
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:170
+msgid "3.1.4 - Older AMD GCN driver selection (expert)  >>"
+msgstr "3.1.4 - Régebbi AMD GCN GPU-k illesztőprogramjának kiválasztása (szakértőknek)  >>"
 
 #: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:175
-msgid "3.1.8 - Older AMD GCN driver selection (expert)  >>"
-msgstr "3.1.8 - Régebbi AMD GCN GPU-k illesztőprogramjának kiválasztása (szakértőknek)  >>"
+msgid "3.1.5 - AMD GPU hang recovery (experimental)"
+msgstr "3.1.5 - AMD GPU lefagyása utáni helyreállítás (kísérleti)"
 
 #: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:180
-msgid "3.1.9 - AMD GPU hang recovery (experimental)"
-msgstr "3.1.9 - AMD GPU lefagyása utáni helyreállítás (kísérleti)"
+msgid "3.1.2.0 - Back to menu 3.1"
+msgstr "3.1.2.0 - Vissza a 3.1. menübe"
 
 #: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:185
-msgid "3.1.6.0 - Back to menu 3.1"
-msgstr "3.1.6.0 - Vissza a 3.1. menübe"
+msgid "3.1.2.1 - Automatic Intel driver selection"
+msgstr "3.1.2.1 - Automatikus Intel illesztőprogram-választás"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:190
-msgid "3.1.6.1 - Automatic Intel driver selection"
-msgstr "3.1.6.1 - Automatikus Intel illesztőprogram-választás"
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:189
+msgid "3.1.2.2 - Force i915 for recognized Intel GPUs"
+msgstr "3.1.2.2 - i915 használatának kényszerítése a felismert Intel GPU-kon"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:194
-msgid "3.1.6.2 - Force i915 for recognized Intel GPUs"
-msgstr "3.1.6.2 - i915 használatának kényszerítése a felismert Intel GPU-kon"
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:193
+msgid "3.1.2.3 - Force Xe for recognized Intel GPUs"
+msgstr "3.1.2.3 - Xe használatának kényszerítése a felismert Intel GPU-kon"
 
 #: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:198
-msgid "3.1.6.3 - Force Xe for recognized Intel GPUs"
-msgstr "3.1.6.3 - Xe használatának kényszerítése a felismert Intel GPU-kon"
+msgid "3.1.4.0 - Back to menu 3.1"
+msgstr "3.1.4.0 - Vissza a 3.1. menübe"
 
 #: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:203
-msgid "3.1.8.0 - Back to menu 3.1"
-msgstr "3.1.8.0 - Vissza a 3.1. menübe"
+msgid "3.1.4.1 - Prefer AMDGPU for SI/CIK"
+msgstr "3.1.4.1 - AMDGPU előnyben részesítése SI/CIK esetén"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:208
-msgid "3.1.8.1 - Prefer AMDGPU for SI/CIK"
-msgstr "3.1.8.1 - AMDGPU előnyben részesítése SI/CIK esetén"
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:207
+msgid "3.1.4.2 - Prefer Radeon for SI/CIK"
+msgstr "3.1.4.2 - Radeon előnyben részesítése SI/CIK esetén"
 
 #: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:212
-msgid "3.1.8.2 - Prefer Radeon for SI/CIK"
-msgstr "3.1.8.2 - Radeon előnyben részesítése SI/CIK esetén"
-
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:217
 msgid "3.2.0 - Back to menu 3"
 msgstr "3.2.0 - Vissza a 3. menübe"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:222
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:217
 msgid "3.2.1 - NVMe power-state workaround"
 msgstr "3.2.1 - NVMe-energiaállapotok kerülőmegoldása"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:226
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:221
 msgid "3.2.2 - Keep firmware PCIe power settings"
 msgstr "3.2.2 - Firmware PCIe energiabeállításainak megtartása"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:230
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:225
 msgid "3.2.3 - Suppress PCIe AER flood"
 msgstr "3.2.3 - PCIe AER-üzenetáradat elnyomása"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:234
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:229
 msgid "3.2.4 - Intel IOMMU: disable scalable mode"
 msgstr "3.2.4 - Intel IOMMU: skálázható mód letiltása"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:238
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:233
 msgid "3.2.5 - Intel IOMMU: bypass integrated graphics"
 msgstr "3.2.5 - Intel IOMMU: integrált grafika kihagyása"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:242
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:237
 msgid "3.2.6 - Disable hardware IOMMU"
 msgstr "3.2.6 - Hardveres IOMMU letiltása"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:246
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:241
 msgid "3.2.7 - Use software DMA bounce buffering"
 msgstr "3.2.7 - Szoftveres DMA-köztes pufferelés használata"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:250
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:245
 msgid "3.2.8 - Disable PCI MSI interrupts"
 msgstr "3.2.8 - PCI MSI megszakítások letiltása"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:254
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:249
 msgid "3.2.9 - Poll interrupt handlers"
 msgstr "3.2.9 - Megszakításkezelők lekérdezése"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:258
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:253
 msgid "3.2.10 - Disable PCI MMCONFIG"
 msgstr "3.2.10 - PCI MMCONFIG letiltása"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:263
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:258
 msgid "3.3.0 - Back to menu 3"
 msgstr "3.3.0 - Vissza a 3. menübe"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:268
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:263
 msgid "3.3.1 - Disable ACPI IRQ routing"
 msgstr "3.3.1 - ACPI IRQ-útválasztás letiltása"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:272
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:267
 msgid "3.3.2 - Disable ACPI for PCI routing"
 msgstr "3.3.2 - ACPI letiltása a PCI-útválasztáshoz"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:276
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:271
 msgid "3.3.3 - Disable x2APIC"
 msgstr "3.3.3 - x2APIC letiltása"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:280
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:275
 msgid "3.3.4 - Disable I/O APIC"
 msgstr "3.3.4 - I/O APIC letiltása"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:284
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:279
 msgid "3.3.5 - Skip IO-APIC timer test (old boards)"
 msgstr "3.3.5 - IO-APIC időzítőteszt kihagyása (régi alaplapok)"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:288
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:283
 msgid "3.3.6 - Disable HPET"
 msgstr "3.3.6 - HPET letiltása"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:292
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:287
 msgid "3.3.7 - Last resort: disable ACPI completely"
 msgstr "3.3.7 - Végső megoldás: ACPI teljes letiltása"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:297
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:292
 msgid "3.4.0 - Back to menu 3"
 msgstr "3.4.0 - Vissza a 3. menübe"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:302
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:297
 msgid "3.4.1 - Kernel default preemption"
 msgstr "3.4.1 - A kernel alapértelmezett preempciója"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:306
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:301
 msgid "3.4.2 - Force full preemption"
 msgstr "3.4.2 - Teljes preempció kényszerítése"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:310
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:305
 msgid "3.4.3 - Full preemption + threaded IRQs"
 msgstr "3.4.3 - Teljes preempció + szálakon kezelt IRQ-k"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:314
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:309
 msgid "3.4.4 - Lazy preemption"
 msgstr "3.4.4 - Lusta preempció"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:320
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:315
 msgid "3.5.0 - Back to menu 3"
 msgstr "3.5.0 - Vissza a 3. menübe"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:325
-msgid "3.5.1 - Hybrid mode (Wayland, recommended)"
-msgstr "3.5.1 - Hibrid mód (Wayland, ajánlott)"
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:320
+msgid "3.5.1 - Hybrid mode"
+msgstr "3.5.1 - Hibrid mód"
+
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:324
+msgid "3.5.2 - Integrated GPU only (disable NVIDIA)"
+msgstr "3.5.2 - Csak integrált GPU (NVIDIA letiltása)"
 
 #: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:329
-msgid "3.5.2 - Hybrid mode (X11 fallback)"
-msgstr "3.5.2 - Hibrid mód (X11 tartalékként)"
-
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:333
-msgid "3.5.3 - Integrated GPU only (disable NVIDIA)"
-msgstr "3.5.3 - Csak integrált GPU (NVIDIA letiltása)"
-
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:337
-msgid "3.5.4 - NVIDIA as primary GPU (X11)"
-msgstr "3.5.4 - NVIDIA elsődleges GPU-ként (X11)"
-
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:343
 msgid "3.6.0 - Back to menu 3"
 msgstr "3.6.0 - Vissza a 3. menübe"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:348
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:334
 msgid "3.6.1 - Verbose boot"
 msgstr "3.6.1 - Részletes rendszerindítás"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:352
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:338
 msgid "3.6.2 - Watchdog and clock diagnostics  >>"
 msgstr "3.6.2 - Watchdog- és óradiagnosztika  >>"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:357
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:343
 msgid "3.6.3 - Legacy module: disable kernel IBT"
 msgstr "3.6.3 - Régi modul: a kernel IBT-funkciójának letiltása"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:361
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:347
 msgid "3.6.4 - Legacy software: disable split-lock detection"
 msgstr "3.6.4 - Régi szoftver: split-lock észlelésének letiltása"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:365
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:351
 msgid "3.6.5 - Disable PAT"
 msgstr "3.6.5 - PAT letiltása"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:369
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:355
 msgid "3.6.6 - Last resort: disable interrupt remapping"
 msgstr "3.6.6 - Végső megoldás: megszakítás-újraleképezés letiltása"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:374
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:360
 msgid "3.6.2.0 - Back to menu 3.6"
 msgstr "3.6.2.0 - Vissza a 3.6. menübe"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:379
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:365
 msgid "3.6.2.1 - Increase lockup timeout"
 msgstr "3.6.2.1 - Lefagyási időkorlát növelése"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:383
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:369
 msgid "3.6.2.2 - Disable NMI hard-lockup detector"
 msgstr "3.6.2.2 - NMI hard-lockup észlelőjének letiltása"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:387
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:373
 msgid "3.6.2.3 - Disable soft-lockup detector"
 msgstr "3.6.2.3 - Soft-lockup észlelőjének letiltása"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:391
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:377
 msgid "3.6.2.4 - Disable both kernel lockup detectors"
 msgstr "3.6.2.4 - Mindkét kernel-lefagyásészlelő letiltása"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:395
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:381
 msgid "3.6.2.5 - Use fallback clocksource (TSC unstable)"
 msgstr "3.6.2.5 - Tartalék óraforrás használata (instabil TSC)"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:399
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:385
 msgid "3.6.2.6 - Disable TSC clocksource watchdog"
 msgstr "3.6.2.6 - TSC-óraforrás watchdogjának letiltása"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:407
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:390
 msgid "5.0 - Back to main menu"
 msgstr "5.0 - Vissza a főmenübe"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:427
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:410
 #, sh-format
 msgid "5.x - ${efi}"
 msgstr "5.x - EFI-rendszerbetöltő: ${efi}"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:435
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:418
 msgid "5.1 - No EFI files detected"
 msgstr "5.1 - Nem találhatók EFI-fájlok"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:444
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:427
 msgid "0 - Back to main menu"
 msgstr "0 - Vissza a főmenübe"
 
-#: shared/live-overlay/usr/share/grub/cfg/languages.cfg:17
-#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:63
-#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:97
+#: shared/live-overlay/usr/share/grub/cfg/languages.cfg:18
+#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:68
+#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:102
 msgid "Back to main menu"
 msgstr "Vissza a főmenübe"
 
-#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:21
+#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:25
 msgid "1 - Start BigCommunity Live Base"
 msgstr "1 - A BigCommunity Live Base rendszer indítása"
 
-#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:28
+#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:32
 #, sh-format
 msgid "2 - Language: ${language_name}  >>"
 msgstr "2 - Nyelv: ${language_name}  >>"
 
-#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:34
+#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:42
 msgid "3 - Detect EFI bootloaders  >>"
 msgstr "3 - EFI-rendszerbetöltők észlelése  >>"
 
-#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:42
-#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:49
+#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:50
+#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:57
 msgid "4 - Run memory test"
 msgstr "4 - Memóriateszt futtatása"
 
-#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:55
+#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:63
 msgid "5 - Restart computer"
 msgstr "5 - Számítógép újraindítása"
 
-#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:82
+#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:87
 #, sh-format
 msgid "EFI: ${efi}"
 msgstr "EFI-rendszerbetöltő: ${efi}"
 
-#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:90
+#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:95
 msgid "No EFI files detected"
 msgstr "Nem találhatók EFI-fájlok"
