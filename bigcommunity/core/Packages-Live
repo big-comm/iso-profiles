@@ -270,7 +270,7 @@ mkinitcpio-nfs-utils
 nbd
 timeshift
 comm-calamares
-biglinux-livecd
+biglinux-livecd>=26.07.24-0157
 biglinux-grub-restore
 memtest86+
 memtest86+-efi
