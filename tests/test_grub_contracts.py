@@ -187,6 +187,14 @@ def test_mhwd_live_service_uses_the_offline_mkinitcpio_shim() -> None:
     }
 
 
+def test_live_pacman_does_not_regenerate_initramfs() -> None:
+    hooks = LIVE_OVERLAY / "usr/share/libalpm/hooks"
+    for name in ("60-mkinitcpio-remove.hook", "90-mkinitcpio-install.hook"):
+        hook = hooks / name
+        assert hook.is_file()
+        assert hook.stat().st_size == 0
+
+
 def test_nvidia_verifier_uses_only_offline_live_resources() -> None:
     drop_in = _systemd_directives(
         SYSTEMD / "nvidia-manager-verify.service.d/10-bigcommunity.conf"
