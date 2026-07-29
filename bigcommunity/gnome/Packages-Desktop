@@ -227,7 +227,7 @@ udiskie
 bibata-cursor-theme
 bigicons-papient
 breeze-icons
-comm-shell-orchis
+#comm-shell-orchis
 gnome-themes-extra
 qt6-svg
 sassc
