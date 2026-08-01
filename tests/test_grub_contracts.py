@@ -277,24 +277,31 @@ def test_language_selector_covers_catalogs() -> None:
     assert selected == LINGUAS
 
 
-def test_language_selector_expands_inline() -> None:
+def test_language_selector_uses_a_dedicated_page() -> None:
     cases = (
-        (CFG / "kernels.cfg", 'menuentry $"4 - Language:', 'menuentry $"6 - Run memory test"', "set default=3"),
-        (MINIMAL_CFG / "kernels.cfg", 'menuentry $"2 - Language:', 'menuentry $"4 - Run memory test"', "set default=1"),
+        (CFG / "kernels.cfg", 'menuentry $"4 - Language:'),
+        (MINIMAL_CFG / "kernels.cfg", 'menuentry $"2 - Language:'),
     )
-    for path, language_label, following_label, selected_default in cases:
+    language_state = 'elif [ "${bigcommunity_menu}" = "language" ]; then'
+    for path, language_label in cases:
         text = path.read_text(encoding="utf-8")
-        language = text.index(language_label)
-        inline_source = text.index("source /boot/grub/languages.cfg", language)
-        following = text.index(following_label, inline_source)
-        assert language < inline_source < following
-        assert 'set bigcommunity_menu="language"' not in text
-        assert selected_default in text
+        root_page, language_page = text.split(language_state, 1)
+        language_page = language_page.split("\nelif ", 1)[0]
+        assert language_label in root_page
+        assert 'set bigcommunity_menu="language"' in root_page
+        assert "source /boot/grub/languages.cfg" not in root_page
+        assert "source /boot/grub/languages.cfg" in language_page
+        assert text.count("source /boot/grub/languages.cfg") == 1
+        assert "bigcommunity_language_expanded" not in text
 
-    selector = CFG.joinpath("languages.cfg").read_text(encoding="utf-8")
-    assert selector.count("unset bigcommunity_language_expanded") == 2
-    assert 'menuentry $"Back to main menu"' in selector
-    assert "menu_reload" in selector
+    selectors = (CFG / "languages.cfg", MINIMAL_CFG / "languages.cfg")
+    assert selectors[0].read_bytes() == selectors[1].read_bytes()
+    for selector_path in selectors:
+        selector = selector_path.read_text(encoding="utf-8")
+        assert "bigcommunity_language_expanded" not in selector
+        assert selector.count('set bigcommunity_menu="root"') == 2
+        assert 'menuentry $"Back to main menu"' in selector
+        assert selector.count("menu_reload") == 2
 
 
 def test_dispatcher_reloads_nested_menu_states() -> None:
