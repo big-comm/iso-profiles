@@ -206,6 +206,8 @@ zensu
 # System Utilities
 >extra fwupd
 android-tools
+blueman
+bluez
 bluez-cups
 bluez-utils
 compsize
