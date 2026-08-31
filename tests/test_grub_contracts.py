@@ -12,9 +12,7 @@ ROOT = Path(__file__).resolve().parent.parent
 LIVE_OVERLAY = ROOT / "shared/live-overlay"
 SYSTEMD = LIVE_OVERLAY / "etc/systemd/system"
 SHARED = ROOT / "shared/live-overlay/usr/share/grub"
-MINIMAL = ROOT / "bigcommunity/minimal/live-overlay/usr/share/grub"
 CFG = SHARED / "cfg"
-MINIMAL_CFG = MINIMAL / "cfg"
 THEME = SHARED / "themes/bigcommunity-live"
 I18N = ROOT / "shared/grub-i18n"
 LINGUAS = I18N.joinpath("LINGUAS").read_text(encoding="utf-8").split()
@@ -68,7 +66,7 @@ def _systemd_directives(path: Path) -> dict[str, dict[str, list[str]]]:
 def test_grub_sources_are_syntactically_valid() -> None:
     checker = shutil.which("grub-script-check")
     assert checker is not None
-    for config in sorted(CFG.glob("*.cfg")) + sorted(MINIMAL_CFG.glob("*.cfg")):
+    for config in sorted(CFG.glob("*.cfg")):
         subprocess.run([checker, config], check=True, capture_output=True, text=True)
 
 
@@ -133,11 +131,7 @@ def test_mhwd_live_is_enabled_for_full_offline_profiles() -> None:
     assert not legacy_override.exists()
 
     profiles = [ROOT / "shared/profile.conf"]
-    profiles.extend(
-        path
-        for path in sorted(ROOT.glob("bigcommunity/*/profile.conf"))
-        if path.parent.name != "minimal"
-    )
+    profiles.extend(sorted(ROOT.glob("bigcommunity/*/profile.conf")))
     assert len(profiles) == 9
     for profile in profiles:
         text = profile.read_text(encoding="utf-8")
@@ -263,7 +257,7 @@ def test_default_boot_does_not_disable_security_or_diagnostics() -> None:
 def test_menu_classes_have_icons() -> None:
     text = "\n".join(
         path.read_text(encoding="utf-8")
-        for path in (CFG / "kernels.cfg", CFG / "languages.cfg", MINIMAL_CFG / "kernels.cfg")
+        for path in (CFG / "kernels.cfg", CFG / "languages.cfg")
     )
     classes = set(re.findall(r"--class=([a-z0-9-]+)", text))
     icon_names = {path.stem for path in THEME.joinpath("icons").glob("*.png")}
@@ -278,10 +272,7 @@ def test_language_selector_covers_catalogs() -> None:
 
 
 def test_language_selector_uses_a_dedicated_page() -> None:
-    cases = (
-        (CFG / "kernels.cfg", 'menuentry $"4 - Language:'),
-        (MINIMAL_CFG / "kernels.cfg", 'menuentry $"2 - Language:'),
-    )
+    cases = ((CFG / "kernels.cfg", 'menuentry $"4 - Language:'),)
     language_state = 'elif [ "${bigcommunity_menu}" = "language" ]; then'
     for path, language_label in cases:
         text = path.read_text(encoding="utf-8")
@@ -294,9 +285,7 @@ def test_language_selector_uses_a_dedicated_page() -> None:
         assert text.count("source /boot/grub/languages.cfg") == 1
         assert "bigcommunity_language_expanded" not in text
 
-    selectors = (CFG / "languages.cfg", MINIMAL_CFG / "languages.cfg")
-    assert selectors[0].read_bytes() == selectors[1].read_bytes()
-    for selector_path in selectors:
+    for selector_path in (CFG / "languages.cfg",):
         selector = selector_path.read_text(encoding="utf-8")
         assert "bigcommunity_language_expanded" not in selector
         assert selector.count('set bigcommunity_menu="root"') == 2
@@ -305,7 +294,7 @@ def test_language_selector_uses_a_dedicated_page() -> None:
 
 
 def test_dispatcher_reloads_nested_menu_states() -> None:
-    for path in (CFG / "kernels.cfg", MINIMAL_CFG / "kernels.cfg"):
+    for path in (CFG / "kernels.cfg",):
         text = path.read_text(encoding="utf-8")
         assert "normal /boot/grub/kernels.cfg" not in text
         assert "normal_exit" not in text
@@ -316,7 +305,6 @@ def test_catalogs_are_complete_and_compiled() -> None:
     for locale in LINGUAS:
         po = I18N / "po" / f"{locale}.po"
         shared_mo = SHARED / "locales/bigcommunity" / f"{locale}.mo"
-        minimal_mo = MINIMAL / "locales/bigcommunity" / f"{locale}.mo"
         assert po.is_file()
         subprocess.run(["msgfmt", "--check", str(po), "-o", "/dev/null"], check=True)
         if locale != "en":
@@ -328,7 +316,6 @@ def test_catalogs_are_complete_and_compiled() -> None:
             ).stdout
             assert '\nmsgid "' not in untranslated
         assert shared_mo.is_file()
-        assert minimal_mo.read_bytes() == shared_mo.read_bytes()
 
 
 def test_theme_assets_and_unicode_fallback() -> None:
@@ -360,15 +347,8 @@ def test_theme_assets_and_unicode_fallback() -> None:
     assert "loadfont /boot/grub/unicode.pf2" in grub
 
 
-def test_minimal_reuses_common_menu_infrastructure() -> None:
-    for name in ("defaults.cfg", "grub.cfg", "languages.cfg", "loopback.cfg"):
-        assert MINIMAL_CFG.joinpath(name).read_bytes() == CFG.joinpath(name).read_bytes()
-    variable = MINIMAL_CFG.joinpath("variable.cfg").read_text(encoding="utf-8")
-    assert 'set bigcommunity_iso_label="BIGCOMMUNITY_LIVE_BASE"' in variable
-
-
 def test_uefi_memtest_uses_chainloader() -> None:
-    for kernels in (CFG / "kernels.cfg", MINIMAL_CFG / "kernels.cfg"):
+    for kernels in (CFG / "kernels.cfg",):
         text = kernels.read_text(encoding="utf-8")
         assert "chainloader /boot/memtest-efi" in text
         assert "linux16 /boot/memtest-efi" not in text
@@ -376,6 +356,4 @@ def test_uefi_memtest_uses_chainloader() -> None:
 
 def test_legacy_backups_are_removed() -> None:
     assert not CFG.joinpath("kernels.cfg.bak").exists()
-    assert not MINIMAL_CFG.joinpath("kernels.cfg.old").exists()
     assert not SHARED.parent.joinpath("boot/grub.bak").exists()
-    assert not MINIMAL.parent.joinpath("boot/grub").exists()

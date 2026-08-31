@@ -39,14 +39,13 @@ shared/
 └── grub-i18n/               po/ + LINGUAS + update-translations.sh
 
 bigcommunity/
-├── kde/  gnome/  xfce/  cinnamon/  cosmic/  deepin/  hyprland/  core/
-│   ├── Packages-Desktop     the ONLY package file the edition owns
-│   ├── profile.conf         hostname, live user, custom_boot_args
-│   ├── Desktop-remove       (optional) removals from the desktop list
-│   ├── Root-remove          (optional) removals from the root list
-│   ├── *-overlay/           links into shared/ plus its own files
-│   └── Packages-{Root,Live,Mhwd}, user-repos.conf  -> ../../shared/
-└── minimal/                 the exception: shares nothing (see below)
+└── kde/  gnome/  xfce/  cinnamon/  cosmic/  deepin/  hyprland/  core/
+    ├── Packages-Desktop     the ONLY package file the edition owns
+    ├── profile.conf         hostname, live user, custom_boot_args
+    ├── Desktop-remove       (optional) removals from the desktop list
+    ├── Root-remove          (optional) removals from the root list
+    ├── *-overlay/           links into shared/ plus its own files
+    └── Packages-{Root,Live,Mhwd}, user-repos.conf  -> ../../shared/
 ```
 
 ## What to edit
@@ -65,18 +64,12 @@ bigcommunity/
 
 Push and build an ISO — there is no bot and no intermediate step.
 
-## Four things that surprise people
+## Three things that surprise people
 
 **Editing inside one edition may edit them all.** `bigcommunity/kde/Packages-Root`
 is a symlink to `shared/Packages-Root`. An editor that follows the link writes to
 the shared file; one that replaces the file breaks the link and that edition
 starts drifting from the others silently. Check with `ls -l` first.
-
-**`minimal` shares nothing.** It has its own `Packages-Root`, `Packages-Live` and
-`Packages-Desktop` (real files, not links), its own `pacman-mirrors.conf`, a
-`Root-install` holding `comm-minimal-config`, and no `Packages-Mhwd` at all.
-Changes under `shared/` never reach it — if a change has to apply to minimal
-too, make it in both places.
 
 **Every edition's `profile.conf` is a real file.** `shared/profile.conf` is the
 reference template, not the source: editions override `hostname`, `username`,
@@ -98,11 +91,10 @@ That menu's contracts (boot arguments, module blacklist, expected entries,
 themes present) are covered by tests:
 
 ```bash
-pytest tests/     # 23 tests, ~0.3 s
+pytest tests/     # 22 tests, ~0.3 s
 ```
 
-Run them after touching anything under `live-overlay/`. `minimal` has its own
-set of `cfg/` files and is checked separately by the same tests.
+Run them after touching anything under `live-overlay/`.
 
 ## Reference
 

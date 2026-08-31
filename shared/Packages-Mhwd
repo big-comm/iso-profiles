@@ -13,7 +13,6 @@ libva-intel-driver
 libxaw
 libxpm
 libxvmc
->multilib lib32-libxvmc
 >multilib lib32-primus
 >nonfree_x86_64 KERNEL-nvidia-470xx
 >nonfree_x86_64 KERNEL-nvidia

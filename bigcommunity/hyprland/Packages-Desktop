@@ -14,7 +14,6 @@ cliphist
 dunst
 fuzzel
 grim
-grimblast-git
 hyprpicker
 mako
 nwg-displays
@@ -27,7 +26,6 @@ swayidle
 swaylock
 #swaylock-effects-git
 waybar
-wlogout
 wofi
 
 # Hyprland Applications
@@ -103,24 +101,16 @@ xf86-input-vmmouse
 #>multilib lib32-libva-vdpau-driver
 >multilib lib32-mesa-utils
 lib32-fontconfig
-lib32-gettext
 lib32-glu
 lib32-lcms2
 lib32-libcups
 lib32-libice
 lib32-libltdl
-lib32-libpcap
 lib32-libpulse
 lib32-libxcomposite
 lib32-libxinerama
 lib32-libxrandr
-lib32-libxslt
-lib32-mpg123
-lib32-openal
 lib32-pipewire-jack
-lib32-sdl12-compat
-lib32-sdl2-compat
-lib32-v4l-utils
 mesa
 
 # Network Tools
@@ -202,7 +192,6 @@ udiskie
 adw-gtk-theme
 bibata-cursor-theme
 bigicons-papient
-hyde-cli-git
 kvantum
 kvantum-qt5
 nwg-look
@@ -211,7 +200,7 @@ qt5ct
 qt6ct
 qt6-svg
 qt6-wayland
-swww
+awww
 
 # TTS
 espeak-ng

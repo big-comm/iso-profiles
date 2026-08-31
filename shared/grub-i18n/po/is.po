@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bigcommunity-grub 1\n"
 "Report-Msgid-Bugs-To: https://github.com/BigCommunity/iso-profiles/issues\n"
-"POT-Creation-Date: 2026-07-18 20:42-0300\n"
+"POT-Creation-Date: 2026-07-31 22:35-0300\n"
 "PO-Revision-Date: 2026-07-14 14:48-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -16,334 +16,301 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:57
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:53
 msgid "1 - Start BigCommunity (recommended)"
 msgstr "1 - Ræsa BigCommunity (mælt með)"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:61
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:57
 msgid "2 - Start without proprietary drivers"
 msgstr "2 - Ræsa án séreignarrekla"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:65
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:61
 msgid "3 - More boot options and hardware fixes  >>"
 msgstr "3 - Fleiri ræsivalkostir og lagfæringar á vélbúnaði  >>"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:73
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:69
 #, sh-format
 msgid "4 - Language: ${language_name}  >>"
 msgstr "4 - Tungumál: ${language_name}  >>"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:83
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:75
 msgid "5 - Detect EFI bootloaders  >>"
 msgstr "5 - Finna EFI-ræsistjóra  >>"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:91
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:98
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:83
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:90
 msgid "6 - Run memory test"
 msgstr "6 - Keyra minnisprófun"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:104
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:96
 msgid "7 - Restart computer"
 msgstr "7 - Endurræsa tölvuna"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:109
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:101
 msgid "8 - Clear extra boot parameters"
 msgstr "8 - Hreinsa auka ræsibreytur"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:116
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:111
 msgid "3.0 - Back to main menu"
 msgstr "3.0 - Til baka í aðalvalmynd"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:121
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:116
 msgid "3.1 - Graphics and drivers  >>"
 msgstr "3.1 - Skjákort og reklar  >>"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:126
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:121
 msgid "3.2 - Storage, PCI and IOMMU  >>"
 msgstr "3.2 - Geymsla, PCI og IOMMU  >>"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:131
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:126
 msgid "3.3 - Firmware and legacy hardware  >>"
 msgstr "3.3 - Fastbúnaður og eldri vélbúnaður  >>"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:136
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:131
 msgid "3.4 - Desktop responsiveness  >>"
 msgstr "3.4 - Svörun skjáborðs  >>"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:141
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:136
 msgid "3.5 - Dual-GPU laptops with NVIDIA  >>"
 msgstr "3.5 - Fartölvur með tveimur GPU-einingum og NVIDIA  >>"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:146
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:141
 msgid "3.6 - Diagnostics  >>"
 msgstr "3.6 - Greining  >>"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:152
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:147
 msgid "3.1.0 - Back to menu 3"
 msgstr "3.1.0 - Til baka í valmynd 3"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:157
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:152
 msgid "3.1.1 - Intel display workaround (disable PSR)"
 msgstr "3.1.1 - Lausn á Intel-skjávanda (slökkva á PSR)"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:161
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:156
 msgid "3.1.2 - Intel graphics driver selection (expert)  >>"
 msgstr "3.1.2 - Val á Intel-skjákortsrekli (fyrir sérfræðinga)  >>"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:166
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:161
 msgid "3.1.3 - AMD APU flicker workaround"
 msgstr "3.1.3 - Lausn á flökti með AMD APU"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:170
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:165
 msgid "3.1.4 - Older AMD GCN driver selection (expert)  >>"
 msgstr "3.1.4 - Val á rekli fyrir eldri AMD GCN-skjákort (fyrir sérfræðinga)  >>"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:175
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:170
 msgid "3.1.5 - AMD GPU hang recovery (experimental)"
 msgstr "3.1.5 - Endurheimt eftir AMD GPU-hengingu (tilraunastilling)"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:180
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:175
 msgid "3.1.2.0 - Back to menu 3.1"
 msgstr "3.1.2.0 - Til baka í valmynd 3.1"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:185
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:180
 msgid "3.1.2.1 - Automatic Intel driver selection"
 msgstr "3.1.2.1 - Sjálfvirkt val á Intel-rekli"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:189
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:184
 msgid "3.1.2.2 - Force i915 for recognized Intel GPUs"
 msgstr "3.1.2.2 - Þvinga i915 fyrir þekktar Intel GPU-einingar"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:193
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:188
 msgid "3.1.2.3 - Force Xe for recognized Intel GPUs"
 msgstr "3.1.2.3 - Þvinga Xe fyrir þekktar Intel GPU-einingar"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:198
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:193
 msgid "3.1.4.0 - Back to menu 3.1"
 msgstr "3.1.4.0 - Til baka í valmynd 3.1"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:203
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:198
 msgid "3.1.4.1 - Prefer AMDGPU for SI/CIK"
 msgstr "3.1.4.1 - Velja AMDGPU fremur fyrir SI/CIK"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:207
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:202
 msgid "3.1.4.2 - Prefer Radeon for SI/CIK"
 msgstr "3.1.4.2 - Velja Radeon fremur fyrir SI/CIK"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:212
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:207
 msgid "3.2.0 - Back to menu 3"
 msgstr "3.2.0 - Til baka í valmynd 3"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:217
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:212
 msgid "3.2.1 - NVMe power-state workaround"
 msgstr "3.2.1 - Lausn fyrir aflstöður NVMe"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:221
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:216
 msgid "3.2.2 - Keep firmware PCIe power settings"
 msgstr "3.2.2 - Halda PCIe-aflstillingum fastbúnaðar"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:225
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:220
 msgid "3.2.3 - Suppress PCIe AER flood"
 msgstr "3.2.3 - Bæla flóð af PCIe AER-villum"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:229
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:224
 msgid "3.2.4 - Intel IOMMU: disable scalable mode"
 msgstr "3.2.4 - Intel IOMMU: slökkva á kvarðanlegum ham"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:233
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:228
 msgid "3.2.5 - Intel IOMMU: bypass integrated graphics"
 msgstr "3.2.5 - Intel IOMMU: sniðganga innbyggða skjástýringu"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:237
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:232
 msgid "3.2.6 - Disable hardware IOMMU"
 msgstr "3.2.6 - Slökkva á IOMMU í vélbúnaði"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:241
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:236
 msgid "3.2.7 - Use software DMA bounce buffering"
 msgstr "3.2.7 - Nota DMA-bounce-biðminni í hugbúnaði"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:245
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:240
 msgid "3.2.8 - Disable PCI MSI interrupts"
 msgstr "3.2.8 - Slökkva á PCI MSI-rofum"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:249
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:244
 msgid "3.2.9 - Poll interrupt handlers"
 msgstr "3.2.9 - Kanna rofmeðhöndlara"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:253
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:248
 msgid "3.2.10 - Disable PCI MMCONFIG"
 msgstr "3.2.10 - Slökkva á PCI MMCONFIG"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:258
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:253
 msgid "3.3.0 - Back to menu 3"
 msgstr "3.3.0 - Til baka í valmynd 3"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:263
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:258
 msgid "3.3.1 - Disable ACPI IRQ routing"
 msgstr "3.3.1 - Slökkva á ACPI IRQ-beiningu"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:267
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:262
 msgid "3.3.2 - Disable ACPI for PCI routing"
 msgstr "3.3.2 - Slökkva á ACPI fyrir PCI-beiningu"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:271
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:266
 msgid "3.3.3 - Disable x2APIC"
 msgstr "3.3.3 - Slökkva á x2APIC"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:275
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:270
 msgid "3.3.4 - Disable I/O APIC"
 msgstr "3.3.4 - Slökkva á I/O APIC"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:279
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:274
 msgid "3.3.5 - Skip IO-APIC timer test (old boards)"
 msgstr "3.3.5 - Sleppa IO-APIC-tímamælaprófi (eldri móðurborð)"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:283
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:278
 msgid "3.3.6 - Disable HPET"
 msgstr "3.3.6 - Slökkva á HPET"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:287
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:282
 msgid "3.3.7 - Last resort: disable ACPI completely"
 msgstr "3.3.7 - Síðasta úrræði: slökkva alveg á ACPI"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:292
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:287
 msgid "3.4.0 - Back to menu 3"
 msgstr "3.4.0 - Til baka í valmynd 3"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:297
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:292
 msgid "3.4.1 - Kernel default preemption"
 msgstr "3.4.1 - Sjálfgefin preemption-stilling kjarna"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:301
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:296
 msgid "3.4.2 - Force full preemption"
 msgstr "3.4.2 - Þvinga preemption í fullum ham"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:305
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:300
 msgid "3.4.3 - Full preemption + threaded IRQs"
 msgstr "3.4.3 - Full preemption + þrædd IRQ-rof"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:309
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:304
 msgid "3.4.4 - Lazy preemption"
 msgstr "3.4.4 - Seinkuð preemption"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:315
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:310
 msgid "3.5.0 - Back to menu 3"
 msgstr "3.5.0 - Til baka í valmynd 3"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:320
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:315
 msgid "3.5.1 - Hybrid mode"
 msgstr "3.5.1 - Blandaður hamur"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:324
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:319
 msgid "3.5.2 - Integrated GPU only (disable NVIDIA)"
 msgstr "3.5.2 - Aðeins innbyggð GPU (slökkva á NVIDIA)"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:329
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:324
 msgid "3.6.0 - Back to menu 3"
 msgstr "3.6.0 - Til baka í valmynd 3"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:334
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:329
 msgid "3.6.1 - Verbose boot"
 msgstr "3.6.1 - Ítarleg ræsing"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:338
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:333
 msgid "3.6.2 - Watchdog and clock diagnostics  >>"
 msgstr "3.6.2 - Greining á watchdog og klukku  >>"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:343
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:338
 msgid "3.6.3 - Legacy module: disable kernel IBT"
 msgstr "3.6.3 - Eldri eining: slökkva á IBT í kjarna"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:347
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:342
 msgid "3.6.4 - Legacy software: disable split-lock detection"
 msgstr "3.6.4 - Eldri hugbúnaður: slökkva á split-lock-greiningu"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:351
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:346
 msgid "3.6.5 - Disable PAT"
 msgstr "3.6.5 - Slökkva á PAT"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:355
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:350
 msgid "3.6.6 - Last resort: disable interrupt remapping"
 msgstr "3.6.6 - Síðasta úrræði: slökkva á endurvörpun rofa"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:360
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:355
 msgid "3.6.2.0 - Back to menu 3.6"
 msgstr "3.6.2.0 - Til baka í valmynd 3.6"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:365
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:360
 msgid "3.6.2.1 - Increase lockup timeout"
 msgstr "3.6.2.1 - Lengja tímamörk fyrir lockup"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:369
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:364
 msgid "3.6.2.2 - Disable NMI hard-lockup detector"
 msgstr "3.6.2.2 - Slökkva á NMI hard-lockup-greini"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:373
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:368
 msgid "3.6.2.3 - Disable soft-lockup detector"
 msgstr "3.6.2.3 - Slökkva á soft-lockup-greini"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:377
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:372
 msgid "3.6.2.4 - Disable both kernel lockup detectors"
 msgstr "3.6.2.4 - Slökkva á báðum lockup-greinum kjarnans"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:381
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:376
 msgid "3.6.2.5 - Use fallback clocksource (TSC unstable)"
 msgstr "3.6.2.5 - Nota clocksource til vara (TSC óstöðugt)"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:385
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:380
 msgid "3.6.2.6 - Disable TSC clocksource watchdog"
 msgstr "3.6.2.6 - Slökkva á watchdog fyrir TSC clocksource"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:390
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:385
 msgid "5.0 - Back to main menu"
 msgstr "5.0 - Til baka í aðalvalmynd"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:410
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:405
 #, sh-format
 msgid "5.x - ${efi}"
 msgstr "5.x - EFI-ræsing: ${efi}"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:418
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:413
 msgid "5.1 - No EFI files detected"
 msgstr "5.1 - Engar EFI-skrár fundust"
 
-#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:427
+#: shared/live-overlay/usr/share/grub/cfg/kernels.cfg:422
 msgid "0 - Back to main menu"
 msgstr "0 - Til baka í aðalvalmynd"
 
-#: shared/live-overlay/usr/share/grub/cfg/languages.cfg:18
-#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:68
-#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:102
+#: shared/live-overlay/usr/share/grub/cfg/languages.cfg:17
 msgid "Back to main menu"
 msgstr "Til baka í aðalvalmynd"
-
-#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:25
-msgid "1 - Start BigCommunity Live Base"
-msgstr "1 - Ræsa BigCommunity Live Base"
-
-#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:32
-#, sh-format
-msgid "2 - Language: ${language_name}  >>"
-msgstr "2 - Tungumál: ${language_name}  >>"
-
-#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:42
-msgid "3 - Detect EFI bootloaders  >>"
-msgstr "3 - Finna EFI-ræsistjóra  >>"
-
-#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:50
-#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:57
-msgid "4 - Run memory test"
-msgstr "4 - Keyra minnisprófun"
-
-#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:63
-msgid "5 - Restart computer"
-msgstr "5 - Endurræsa tölvuna"
-
-#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:87
-#, sh-format
-msgid "EFI: ${efi}"
-msgstr "EFI-skrá: ${efi}"
-
-#: bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg:95
-msgid "No EFI files detected"
-msgstr "Engar EFI-skrár fundust"

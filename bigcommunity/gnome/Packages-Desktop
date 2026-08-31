@@ -41,13 +41,13 @@ nautilus-share
 nautilus-with-terminal
 papers
 power-profiles-daemon
-python-nautilus
+nautilus-python
 resources
 rygel
 simple-scan
 #sushi
 sync-gnome-theme-to-qt # Package Biglinux
-tracker3-miners
+localsearch
 xdg-user-dirs-gtk
 
 # GNOME Shell Extensions
@@ -126,24 +126,16 @@ xf86-input-vmmouse
 #>multilib lib32-libva-vdpau-driver
 >multilib lib32-mesa-utils
 lib32-fontconfig
-lib32-gettext
 lib32-glu
 lib32-lcms2
 lib32-libcups
 lib32-libice
 lib32-libltdl
-lib32-libpcap
 lib32-libpulse
 lib32-libxcomposite
 lib32-libxinerama
 lib32-libxrandr
-lib32-libxslt
-lib32-mpg123
-lib32-openal
 lib32-pipewire-jack
-lib32-sdl12-compat
-lib32-sdl2-compat
-lib32-v4l-utils
 mesa
 
 # Network Tools

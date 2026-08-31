@@ -1,6 +1,5 @@
 ## Base
 >i686 archlinux32-keyring
->multilib gcc-libs-multilib
 acpi
 acpid
 amd-ucode
@@ -60,7 +59,7 @@ make
 manjaro-keyring
 community-release
 manjaro-system
-manjaro-tools-base
+manjaro-tools-base-git
 mdadm
 mhwd
 mhwd-db
@@ -98,7 +97,7 @@ tree
 unzip
 usbutils
 util-linux
-vi
+ex-vi-compat
 virtualbox-guest-utils
 vulkan-tools
 vkd3d
@@ -170,7 +169,6 @@ gst-plugins-base
 gst-plugins-good
 gst-plugins-ugly
 libcanberra
-libcanberra-pulse
 libdvdcss
 pipewire
 pipewire-alsa

@@ -7,16 +7,14 @@ pot_file="${script_dir}/bigcommunity-grub.pot"
 po_dir="${script_dir}/po"
 # manjaro-tools copies /usr/share/grub/locales into the ISO's /boot/grub.
 mo_dir="${repo_root}/shared/live-overlay/usr/share/grub/locales/bigcommunity"
-minimal_mo_dir="${repo_root}/bigcommunity/minimal/live-overlay/usr/share/grub/locales/bigcommunity"
 
 sources=(
     "shared/live-overlay/usr/share/grub/cfg/grub.cfg"
     "shared/live-overlay/usr/share/grub/cfg/kernels.cfg"
     "shared/live-overlay/usr/share/grub/cfg/languages.cfg"
-    "bigcommunity/minimal/live-overlay/usr/share/grub/cfg/kernels.cfg"
 )
 
-mkdir -p "${po_dir}" "${mo_dir}" "${minimal_mo_dir}"
+mkdir -p "${po_dir}" "${mo_dir}"
 
 (
     cd "${repo_root}"
@@ -42,5 +40,4 @@ for locale in $(<"${script_dir}/LINGUAS"); do
     fi
     sed -i -E 's/charset=(ASCII|CHARSET)/charset=UTF-8/' "${po_file}"
     msgfmt --check "${po_file}" --output-file="${mo_dir}/${locale}.mo"
-    cp "${mo_dir}/${locale}.mo" "${minimal_mo_dir}/${locale}.mo"
 done

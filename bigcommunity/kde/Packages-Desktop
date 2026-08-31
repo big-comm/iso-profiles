@@ -143,13 +143,12 @@ libpamac-flatpak-plugin
 flatpak-kcm  # ou flatseal
 ## Printing
 >extra manjaro-printer
->extra gtk3-print-backends
 
 ## Xorg Server and Graphics
 >multilib lib32-libva-intel-driver
->multilib lib32-libva-mesa-driver
+>multilib lib32-mesa
 libva-intel-driver
-libva-mesa-driver
+mesa
 mesa-utils
 >multilib lib32-mesa-utils
 numlockx
