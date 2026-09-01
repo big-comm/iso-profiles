@@ -1,0 +1,83 @@
+# bigcommunity-elegant-glass
+title-text: ""
+desktop-color: "#000000"
+desktop-image: "background_fx.png"
+desktop-image-scale-method: "stretch"
+terminal-font: "Terminus Bold 22"
+terminal-left: "0"
+terminal-top: "0"
+terminal-width: "100%"
+terminal-height: "100%"
+terminal-border: "0"
+
++ image {
+    left = 50%-230
+    top = 3%
+    width = 460
+    height = 220
+    file = "header.png"
+}
+
++ boot_menu {
+    left = 14%
+    top = 37%
+    width = 72%
+    height = 39%
+    item_font = "Terminus Bold 22"
+    selected_item_font = "Terminus Bold 22"
+    item_color = "#F6F8FF"
+    selected_item_color = "#FFFFFF"
+    icon_width = 30
+    icon_height = 30
+    item_icon_space = 12
+    item_height = 44
+    item_padding = 8
+    item_spacing = 4
+    selected_item_pixmap_style = "select_*.png"
+    scrollbar = true
+    scrollbar_width = 8
+    scrollbar_frame = "scrollbar_*.png"
+    scrollbar_thumb = "scrollbar_thumb_*.png"
+    scrollbar_thumb_overlay = true
+    scrollbar_slice = center
+    scrollbar_left_pad = 4
+    scrollbar_right_pad = 2
+    scrollbar_top_pad = 4
+    scrollbar_bottom_pad = 4
+}
+
++ progress_bar {
+    id = "__timeout__"
+    left = 50%-170
+    top = 81%
+    width = 340
+    height = 18
+    fg_color = "#29A5FF"
+    bg_color = "#0B1120"
+    border_color = "#6274FF"
+    text_color = "#F4F7FF"
+    font = "Terminus Bold 22"
+    text = "@TIMEOUT_NOTIFICATION_SHORT@"
+}
+
++ label {
+    left = 5%
+    top = 87%
+    width = 90%
+    height = 24
+    align = "center"
+    text = "Entries ending in >> open another menu"
+    color = "#8BC9FF"
+    font = "Terminus Bold 22"
+}
+
++ label {
+    left = 5%
+    top = 92%
+    width = 90%
+    height = 24
+    align = "center"
+    text = "Enter: select  |  E: edit  |  C: command line  |  Esc: back"
+    color = "#D3C6FF"
+    font = "Terminus Bold 22"
+}

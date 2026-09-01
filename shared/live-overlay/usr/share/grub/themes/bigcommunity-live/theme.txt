@@ -1,4 +1,6 @@
-# bigcommunity-elegant-glass
+# BigCommunity Live - Compact Minimal
+# Stock GRUB gfxmenu compatible.
+
 title-text: ""
 desktop-color: "#000000"
 desktop-image: "background_fx.png"
@@ -10,11 +12,14 @@ terminal-width: "100%"
 terminal-height: "100%"
 terminal-border: "0"
 
+# GRUB nao reduz imagem: o tamanho nativo do bitmap e o minimo do componente.
+# width/height tem de ser os 460x190 reais do header.png, e o offset de left,
+# metade disso, ou o logo sai do centro.
 + image {
     left = 50%-230
-    top = 3%
+    top = 4%
     width = 460
-    height = 220
+    height = 190
     file = "header.png"
 }
 
@@ -25,59 +30,72 @@ terminal-border: "0"
     height = 39%
     item_font = "Terminus Bold 22"
     selected_item_font = "Terminus Bold 22"
-    item_color = "#F6F8FF"
+    item_color = "#F3F3F7"
     selected_item_color = "#FFFFFF"
-    icon_width = 30
-    icon_height = 30
-    item_icon_space = 12
-    item_height = 44
-    item_padding = 8
-    item_spacing = 4
+    icon_width = 28
+    icon_height = 28
+    item_icon_space = 14
+    item_height = 32
+    item_padding = 9
+    item_spacing = 12
     selected_item_pixmap_style = "select_*.png"
     scrollbar = true
-    scrollbar_width = 8
+    scrollbar_width = 14
     scrollbar_frame = "scrollbar_*.png"
     scrollbar_thumb = "scrollbar_thumb_*.png"
     scrollbar_thumb_overlay = true
     scrollbar_slice = center
-    scrollbar_left_pad = 4
+    scrollbar_left_pad = 5
     scrollbar_right_pad = 2
-    scrollbar_top_pad = 4
-    scrollbar_bottom_pad = 4
+    scrollbar_top_pad = 5
+    scrollbar_bottom_pad = 5
 }
 
++ label {
+    id = "__timeout__"
+    left = 5%
+    top = 78%
+    width = 90%
+    height = 26
+    align = "center"
+    text = "%ds"
+    color = "#B7B4C0"
+    font = "Terminus Bold 22"
+}
+
+# GRUB forces a minimum height on progress_bar (font height, ~28px) and there
+# is no way to shrink the component. The thin bar therefore lives inside the
+# top row of the 11px 9-slice pixmaps, which GRUB never scales vertically:
+# progress_bar_*.png / progress_highlight_*.png draw a 6px rounded bar 3px
+# below the component top and leave the rest transparent.
 + progress_bar {
     id = "__timeout__"
-    left = 50%-170
-    top = 81%
-    width = 340
-    height = 18
-    fg_color = "#29A5FF"
-    bg_color = "#0B1120"
-    border_color = "#6274FF"
-    text_color = "#F4F7FF"
-    font = "Terminus Bold 22"
-    text = "@TIMEOUT_NOTIFICATION_SHORT@"
+    left = 50%-135
+    top = 82%
+    width = 270
+    height = 6
+    bar_style = "progress_bar_*.png"
+    highlight_style = "progress_highlight_*.png"
 }
 
 + label {
     left = 5%
-    top = 87%
+    top = 85%
     width = 90%
-    height = 24
+    height = 22
     align = "center"
     text = "Entries ending in >> open another menu"
-    color = "#8BC9FF"
+    color = "#A7A7B2"
     font = "Terminus Bold 22"
 }
 
 + label {
     left = 5%
-    top = 92%
+    top = 91%
     width = 90%
-    height = 24
+    height = 22
     align = "center"
     text = "Enter: select  |  E: edit  |  C: command line  |  Esc: back"
-    color = "#D3C6FF"
+    color = "#B7B4C0"
     font = "Terminus Bold 22"
 }
