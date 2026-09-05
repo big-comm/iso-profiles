@@ -3,7 +3,7 @@ adw-gtk-theme
 apostrophe
 baobab
 celluloid
-dconf-editor
+#dconf-editor
 file-roller
 fragments
 gapless # Play your music elegantly (AKA: G4Music)
@@ -28,7 +28,7 @@ gnome-remote-desktop
 gnome-session
 #gnome-system-monitor
 gnome-text-editor
-gnome-tweaks
+#gnome-tweaks
 gnome-user-share
 gnome-video-effects
 gnome-weather
@@ -61,6 +61,7 @@ gnome-shell-extension-legacy-theme-auto-switcher
 ashyterm
 auto-tweaks-browser
 big-audio-converter
+big-gnome-center
 big-hardware-info
 big-network-info
 big-parental-controls
@@ -73,7 +74,6 @@ bigrecorder
 comm-gnome-config
 comm-wallpapers-gnome
 custom-tweaks
-layout-switcher
 luminance
 xdg-terminal-exec
 
