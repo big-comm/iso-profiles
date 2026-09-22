@@ -22,7 +22,6 @@ gnome-disk-utility
 gnome-font-viewer
 gnome-keyring
 gnome-menus
-gnome-network-displays
 gnome-online-accounts
 gnome-remote-desktop
 gnome-session
@@ -68,6 +67,7 @@ big-video-converter
 biglinux-mime
 biglinux-settings
 biglinux-webapps
+bignetscreen
 bigocrpdf
 bigrecorder
 comm-gnome-config
