@@ -3,3 +3,8 @@ mesa-demos
 ex-vi-compat
 vim
 vim-runtime
+dbus-c++
+libconfig
+libffado
+libxml++
+pipewire-ffado 
