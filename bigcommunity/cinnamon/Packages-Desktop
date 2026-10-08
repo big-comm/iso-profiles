@@ -51,7 +51,7 @@ big-network-info
 big-parental-controls
 big-video-converter
 biglinux-mime
-biglinux-settings
+big-system-config
 biglinux-webapps
 bigocrpdf
 bigrecorder
@@ -169,7 +169,7 @@ android-tools
 bluez-cups
 bluez-utils
 compsize
-debtap-mod
+big-pkg-installer
 ds4-disable-led
 fatresize
 ffmpegthumbnailer
