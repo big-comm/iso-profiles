@@ -1,7 +1,7 @@
 # Cinnamon Applications
 adw-gtk-theme
 blueman
-celluloid
+big-video-player
 cinnamon
 cinnamon-applet-cinnamenu
 cinnamon-control-center
@@ -10,7 +10,7 @@ cinnamon-remove-application
 cinnamon-sounds
 cinnamon-translations
 folder-color-nemo
-gapless
+big-audio-player
 gedit
 gnome-calculator
 gnome-disk-utility

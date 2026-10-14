@@ -2,11 +2,11 @@
 adw-gtk-theme
 apostrophe
 baobab
-celluloid
+big-video-player
 #dconf-editor
 file-roller
 fragments
-gapless # Play your music elegantly (AKA: G4Music)
+big-audio-player
 gnome-bluetooth-3.0
 gnome-browser-connector
 gnome-calculator
@@ -31,7 +31,7 @@ gnome-text-editor
 gnome-user-share
 gnome-video-effects
 gnome-weather
-loupe
+bigiris
 mutter
 nautilus-admin
 nautilus-empty-file
@@ -252,16 +252,7 @@ usbtinyisp-udev
 
 # Virtual Filesystem
 grilo-plugins
-gvfs
-gvfs-afc
-gvfs-dnssd
-gvfs-goa
-gvfs-gphoto2
-gvfs-mtp
-gvfs-nfs
-gvfs-onedrive
-gvfs-smb
-gvfs-wsdd
+gvfs-googledrive # gvfs with all backends plus Google Drive
 manjaro-settings-samba
 
 # Wayland
