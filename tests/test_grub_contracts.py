@@ -35,14 +35,24 @@ def _boot_arguments(kernels: str, entry_number: str) -> list[str]:
     return boot.group("arguments").split()
 
 
+def _modprobe_blacklist(arguments: list[str]) -> set[str]:
+    return {
+        module
+        for argument in arguments
+        if argument.startswith("modprobe.blacklist=")
+        for module in argument.removeprefix("modprobe.blacklist=").split(",")
+    }
+
+
 def _module_blacklist(arguments: list[str]) -> set[str]:
     options = [
         argument.removeprefix("module_blacklist=").split(",")
         for argument in arguments
         if argument.startswith("module_blacklist=")
     ]
-    assert len(options) == 1
-    return set(options[0])
+    # The kernel honours one module_blacklist=; none is fine.
+    assert len(options) <= 1
+    return set(options[0]) if options else set()
 
 
 def test_grub_sources_are_syntactically_valid() -> None:
@@ -106,7 +116,9 @@ def test_nvidia_primary_boot_asks_big_driver_manager_for_the_mode() -> None:
     assert "driver=nonfree" in arguments
     assert "bdm.gpu=nvidia" in arguments
     assert "nvidia_drm.modeset=1" in arguments
-    assert {"nouveau", "nova", "nova_core"} <= _module_blacklist(arguments)
+    assert {"nouveau", "nova_core", "nova_drm"} <= _modprobe_blacklist(arguments)
+    # nouveau must stay loadable: it is the fallback when NVIDIA's driver fails
+    assert "nouveau" not in _module_blacklist(arguments)
 
 
 def test_proprietary_boot_entries_blacklist_open_nvidia_drivers() -> None:
@@ -115,7 +127,9 @@ def test_proprietary_boot_entries_blacklist_open_nvidia_drivers() -> None:
         arguments = _boot_arguments(kernels, entry_number)
         assert "driver=nonfree" in arguments
         assert "nvidia_drm.modeset=1" in arguments
-        assert {"nouveau", "nova", "nova_core"} <= _module_blacklist(arguments)
+        assert {"nouveau", "nova_core", "nova_drm"} <= _modprobe_blacklist(arguments)
+    # nouveau must stay loadable: it is the fallback when NVIDIA's driver fails
+    assert "nouveau" not in _module_blacklist(arguments)
 
 
 def _package_lines(path: Path) -> list[str]:
@@ -124,6 +138,15 @@ def _package_lines(path: Path) -> list[str]:
         for line in path.read_text(encoding="utf-8").splitlines()
         if line.split("#", 1)[0].strip()
     ]
+
+
+def test_no_proprietary_entry_forbids_the_nouveau_fallback() -> None:
+    kernels = CFG.joinpath("kernels.cfg").read_text(encoding="utf-8")
+    for line in kernels.splitlines():
+        if "driver=nonfree" in line:
+            assert "module_blacklist=" not in line or "nouveau" not in line.split(
+                "module_blacklist=", 1
+            )[1].split()[0], line
 
 
 def test_drivers_come_from_big_driver_manager_cli_not_mhwd() -> None:
