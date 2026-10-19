@@ -100,6 +100,15 @@ def test_integrated_gpu_boot_avoids_all_nvidia_drivers() -> None:
     } <= _module_blacklist(arguments)
 
 
+def test_nvidia_primary_boot_asks_big_driver_manager_for_the_mode() -> None:
+    kernels = CFG.joinpath("kernels.cfg").read_text(encoding="utf-8")
+    arguments = _boot_arguments(kernels, "3.5.3")
+    assert "driver=nonfree" in arguments
+    assert "bdm.gpu=nvidia" in arguments
+    assert "nvidia_drm.modeset=1" in arguments
+    assert {"nouveau", "nova", "nova_core"} <= _module_blacklist(arguments)
+
+
 def test_proprietary_boot_entries_blacklist_open_nvidia_drivers() -> None:
     kernels = CFG.joinpath("kernels.cfg").read_text(encoding="utf-8")
     for entry_number in ("1", "3.5.1"):
@@ -177,7 +186,7 @@ def test_grub_fix_does_not_persist_live_only_gpu_controls() -> None:
     assert sanitizer is not None
     command_line = (
         "BOOT_IMAGE=/boot/vmlinuz-x86_64 root=live driver=free "
-        "bignvidia=12 quiet splash keep=yes\n"
+        "bignvidia=12 bdm.gpu=nvidia quiet splash keep=yes\n"
     )
     sanitized = subprocess.run(
         ["sed", sanitizer.group(1)],
@@ -187,6 +196,7 @@ def test_grub_fix_does_not_persist_live_only_gpu_controls() -> None:
         text=True,
     ).stdout.split()
     assert "bignvidia=12" not in sanitized
+    assert "bdm.gpu=nvidia" not in sanitized
     assert {"root=live", "keep=yes"} <= set(sanitized)
 
 
