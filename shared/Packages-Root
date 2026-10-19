@@ -61,8 +61,6 @@ community-release
 manjaro-system
 manjaro-tools-base-git
 mdadm
-mhwd
-mhwd-db
 mkinitcpio-openswap
 nano
 nfs-utils
@@ -184,7 +182,8 @@ sshx
 
 
 ## Video and Driver Support
-mhwd-biglinux
+# Graphics drivers and GPU modes (replaces mhwd, mhwd-db and mhwd-biglinux)
+big-driver-manager-cli
 biglinux-vaapi
 libxvmc
 lib32-vulkan-intel
@@ -201,7 +200,6 @@ vulkan-radeon
 vulkan-swrast
 xf86-video-amdgpu
 xf86-video-ati
-xf86-video-intel
 xf86-video-nouveau
 nvtop
 switcheroo-control

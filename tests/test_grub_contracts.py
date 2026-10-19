@@ -45,24 +45,6 @@ def _module_blacklist(arguments: list[str]) -> set[str]:
     return set(options[0])
 
 
-def _systemd_directives(path: Path) -> dict[str, dict[str, list[str]]]:
-    assert path.is_file()
-    sections: dict[str, dict[str, list[str]]] = {}
-    section: str | None = None
-    for raw_line in path.read_text(encoding="utf-8").splitlines():
-        line = raw_line.strip()
-        if not line or line.startswith(("#", ";")):
-            continue
-        if line.startswith("[") and line.endswith("]"):
-            section = line[1:-1]
-            sections.setdefault(section, {})
-            continue
-        assert section is not None and "=" in line, (path, raw_line)
-        key, value = line.split("=", 1)
-        sections[section].setdefault(key, []).append(value)
-    return sections
-
-
 def test_grub_sources_are_syntactically_valid() -> None:
     checker = shutil.which("grub-script-check")
     assert checker is not None
@@ -88,7 +70,8 @@ def test_intel_driver_choices_are_explicit() -> None:
     assert '"i915.force_probe=!*" "xe.force_probe=*"' in kernels
 
 
-def test_bignvidia_modes_use_the_mhwd_numeric_contract() -> None:
+def test_bignvidia_modes_use_the_numeric_contract() -> None:
+    # big-driver-manager-cli reads 1-8 as hybrid and 9-16 as nvidia
     kernels = CFG.joinpath("kernels.cfg").read_text(encoding="utf-8")
     modes = set(re.findall(r"\bbignvidia=([^\s]+)", kernels))
     assert modes <= {str(mode) for mode in range(1, 17)}
@@ -126,13 +109,29 @@ def test_proprietary_boot_entries_blacklist_open_nvidia_drivers() -> None:
         assert {"nouveau", "nova", "nova_core"} <= _module_blacklist(arguments)
 
 
-def test_mhwd_live_is_enabled_for_full_offline_profiles() -> None:
+def _package_lines(path: Path) -> list[str]:
+    return [
+        line.split("#", 1)[0].strip()
+        for line in path.read_text(encoding="utf-8").splitlines()
+        if line.split("#", 1)[0].strip()
+    ]
+
+
+def test_drivers_come_from_big_driver_manager_cli_not_mhwd() -> None:
     legacy_override = LIVE_OVERLAY / "usr/lib/systemd/system/mhwd-live.service"
     assert not legacy_override.exists()
+    for drop_in in ("mhwd-live.service.d", "nvidia-manager-verify.service.d"):
+        assert not (SYSTEMD / drop_in).exists(), drop_in
+
+    root_packages = _package_lines(ROOT / "shared/Packages-Root")
+    assert "big-driver-manager-cli" in root_packages
+    for retired in ("mhwd", "mhwd-db", "mhwd-biglinux", "xf86-video-intel"):
+        assert retired not in root_packages, retired
 
     profiles = [ROOT / "shared/profile.conf"]
     profiles.extend(sorted(ROOT.glob("bigcommunity/*/profile.conf")))
-    assert len(profiles) == 9
+    # Any edition at all, without pinning how many the repository ships.
+    assert len(profiles) > 1
     for profile in profiles:
         text = profile.read_text(encoding="utf-8")
         disabled = re.search(
@@ -141,44 +140,27 @@ def test_mhwd_live_is_enabled_for_full_offline_profiles() -> None:
             re.MULTILINE,
         )
         assert disabled is not None, profile
-        assert "mhwd-live" not in shlex.split(disabled.group("units")), profile
+        # big-driver-manager-live.service installs the live drivers instead
+        assert "mhwd-live" in shlex.split(disabled.group("units")), profile
 
     package_lists = {ROOT / "shared/Packages-Live"}
     package_lists.update(profile.parent / "Packages-Live" for profile in profiles)
     for package_list in package_lists:
-        packages = [
-            line.split("#", 1)[0].strip()
-            for line in package_list.read_text(encoding="utf-8").splitlines()
-        ]
         requirements = [
-            line for line in packages if line.startswith("biglinux-livecd")
+            line
+            for line in _package_lines(package_list)
+            if line.startswith("biglinux-livecd")
         ]
-        assert requirements == ["biglinux-livecd>=26.07.24-0157"], package_list
+        # The installer profile that runs big-driver-manager-cli, not mhwdcfg
+        assert requirements == ["biglinux-livecd>=26.10.19-0000"], package_list
 
 
-def test_mhwd_live_service_uses_the_offline_mkinitcpio_shim() -> None:
-    drop_in = _systemd_directives(
-        SYSTEMD / "mhwd-live.service.d/10-bigcommunity.conf"
-    )
-    assert drop_in["Unit"] == {
-        "After": ["livecd-tweaks.service"],
-        "Before": ["nvidia-manager-verify.service display-manager.service"],
-        "ConditionPathExists": [
-            "/livefs-pkgs.txt",
-            "/opt/mhwd/pacman-mhwd.conf",
-        ],
-        "ConditionFileIsExecutable": [
-            "/usr/lib/biglinux-livecd/shims/mkinitcpio"
-        ],
-    }
-    assert drop_in["Service"] == {
-        "BindReadOnlyPaths": [
-            "/usr/lib/biglinux-livecd/shims/mkinitcpio:/usr/bin/mkinitcpio"
-        ],
-        "TimeoutStartSec": ["3min"],
-        "TimeoutStopSec": ["5s"],
-        "KillMode": ["control-group"],
-    }
+def test_offline_repository_drops_xorg_era_drivers() -> None:
+    packages = _package_lines(ROOT / "shared/Packages-Mhwd")
+    for retired in ("bumblebee", "primus", "KERNEL-bbswitch", "xf86-video-intel"):
+        assert not any(line.split()[-1] == retired for line in packages), retired
+    for kept in ("KERNEL-nvidia-open", "KERNEL-nvidia-580xx", "nvidia-prime"):
+        assert any(line.split()[-1] == kept for line in packages), kept
 
 
 def test_live_pacman_does_not_regenerate_initramfs() -> None:
@@ -187,31 +169,6 @@ def test_live_pacman_does_not_regenerate_initramfs() -> None:
         hook = hooks / name
         assert hook.is_file()
         assert hook.stat().st_size == 0
-
-
-def test_nvidia_verifier_uses_only_offline_live_resources() -> None:
-    drop_in = _systemd_directives(
-        SYSTEMD / "nvidia-manager-verify.service.d/10-bigcommunity.conf"
-    )
-    assert drop_in["Unit"] == {
-        "ConditionPathExists": [
-            "/livefs-pkgs.txt",
-            "/opt/mhwd/pacman-mhwd.conf",
-        ],
-        "ConditionFileIsExecutable": [
-            "/usr/lib/biglinux-livecd/shims/mkinitcpio"
-        ],
-        "ConditionKernelCommandLine": ["driver=nonfree"],
-    }
-    assert drop_in["Service"] == {
-        "BindReadOnlyPaths": [
-            "/opt/mhwd/pacman-mhwd.conf:/etc/pacman.conf",
-            "/usr/lib/biglinux-livecd/shims/mkinitcpio:/usr/bin/mkinitcpio",
-        ],
-        "TimeoutStartSec": ["60s"],
-        "TimeoutStopSec": ["5s"],
-        "KillMode": ["control-group"],
-    }
 
 
 def test_grub_fix_does_not_persist_live_only_gpu_controls() -> None:

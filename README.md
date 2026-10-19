@@ -28,7 +28,7 @@ changes every edition at once, which is what you usually want.
 shared/
 ├── Packages-Root            installed-system packages (common base)
 ├── Packages-Live            live session only
-├── Packages-Mhwd            driver packages
+├── Packages-Mhwd            offline driver repository (/opt/mhwd), installed by big-driver-manager-cli
 ├── profile.conf             template: services, live user, label
 ├── pacman.conf              shipped as /etc/pacman.conf by the overlays
 ├── user-repos.conf          BigCommunity pacman repositories
