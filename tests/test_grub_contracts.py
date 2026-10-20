@@ -80,11 +80,17 @@ def test_intel_driver_choices_are_explicit() -> None:
     assert '"i915.force_probe=!*" "xe.force_probe=*"' in kernels
 
 
-def test_bignvidia_modes_use_the_numeric_contract() -> None:
-    # big-driver-manager-cli reads 1-8 as hybrid and 9-16 as nvidia
-    kernels = CFG.joinpath("kernels.cfg").read_text(encoding="utf-8")
-    modes = set(re.findall(r"\bbignvidia=([^\s]+)", kernels))
-    assert modes <= {str(mode) for mode in range(1, 17)}
+def test_gpu_modes_are_requested_with_bdm_gpu() -> None:
+    # bignvidia= is BigLinux's older menu; this one asks big-driver-manager-cli
+    # with bdm.gpu=hybrid|nvidia|integrated.
+    kernels = "\n".join(
+        line
+        for line in CFG.joinpath("kernels.cfg").read_text(encoding="utf-8").splitlines()
+        if not line.lstrip().startswith("#")
+    )
+    assert "bignvidia=" not in kernels
+    modes = set(re.findall(r"\bbdm\.gpu=([^\s]+)", kernels))
+    assert modes and modes <= {"hybrid", "nvidia", "integrated"}
 
 
 def test_free_boot_does_not_request_an_nvidia_mode() -> None:
@@ -128,8 +134,8 @@ def test_proprietary_boot_entries_blacklist_open_nvidia_drivers() -> None:
         assert "driver=nonfree" in arguments
         assert "nvidia_drm.modeset=1" in arguments
         assert {"nouveau", "nova_core", "nova_drm"} <= _modprobe_blacklist(arguments)
-    # nouveau must stay loadable: it is the fallback when NVIDIA's driver fails
-    assert "nouveau" not in _module_blacklist(arguments)
+        # nouveau must stay loadable: the fallback when NVIDIA's driver fails
+        assert "nouveau" not in _module_blacklist(arguments)
 
 
 def _package_lines(path: Path) -> list[str]:
@@ -209,7 +215,8 @@ def test_grub_fix_does_not_persist_live_only_gpu_controls() -> None:
     assert sanitizer is not None
     command_line = (
         "BOOT_IMAGE=/boot/vmlinuz-x86_64 root=live driver=free "
-        "bignvidia=12 bdm.gpu=nvidia quiet splash keep=yes\n"
+        "bignvidia=12 bdm.gpu=nvidia modprobe.blacklist=nouveau "
+        "module_blacklist=nouveau quiet splash keep=yes\n"
     )
     sanitized = subprocess.run(
         ["sed", sanitizer.group(1)],
@@ -220,6 +227,7 @@ def test_grub_fix_does_not_persist_live_only_gpu_controls() -> None:
     ).stdout.split()
     assert "bignvidia=12" not in sanitized
     assert "bdm.gpu=nvidia" not in sanitized
+    assert not any("blacklist=" in argument for argument in sanitized)
     assert {"root=live", "keep=yes"} <= set(sanitized)
 
 
