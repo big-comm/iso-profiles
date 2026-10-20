@@ -2,9 +2,9 @@
 >office libreoffice-still
 >office freeoffice
 
-## Normal MHWD package list
+## Offline driver repository of the live medium (/opt/mhwd), read by
+## big-driver-manager-cli in the live session and by the installer
 
-KERNEL-bbswitch
 KERNEL-broadcom-wl
 #KERNEL-r8168
 #KERNEL-rt3562sta
@@ -13,7 +13,6 @@ libva-intel-driver
 libxaw
 libxpm
 libxvmc
->multilib lib32-primus
 >nonfree_x86_64 KERNEL-nvidia-470xx
 >nonfree_x86_64 KERNEL-nvidia
 >nonfree_x86_64 KERNEL-nvidia-open
@@ -31,9 +30,7 @@ libxvmc
 >nonfree_multilib lib32-nvidia-580xx-utils
 >nonfree_multilib lib32-nvidia-utils
 open-vm-tools
-primus
 qemu-guest-agent
-bumblebee
 nvidia-prime
 gtkmm3
 spice-vdagent
@@ -51,11 +48,7 @@ vulkan-nouveau
 xf86-input-vmmouse
 xf86-video-amdgpu
 xf86-video-ati
-xf86-video-dummy
 xf86-video-fbdev
-xf86-video-intel
 xf86-video-nouveau
-xf86-video-sisusb
 xf86-video-vesa
-xf86-video-voodoo
 switcheroo-control
