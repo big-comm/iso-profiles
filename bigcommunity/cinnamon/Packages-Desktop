@@ -31,7 +31,6 @@ pavucontrol
 pix
 resources
 simple-scan
-simplescreenrecorder
 sync-gnome-theme-to-qt
 touchegg
 xapp-appimage-thumbnailer
@@ -219,7 +218,6 @@ numworks-udev
 nx-udev
 onlykey-udev
 openrgb
-osc-udev-storage
 signal-hound-udev
 trezor-udev
 usb-dirty-pages-udev

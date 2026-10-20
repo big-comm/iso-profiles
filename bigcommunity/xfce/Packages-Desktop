@@ -18,12 +18,10 @@ menulibre
 mugshot
 network-manager-applet
 nm-connection-editor
-ocs-url
 papers
 pavucontrol
 pix
 playerctl
-simplescreenrecorder
 sync-gnome-theme-to-qt
 thunar
 thunar-archive-plugin
@@ -254,7 +252,6 @@ numworks-udev
 nx-udev
 onlykey-udev
 openrgb
-osc-udev-storage
 signal-hound-udev
 trezor-udev
 usb-dirty-pages-udev

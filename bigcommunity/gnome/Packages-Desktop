@@ -242,7 +242,6 @@ numworks-udev
 nx-udev
 onlykey-udev
 openrgb
-osc-udev-storage
 signal-hound-udev
 trezor-udev
 usb-dirty-pages-udev
