@@ -195,7 +195,14 @@ def test_drivers_come_from_big_driver_manager_cli_not_mhwd() -> None:
 
 def test_offline_repository_drops_xorg_era_drivers() -> None:
     packages = _package_lines(ROOT / "shared/Packages-Mhwd")
-    for retired in ("bumblebee", "primus", "KERNEL-bbswitch", "xf86-video-intel"):
+    retired_packages = (
+        "bumblebee", "primus", "KERNEL-bbswitch", "xf86-video-intel",
+        # Kepler: linux-big no longer builds KERNEL-nvidia-470xx, and a module
+        # missing for the ISO's kernel fails the build.
+        "KERNEL-nvidia-470xx", "nvidia-470xx-utils", "nvidia-470xx-settings",
+        "libxnvctrl-470xx", "lib32-nvidia-470xx-utils",
+    )
+    for retired in retired_packages:
         assert not any(line.split()[-1] == retired for line in packages), retired
     for kept in ("KERNEL-nvidia-open", "KERNEL-nvidia-580xx", "nvidia-prime"):
         assert any(line.split()[-1] == kept for line in packages), kept
