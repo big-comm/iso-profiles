@@ -253,10 +253,9 @@ nintendo-udev
 numworks-udev
 nx-udev
 onlykey-udev
-openrgb-udev-rules
+openrgb
 osc-udev-storage
 signal-hound-udev
-stadia-controller-udev
 trezor-udev
 usb-dirty-pages-udev
 usbasp-udev
