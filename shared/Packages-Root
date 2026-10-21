@@ -111,6 +111,7 @@ yay
 ### BIGLINUX
 biglinux-bash-config
 biglinux-keyring
+biglinux-mirrorlist
 biglinux-driver-manager
 biglinux-nano-config
 #biglinux-vim-config
