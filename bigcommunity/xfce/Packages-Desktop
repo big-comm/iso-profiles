@@ -18,12 +18,10 @@ menulibre
 mugshot
 network-manager-applet
 nm-connection-editor
-ocs-url
 papers
 pavucontrol
 pix
 playerctl
-simplescreenrecorder
 sync-gnome-theme-to-qt
 thunar
 thunar-archive-plugin
@@ -253,10 +251,8 @@ nintendo-udev
 numworks-udev
 nx-udev
 onlykey-udev
-openrgb-udev-rules
-osc-udev-storage
+openrgb
 signal-hound-udev
-stadia-controller-udev
 trezor-udev
 usb-dirty-pages-udev
 usbasp-udev

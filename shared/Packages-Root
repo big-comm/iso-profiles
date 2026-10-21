@@ -138,7 +138,6 @@ update-grub
 ## Tweaks
 auto-unlock-pacman-git
 bigcommunity-name
-biglinux-l18n
 bpftune-git
 faster-mkinitcpio
 biglinux-improve-compatibility
@@ -154,7 +153,6 @@ bigsudo
 udev-usb-sync
 
 ## Sound/Audio/Video
-biglinux-meta-audio-config
 biglinux-noise-reduction-pipewire
 alsa-firmware
 alsa-utils
