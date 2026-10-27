@@ -223,7 +223,6 @@ rhvoice-brazilian-portuguese-complementary-dict-biglinux
 rhvoice-voice-evgeniy-eng
 rhvoice-voice-leticia-f123
 speech-dispatcher
-tts-biglinux
 
 # Udev Rules
 adafruit-boards-udev

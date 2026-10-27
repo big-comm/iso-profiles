@@ -199,7 +199,6 @@ sassc
 espeak-ng
 orca
 speech-dispatcher
-tts-biglinux
 
 # Udev Rules
 adafruit-boards-udev
