@@ -233,7 +233,6 @@ qt6-svg
 espeak-ng
 orca
 speech-dispatcher
-tts-biglinux
 
 # Udev Rules
 adafruit-boards-udev
