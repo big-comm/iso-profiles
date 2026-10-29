@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Build the GNOME edition's live GRUB theme (themes/bigcommunity-live).
+"""Build the live GRUB theme (themes/bigcommunity-live).
 
-Only bigcommunity/gnome ships this theme; the other editions keep the one in
-shared/live-overlay. The theme follows comm-welcome: Adwaita Sans, the purple palette of its
+Every edition ships this theme: their live-overlay/usr links to
+shared/live-overlay/usr. The theme follows comm-welcome: Adwaita Sans, the purple palette of its
 style.css and the snowy owl of the "Olhar" wallpaper. Every static text
 (wordmark, key hints) is an antialiased bitmap; only the menu rows and the
 countdown use the 1-bit PF2 font, because GRUB cannot antialias fonts.
@@ -27,8 +27,8 @@ from fontTools.varLib import instancer
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[2]
-GNOME_THEME = REPO / "bigcommunity/gnome/live-overlay/usr/share/grub/themes/bigcommunity-live"
-THEME = Path(sys.argv[1]) if len(sys.argv) > 1 else GNOME_THEME
+SHARED_THEME = REPO / "shared/live-overlay/usr/share/grub/themes/bigcommunity-live"
+THEME = Path(sys.argv[1]) if len(sys.argv) > 1 else SHARED_THEME
 CFG = REPO / "shared/live-overlay/usr/share/grub/cfg"
 ADWAITA = Path("/usr/share/fonts/Adwaita/AdwaitaSans-Regular.ttf")  # variable font (wght, opsz)
 
@@ -188,7 +188,7 @@ def header() -> None:
     render(THEME / "header.png", svg_doc(420, 92, f"""
 <text x="420" y="22" text-anchor="end" font-family="{SANS}" font-weight="700" font-size="12" letter-spacing="2.6" fill="{ACCENT}">LIVE ENVIRONMENT</text>
 <text x="420" y="66" text-anchor="end" font-family="{SANS}" font-weight="800" font-size="42" letter-spacing="-1.4" fill="{FG}">Big<tspan fill="{ACCENT}">Community</tspan></text>
-<text x="420" y="88" text-anchor="end" font-family="{SANS}" font-weight="500" font-size="14" fill="{FG_DIM}">GNOME, made by the community.</text>"""), 420, 92)
+<text x="420" y="88" text-anchor="end" font-family="{SANS}" font-weight="500" font-size="14" fill="{FG_DIM}">Made by the community.</text>"""), 420, 92)
 
 
 def hints() -> Path:
