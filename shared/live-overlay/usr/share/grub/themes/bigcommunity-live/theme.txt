@@ -1,10 +1,9 @@
-# BigCommunity Live - Compact Minimal
-# Stock GRUB gfxmenu compatible.
-
 title-text: ""
-desktop-color: "#000000"
-desktop-image: "background_fx.png"
-desktop-image-scale-method: "stretch"
+desktop-color: "#0a0718"
+desktop-image: "background.png"
+desktop-image-scale-method: "crop"
+desktop-image-h-align: "left"
+desktop-image-v-align: "top"
 terminal-font: "Terminus Bold 22"
 terminal-left: "0"
 terminal-top: "0"
@@ -12,90 +11,69 @@ terminal-width: "100%"
 terminal-height: "100%"
 terminal-border: "0"
 
-# GRUB nao reduz imagem: o tamanho nativo do bitmap e o minimo do componente.
-# width/height tem de ser os 460x190 reais do header.png, e o offset de left,
-# metade disso, ou o logo sai do centro.
 + image {
-    left = 50%-230
-    top = 4%
-    width = 460
-    height = 190
+    left = 100%-8%-420
+    top = 7%
+    width = 420
+    height = 92
     file = "header.png"
 }
 
 + boot_menu {
-    left = 14%
-    top = 37%
-    width = 72%
-    height = 39%
-    item_font = "Terminus Bold 22"
-    selected_item_font = "Terminus Bold 22"
-    item_color = "#F3F3F7"
-    selected_item_color = "#FFFFFF"
-    icon_width = 28
-    icon_height = 28
-    item_icon_space = 14
-    item_height = 32
-    item_padding = 9
-    item_spacing = 12
+    left = 50%-430
+    top = 38%
+    width = 860
+    height = 48%
+    item_font = "Adwaita Sans SemiBold Regular 18"
+    selected_item_font = "Adwaita Sans SemiBold Regular 18"
+    item_color = "#d6cceb"
+    selected_item_color = "#ffffff"
+    icon_width = 22
+    icon_height = 22
+    item_icon_space = 16
+    item_height = 28
+    item_padding = 14
+    item_spacing = 16
+    item_pixmap_style = "item_*.png"
     selected_item_pixmap_style = "select_*.png"
     scrollbar = true
-    scrollbar_width = 14
+    scrollbar_width = 9
     scrollbar_frame = "scrollbar_*.png"
     scrollbar_thumb = "scrollbar_thumb_*.png"
     scrollbar_thumb_overlay = true
     scrollbar_slice = center
-    scrollbar_left_pad = 5
-    scrollbar_right_pad = 2
-    scrollbar_top_pad = 5
-    scrollbar_bottom_pad = 5
+    scrollbar_left_pad = 10
+    scrollbar_right_pad = 0
+    scrollbar_top_pad = 10
+    scrollbar_bottom_pad = 10
 }
 
 + label {
     id = "__timeout__"
-    left = 5%
-    top = 78%
-    width = 90%
-    height = 26
+    left = 50%-100
+    top = 87%
+    width = 200
+    height = 24
     align = "center"
     text = "%ds"
-    color = "#B7B4C0"
-    font = "Terminus Bold 22"
+    color = "#c9a2ff"
+    font = "Adwaita Sans SemiBold Regular 18"
 }
 
-# GRUB forces a minimum height on progress_bar (font height, ~28px) and there
-# is no way to shrink the component. The thin bar therefore lives inside the
-# top row of the 11px 9-slice pixmaps, which GRUB never scales vertically:
-# progress_bar_*.png / progress_highlight_*.png draw a 6px rounded bar 3px
-# below the component top and leave the rest transparent.
 + progress_bar {
     id = "__timeout__"
-    left = 50%-135
-    top = 82%
-    width = 270
+    left = 50%-120
+    top = 92%
+    width = 240
     height = 6
     bar_style = "progress_bar_*.png"
     highlight_style = "progress_highlight_*.png"
 }
 
-+ label {
-    left = 5%
-    top = 85%
-    width = 90%
-    height = 22
-    align = "center"
-    text = "Entries ending in >> open another menu"
-    color = "#A7A7B2"
-    font = "Terminus Bold 22"
-}
-
-+ label {
-    left = 5%
-    top = 91%
-    width = 90%
-    height = 22
-    align = "center"
-    text = "Enter: select  |  E: edit  |  C: command line  |  Esc: back"
-    color = "#B7B4C0"
-    font = "Terminus Bold 22"
++ image {
+    left = 50%-321
+    top = 95%
+    width = 643
+    height = 28
+    file = "hints.png"
 }
