@@ -2,11 +2,14 @@
 
 from __future__ import annotations
 
+import os
 import re
 import shlex
 import shutil
 import subprocess
 from pathlib import Path
+
+import pytest
 
 ROOT = Path(__file__).resolve().parent.parent
 LIVE_OVERLAY = ROOT / "shared/live-overlay"
@@ -14,6 +17,11 @@ SYSTEMD = LIVE_OVERLAY / "etc/systemd/system"
 SHARED = ROOT / "shared/live-overlay/usr/share/grub"
 CFG = SHARED / "cfg"
 THEME = SHARED / "themes/bigcommunity-live"
+# The GNOME edition ships its own theme; every other file of its
+# live-overlay/usr links back into shared/.
+GNOME_USR = ROOT / "bigcommunity/gnome/live-overlay/usr"
+GNOME_THEME = GNOME_USR / "share/grub/themes/bigcommunity-live"
+THEMES = pytest.mark.parametrize("theme_dir", [THEME, GNOME_THEME], ids=["shared", "gnome"])
 I18N = ROOT / "shared/grub-i18n"
 LINGUAS = I18N.joinpath("LINGUAS").read_text(encoding="utf-8").split()
 
@@ -259,14 +267,20 @@ def test_default_boot_does_not_disable_security_or_diagnostics() -> None:
     assert not forbidden.intersection(default_entry.split())
 
 
-def test_menu_classes_have_icons() -> None:
-    text = "\n".join(
-        path.read_text(encoding="utf-8")
-        for path in (CFG / "kernels.cfg", CFG / "languages.cfg")
-    )
-    classes = set(re.findall(r"--class=([a-z0-9-]+)", text))
-    icon_names = {path.stem for path in THEME.joinpath("icons").glob("*.png")}
-    assert classes <= icon_names
+def _menu_classes() -> set[str]:
+    text = "\n".join(path.read_text(encoding="utf-8") for path in CFG.glob("*.cfg"))
+    return set(re.findall(r"--class=([a-z0-9-]+)", text))
+
+
+@THEMES
+def test_menu_classes_have_icons(theme_dir: Path) -> None:
+    icon_names = {path.stem for path in theme_dir.joinpath("icons").glob("*.png")}
+    assert _menu_classes() <= icon_names
+
+
+def test_gnome_theme_ships_only_used_icons() -> None:
+    icon_names = {path.stem for path in GNOME_THEME.joinpath("icons").glob("*.png")}
+    assert icon_names == _menu_classes()
 
 
 def test_language_selector_covers_catalogs() -> None:
@@ -323,9 +337,9 @@ def test_catalogs_are_complete_and_compiled() -> None:
         assert shared_mo.is_file()
 
 
-def test_theme_assets_and_unicode_fallback() -> None:
-    theme = THEME.joinpath("theme.txt").read_text(encoding="utf-8")
-    grub = CFG.joinpath("grub.cfg").read_text(encoding="utf-8")
+@THEMES
+def test_theme_assets_exist(theme_dir: Path) -> None:
+    theme = theme_dir.joinpath("theme.txt").read_text(encoding="utf-8")
     assert 'terminal-font: "Terminus Bold 22"' in theme
     assert 'terminal-left: "0"' in theme
     assert 'terminal-top: "0"' in theme
@@ -333,23 +347,132 @@ def test_theme_assets_and_unicode_fallback() -> None:
     assert 'terminal-height: "100%"' in theme
     assert "PREVIEW-concept.png" not in theme
     assert "bigcommunity-grub-live.png" not in theme
-    assert not THEME.joinpath("bigcommunity-grub-live.png").exists()
+    assert not theme_dir.joinpath("bigcommunity-grub-live.png").exists()
     assets = re.findall(r'^desktop-image:\s*"([^"]+)"', theme, re.MULTILINE)
     assets += re.findall(
-        r'^\s*(?:file|selected_item_pixmap_style|scrollbar_frame|scrollbar_thumb)\s*=\s*"([^"]+)"',
+        r'^\s*(?:file|(?:menu|item|selected_item)_pixmap_style|scrollbar_frame|scrollbar_thumb'
+        r'|bar_style|highlight_style)\s*=\s*"([^"]+)"',
         theme,
         re.MULTILINE,
     )
     assert assets
     for asset in assets:
         if "*" in asset:
-            assert list(THEME.glob(asset)), asset
+            assert list(theme_dir.glob(asset)), asset
         else:
-            assert THEME.joinpath(asset).is_file(), asset
+            assert theme_dir.joinpath(asset).is_file(), asset
+    assert theme_dir.joinpath("ter-u22b.pf2").read_bytes().startswith(b"FILE")
+
+
+def test_grub_cfg_loads_the_theme_fonts() -> None:
+    grub = CFG.joinpath("grub.cfg").read_text(encoding="utf-8")
+    adwaita = "/boot/grub/themes/bigcommunity-live/adwaita-sans-semibold-18.pf2"
     assert 'set grub_theme="/boot/grub/themes/bigcommunity-live/theme.txt"' in grub
-    assert "loadfont /boot/grub/themes/bigcommunity-live/ter-u22b.pf2" in grub
-    assert THEME.joinpath("ter-u22b.pf2").read_bytes().startswith(b"FILE")
     assert "loadfont /boot/grub/unicode.pf2" in grub
+    assert "loadfont /boot/grub/themes/bigcommunity-live/ter-u22b.pf2" in grub
+    # Only the GNOME theme has this font; the others must skip it quietly.
+    assert f"if [ -f {adwaita} ]; then" in grub
+    assert f"loadfont {adwaita}" in grub
+    # unicode.pf2 first: it is the fallback for scripts the theme font lacks.
+    assert grub.index("loadfont /boot/grub/unicode.pf2") < grub.index(f"loadfont {adwaita}")
+    assert not THEME.joinpath("adwaita-sans-semibold-18.pf2").exists()
+
+
+def test_gnome_theme_font_and_rows() -> None:
+    theme = GNOME_THEME.joinpath("theme.txt").read_text(encoding="utf-8")
+    # GRUB picks fonts by the name stored inside the PF2 file and silently
+    # falls back to another font when the theme asks for a different one.
+    pf2_name = _pf2_name(GNOME_THEME / "adwaita-sans-semibold-18.pf2")
+    assert pf2_name == "Adwaita Sans SemiBold Regular 18"
+    for key in ("item_font", "selected_item_font", "font"):
+        names = re.findall(rf'^\s*{key}\s*=\s*"([^"]+)"', theme, re.MULTILINE)
+        assert names, key
+        for name in names:
+            assert name == pf2_name, key
+    # Same padding on every row, or the selected one drops onto the next.
+    assert 'item_pixmap_style = "item_*.png"' in theme
+    for side in ("nw", "n", "ne", "w", "c", "e", "sw", "s", "se"):
+        item = GNOME_THEME / f"item_{side}.png"
+        select = GNOME_THEME / f"select_{side}.png"
+        assert _png_size(item) == _png_size(select), side
+
+
+def _tree(root: Path) -> dict[str, bytes]:
+    """Files under root as buildiso copies them (cp -LR follows links)."""
+    files = {}
+    for folder, _dirs, names in os.walk(root, followlinks=True):
+        for name in names:
+            path = Path(folder, name)
+            files[path.relative_to(root).as_posix()] = path.read_bytes()
+    return files
+
+
+def test_gnome_live_overlay_is_shared_plus_its_theme() -> None:
+    # A file added to shared/live-overlay/usr must reach the GNOME image too:
+    # if this fails, link the new path from bigcommunity/gnome/live-overlay/usr.
+    assert GNOME_USR.is_dir() and not GNOME_USR.is_symlink()
+    theme = "share/grub/themes/bigcommunity-live/"
+    shared = {k: v for k, v in _tree(LIVE_OVERLAY / "usr").items() if not k.startswith(theme)}
+    gnome = {k: v for k, v in _tree(GNOME_USR).items() if not k.startswith(theme)}
+    assert gnome == shared
+    for folder, dirs, names in os.walk(GNOME_USR):
+        for link in (Path(folder, name) for name in dirs + names):
+            if not link.is_symlink():
+                continue
+            target = link.resolve()
+            assert target.exists(), link
+            assert target.is_relative_to(LIVE_OVERLAY.resolve()), link
+    # Every other edition keeps the shared theme.
+    for usr in ROOT.glob("bigcommunity/*/live-overlay/usr"):
+        if usr != GNOME_USR:
+            assert usr.resolve() == (LIVE_OVERLAY / "usr").resolve(), usr
+
+
+def _pf2_name(path: Path) -> str:
+    data = path.read_bytes()
+    assert data.startswith(b"FILE")
+    offset = 0
+    while offset < len(data):
+        section = data[offset:offset + 4]
+        length = int.from_bytes(data[offset + 4:offset + 8], "big")
+        if section == b"NAME":
+            return data[offset + 8:offset + 8 + length].rstrip(b"\0").decode()
+        offset += 8 + length
+    raise AssertionError(f"no NAME section in {path}")
+
+
+def _png_size(path: Path) -> tuple[int, int]:
+    data = path.read_bytes()
+    assert data[:8] == b"\x89PNG\r\n\x1a\n", path
+    return int.from_bytes(data[16:20], "big"), int.from_bytes(data[20:24], "big")
+
+
+@THEMES
+def test_theme_images_have_their_declared_size(theme_dir: Path) -> None:
+    # GRUB never scales an image down, and it offsets "50%-N" by the declared
+    # size: a mismatch draws the image larger or off centre.
+    theme = theme_dir.joinpath("theme.txt").read_text(encoding="utf-8")
+    blocks = re.findall(r"^\+ image \{(.*?)^\}", theme, re.MULTILINE | re.DOTALL)
+    assert blocks
+    for block in blocks:
+        fields = dict(re.findall(r'^\s*(\w+)\s*=\s*"?([^"\n]+)"?\s*$', block, re.MULTILINE))
+        size = _png_size(theme_dir / fields["file"])
+        assert size == (int(fields["width"]), int(fields["height"])), fields["file"]
+        centred = re.fullmatch(r"50%-(\d+)", fields["left"])
+        if centred:
+            assert int(centred.group(1)) == size[0] // 2, fields["file"]
+
+
+def test_gnome_theme_icons_match_the_menu_size() -> None:
+    # GRUB rescales icons of any other size, blurring the thin line glyphs.
+    theme_dir = GNOME_THEME
+    theme = theme_dir.joinpath("theme.txt").read_text(encoding="utf-8")
+    width = int(re.search(r"^\s*icon_width\s*=\s*(\d+)", theme, re.MULTILINE).group(1))
+    height = int(re.search(r"^\s*icon_height\s*=\s*(\d+)", theme, re.MULTILINE).group(1))
+    icons = sorted(theme_dir.joinpath("icons").glob("*.png"))
+    assert icons
+    for icon in icons:
+        assert _png_size(icon) == (width, height), icon.name
 
 
 def test_uefi_memtest_uses_chainloader() -> None:
