@@ -221,8 +221,7 @@ def selection() -> None:
     body = (f'<rect x="{x0}" y="{x0}" width="{w}" height="{w}" rx="9" fill="none" stroke="#a45cff" '
             f'stroke-width="4" stroke-opacity="0.75" filter="url(#g)"/>'
             f'<rect x="{x0}" y="{x0}" width="{w}" height="{w}" rx="9" fill="{ACCENT_BG}" fill-opacity="0.34" '
-            f'stroke="{ACCENT}" stroke-width="1.5" stroke-opacity="0.85"/>'
-            f'<rect x="{GLOW + 3}" y="{SEL - 2}" width="3" height="{s - 2 * SEL + 4}" rx="1.5" fill="#efe0ff"/>')
+            f'stroke="{ACCENT}" stroke-width="1.5" stroke-opacity="0.85"/>')
     slice9("select", render(TMP / "select_full.png", svg_doc(s, s, body, defs), s, s), SEL)
     # Unselected rows get a transparent pixmap with the same slices, or GRUB
     # shifts only the selected row's text by the padding.
