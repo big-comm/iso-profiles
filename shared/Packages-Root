@@ -134,6 +134,7 @@ big-first-boot
 plymouth-theme-community
 sbctl
 update-grub
+install-grub
 
 ## Tweaks
 auto-unlock-pacman-git
