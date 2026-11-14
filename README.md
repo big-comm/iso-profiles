@@ -80,6 +80,11 @@ find bigcommunity/wmaker -type l -printf '%p -> %l\n'
 
 ## Sessão live e tela de login (wdm)
 
+> [!NOTE]
+> O wdm na live vale a partir da próxima ISO (perfil de 13/11/2026). As
+> ISOs publicadas até 12/11 usam LightDM com login automático e o usuário
+> `community` (senha `big`).
+
 - `profile.conf` tem `displaymanager="wdm"`: o manjaro-tools habilita o
   `wdm.service` na imagem. O wdm não tem login automático.
 - A tela abre na lista de usuários com **bigwindowmaker** escolhido; a senha
