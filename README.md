@@ -17,6 +17,9 @@
 
 <p align="center">
   <a href="#a-edição-big-windowmaker">A edição</a> ·
+  <a href="#arquivos-da-edição-e-links-para-shared">Arquivos e links</a> ·
+  <a href="#sessão-live-e-tela-de-login-wdm">Live e wdm</a> ·
+  <a href="#pacotes-da-edição">Pacotes</a> ·
   <a href="#da-lista-de-pacotes-à-iso">Como vira ISO</a> ·
   <a href="#capturas-da-iso">Capturas</a> ·
   <a href="#testar">Testar</a> ·
@@ -30,35 +33,121 @@
 `bigcommunity/wmaker/` descreve a ISO do Big WindowMaker: o desktop
 Window Maker (X11) e wlmaker (Wayland) do
 [big-wm](https://github.com/big-windowmaker/big-wm) sobre a base BigLinux /
-BigCommunity / Manjaro.
+BigCommunity / Manjaro, com a tela de login wdm (WINGs Display Manager) na
+sessão live e no sistema instalado e o instalador Calamares com o perfil
+`bigwindowmaker` do [biglinux-livecd](https://github.com/big-windowmaker/biglinux-livecd).
 
-| Arquivo | O que define |
+| | |
 |---|---|
-| `bigcommunity/wmaker/Packages-Desktop` | os pacotes da edição: sessões, Window Maker, wlmaker, dockapps, temas, aplicativos |
-| `bigcommunity/wmaker/profile.conf` | nome da máquina, usuário live, argumentos de boot |
-| `bigcommunity/wmaker/Desktop-remove`, `Root-remove` | o que a edição tira das listas comuns |
-| `bigcommunity/wmaker/*-overlay/` | arquivos da edição (os demais são links para `shared/`) |
+| Máquina live | `big-windowmaker` |
+| Usuário live | `bigwindowmaker`, senha `big` (só na live) |
+| Tela de login | wdm, na live e no sistema instalado; LightDM instalado e desabilitado |
+| Sessões | *Big WindowMaker Live* (assistente + Window Maker, só na live), Big WindowMaker (X11) e Big WindowMaker Wayland |
+| Instalador | Calamares, perfil `bigwindowmaker` (escolhido por `live-overlay/etc/biglinux-livecd/profile`) |
+| Nome do sistema | "Big WindowMaker, based on BigLinux" (`big-wm-name`) |
+| Boot | GRUB da live com o tema do Big WindowMaker; no sistema instalado, `grub-theme-big-wm` e `plymouth-theme-big-wm` |
 
-> **Atenção:** quase tudo em `bigcommunity/wmaker/` que não é
-> `Packages-Desktop` ou `profile.conf` é **link simbólico para `shared/`**.
-> Mudar o destino muda **todas as edições**. Confira com `ls -l` antes de
-> gravar e, para algo só do Big WindowMaker, use os arquivos da edição.
+## Arquivos da edição e links para `shared/`
+
+> [!WARNING]
+> Boa parte de `bigcommunity/wmaker/` é **link simbólico para `shared/`**,
+> que vale para **todas as edições**: um editor que segue o link grava no
+> arquivo comum. Confira com `ls -l` antes de gravar; para algo só do Big
+> WindowMaker, crie o arquivo dentro da edição.
+
+| Caminho em `bigcommunity/wmaker/` | Tipo | O que define |
+|---|---|---|
+| `Packages-Desktop` | arquivo da edição | os pacotes do desktop: sessões, Window Maker, wlmaker, dockapps, temas, aplicativos |
+| `profile.conf` | arquivo da edição | `displaymanager="wdm"`, máquina, usuário e senha live, serviços do sistema instalado e os desligados na live |
+| `Desktop-remove`, `Root-remove` | arquivos da edição | o que sai das listas comuns (`vim`, `mesa-demos`, `plymouth-theme-community`, `bigcommunity-name`...) |
+| `Packages-Root`, `Packages-Live`, `Packages-Mhwd`, `user-repos.conf` | **links** para `../../shared/` | base, pacotes só da live (Calamares, `biglinux-livecd`), drivers e repositórios: iguais em todas as edições |
+| `live-overlay/etc/wdm/` | arquivos da edição | `wdm-config` da live (sessão padrão `x11/big-wm-live`) e `live-help.txt` (ajuda F1 com usuário e senha) |
+| `live-overlay/usr/share/xsessions/big-wm-live.desktop` | arquivo da edição | a sessão *Big WindowMaker Live*, que executa `startbiglive` |
+| `live-overlay/etc/biglinux-livecd/profile` | arquivo da edição | o perfil `bigwindowmaker` do instalador |
+| `live-overlay/etc/xdg/autostart/big-wm-locker.desktop`, `live-overlay/etc/issue` | arquivos da edição | sem bloqueio de tela automático na live; nome no console |
+| `live-overlay/usr/share/grub/` | `cfg/*.cfg` são **links** para `shared/`, exceto `kernels.cfg` e `profile.cfg`; `themes/` e `locales/` são da edição | o menu do GRUB da live com o nome e o tema do Big WindowMaker |
+| `grub-i18n/gerar.sh` | arquivo da edição | regenera `kernels.cfg` e os `.mo` da edição a partir de `shared/` |
+| `live-overlay/usr/{bin,lib}`, `live-overlay/usr/share/{calamares,libalpm}`, `live-overlay/etc/{fstab,localtime,systemd,pacman.conf}` | **links** para `shared/` | arquivos comuns da live |
+| `root-overlay/etc/` | arquivos da edição (exceto `default/grub` e `pacman.d/mirrorcdn`, **links**) | `pacman.conf` com `IgnorePkg = windowmaker`, `default/grub.d/big-wm-theme.cfg`, `plymouth/plymouthd.conf`, configuração do LightDM, `mkinitcpio.conf`, `pamac.conf` |
+| `desktop-overlay/etc/` | arquivos da edição (exceto `default`, `environment` e `pam.d`, **links**) | `gtk-3.0`/`gtk-4.0` e Kvantum para programas como root, firewall (`ufw`), ModemManager sob demanda e drop-ins de serviços do usuário |
+| `desktop-overlay/usr` | **link** para `shared/` | arquivos comuns do desktop |
+
+Para listar os links da edição e para onde apontam:
+
+```sh
+find bigcommunity/wmaker -type l -printf '%p -> %l\n'
+```
+
+## Sessão live e tela de login (wdm)
+
+> [!NOTE]
+> O wdm na live vale a partir da próxima ISO (perfil de 13/11/2026). As
+> ISOs publicadas até 12/11 usam LightDM com login automático e o usuário
+> `community` (senha `big`).
+
+- `profile.conf` tem `displaymanager="wdm"`: o manjaro-tools habilita o
+  `wdm.service` na imagem. O wdm não tem login automático.
+- A tela abre na lista de usuários com **bigwindowmaker** escolhido; a senha
+  é **big** e F1 mostra a ajuda (`live-help.txt`, em português e inglês).
+- A sessão padrão da live é **Big WindowMaker Live**
+  (`x11/big-wm-live`): o `startbiglive` do `biglinux-livecd` abre o
+  assistente (idioma, teclado, tema) e depois o Window Maker. As sessões X11
+  e Wayland normais também aparecem na lista.
+- O `wdm-config` da live é o do pacote
+  ([packages/wdm](https://github.com/big-windowmaker/packages/tree/main/wdm))
+  com a sessão padrão e a ajuda trocadas; o sistema instalado usa o do pacote.
+- Na instalação, o módulo `services` do Calamares (perfil `bigwindowmaker`)
+  habilita o `wdm` antes dos outros gerenciadores de login. O LightDM e o
+  slick-greeter continuam instalados e desabilitados (o módulo
+  `displaymanager` do Calamares os configura); para voltar a eles no sistema
+  instalado: `sudo systemctl enable --force lightdm`.
+
+## Pacotes da edição
+
+`Packages-Desktop` tem 263 pacotes, agrupados por comentários. Os do Big
+WindowMaker vêm do repositório local montado pelo
+[build-iso](https://github.com/big-windowmaker/build-iso) com os artefatos
+de CI dos repositórios da organização; o resto, dos repositórios
+BigCommunity, BigLinux e Manjaro.
+
+| Grupo | Pacotes |
+|---|---|
+| Sessões e desktop | `big-wm-session`, `big-wm-wayland`, `big-wm-themes`, `big-wm-name`, `big-wm-tabbed-dock`, `big-wm-display-resolution`, `big-wm-lockscreen`, `big-keyboard`, `wmake-zones`, `windowmaker`, `wlmaker` |
+| Aparência | `onestepback-gtk-theme` (GTK), `qtstep-kvantum` e `kvantum-qt5` (Qt), `retrothemes-firefox` (Firefox), `gtk-nocsd`, `grub-theme-big-wm`, `plymouth-theme-big-wm` |
+| Dockapps | padrão do Dock: `wmclock`, `wmcpuload`, `wmmemload`, `wmnet`, `wmsystemtray`, `wmpulsemixer`; mais 28 em Aparência > Dockapps (`wmcube`, `wmweather`, `wmcliphist`, `wmglobe`, `wmeyes`...) e o `wmix` |
+| Serviços da sessão | `picom`, `polkit-gnome`, `rofi`, `snixembed`, `xss-lock`, `xsecurelock`, `gtklock`, `i3lock`, `fprintd`, `ufw` |
+| Tela de login | `wdm`; `lightdm` e `lightdm-slick-greeter` (desabilitados) |
+| Arquivos | `thunar-git` (master do Xfce, com o `libxfce4ui` 4.21 como dependência) e os plugins do Thunar, `tumbler`, `catfish`, `xarchiver` |
+| Aplicativos | Firefox, LibreOffice, Kate, Papers, Spectacle, BigCam, Steam, apps do BigLinux (`biglinux-settings`, `big-pkg-installer`, `ashyterm`...) |
+
+`Desktop-remove` tira das listas comuns `mesa-demos`, `lib32-mesa-demos`,
+o `vim`/`vi` e as bibliotecas do FFADO; `Root-remove` tira
+`plymouth-theme-community` e `bigcommunity-name`, que trocariam o tema do
+Plymouth e o nome do sistema a cada atualização.
+
+O `root-overlay/etc/pacman.conf` é o `shared/pacman.conf` mais
+`IgnorePkg = windowmaker`: o pamac trocava o `windowmaker` do Big WindowMaker
+pelo do `[extra]` e removia a sessão.
 
 ## Da lista de pacotes à ISO
 
 ```mermaid
 flowchart LR
-  A[big-wm, tabbed-dock,<br/>display-resolution, wmake-zones] -->|CI: pacotes| C[build-iso]
-  B[packages<br/>Window Maker, wlmaker, dockapps] -->|CI: pacotes| C
+  A[big-wm, tabbed-dock,<br/>display-resolution, big-keyboard] -->|CI: pacotes| C[build-iso]
+  B[packages<br/>Window Maker, wlmaker, dockapps,<br/>wdm, temas, thunar-git] -->|CI: pacotes| C
   P[iso-profiles<br/>bigcommunity/wmaker] -->|perfil| C
-  L[biglinux-livecd<br/>sessão live e instalador] -->|pacote| B
+  L[biglinux-livecd<br/>sessão live e instalador] -->|PKGBUILD| B
   C -->|buildiso + testes em VM| ISO[(ISO do Big WindowMaker)]
 ```
 
 O [build-iso](https://github.com/big-windowmaker/build-iso) junta os pacotes
-dos outros repositórios num repositório local, lê este perfil e gera a ISO;
-depois a inicia em máquinas virtuais (BIOS e UEFI) até a sessão live e testa
-a instalação pelo Calamares.
+dos outros repositórios num repositório local, confere que este perfil
+resolve (simulação do pacman), roda os testes deste repositório, gera a ISO
+com o motor da BigLinux e a inicia em máquinas virtuais (BIOS e UEFI): login
+pelo wdm na live, sessão Window Maker, instalação pelo Calamares e login no
+sistema instalado. O lint do build-iso também confere os links simbólicos da
+edição (`scripts/check-symlinks.sh`) e que os pacotes do repositório local
+estão em `Packages-Desktop`.
 
 ## Capturas da ISO
 
@@ -74,15 +163,31 @@ ISO de teste (Alpha), máquina virtual, 06/11/2026:
 ## Testar
 
 ```sh
-python -m pytest tests     # contratos do GRUB, nome da edição, login live, pacman.conf, tema
+python -m pytest tests     # 76 testes, menos de 1 s
 ```
 
-Os testes também rodam no build-iso antes de cada ISO.
+| Arquivo | O que garante |
+|---|---|
+| `test_grub_contracts.py` | menu do GRUB da live (comum a todas as edições): argumentos de boot, módulos, entradas, temas |
+| `test_wmaker_grub_nome.py` | a entrada 1 diz "Big WindowMaker"; `kernels.cfg` e catálogos da edição em dia com o `shared/` (senão, rode `grub-i18n/gerar.sh`) |
+| `test_wmaker_boot_theme.py` | temas do GRUB e do Plymouth do sistema instalado |
+| `test_wmaker_login_live.py` | login da live pelo wdm: `displaymanager`, usuário e senha, sessão padrão e ajuda |
+| `test_wmaker_nome.py` | nome do sistema (`big-wm-name` no lugar do `bigcommunity-name`) e perfil `bigwindowmaker` do instalador |
+| `test_wmaker_pacman_conf.py` | o `pacman.conf` da edição é o do `shared/` mais o `IgnorePkg` do `windowmaker` |
+| `test_wmaker_root_theme.py` | programas como root (GParted, Timeshift) com o visual do Window Maker |
+| `test_wmaker_sob_demanda.py` | ModemManager sob demanda e serviços do usuário que não seguram o login |
+| `test_wmaker_thunar.py` | `thunar-git` no lugar do `thunar`, com os plugins |
+| `test_wmaker_big_keyboard.py` | `big-keyboard` com o `game-devices-udev` (acesso ao `/dev/uinput`) |
+
+Os testes também rodam no lint do build-iso antes de cada ISO.
 
 ## Contribuir
 
 - Pacote novo só no Big WindowMaker: `bigcommunity/wmaker/Packages-Desktop`
-  (confira o nome com `pacman -Si`).
+  (confira o nome com `pacman -Si`). Se o pacote vier do repositório local,
+  ele também entra em `PACKAGE_SOURCES`/`EXPECTED_PACKAGES` do build-iso.
+- Arquivo só do Big WindowMaker: dentro de `bigcommunity/wmaker/*-overlay/`,
+  nunca pelo link para `shared/`.
 - Mudança que vale para todas as edições: proponha ao
   [projeto original](https://github.com/big-comm/iso-profiles).
 - Problemas da ISO: [build-iso](https://github.com/big-windowmaker/build-iso/issues);
@@ -212,7 +317,7 @@ That menu's contracts (boot arguments, module blacklist, expected entries,
 themes present) are covered by tests:
 
 ```bash
-pytest tests/     # 27 tests, ~0.3 s
+pytest tests/     # 76 tests, ~0.4 s
 ```
 
 Run them after touching anything under `live-overlay/`.
