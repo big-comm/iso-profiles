@@ -43,6 +43,20 @@ def test_snapshot_detect_so_em_boot_por_snapshot():
     assert "ExecCondition=/bin/sh -c 'grep -q timeshift-btrfs/snapshots /proc/cmdline'" in conf
 
 
+def test_driver_manager_gpu_so_com_nvidia_ou_no_live():
+    # Antes do display manager; sem NVIDIA e fora do live o "gpu boot" não
+    # faz nada, e listava todos os pacotes (pacman -Qq) num disco frio.
+    conf = _linhas(SYS / "big-driver-manager-gpu.service.d" / "bigwm-so-com-nvidia.conf")
+    assert ("ExecCondition=/bin/sh -c 'test -e /livefs-pkgs.txt || "
+            "grep -qsx 0x10de /sys/bus/pci/devices/*/vendor'") in conf
+
+
+def test_auto_unlock_pacman_sem_disputar_o_disco():
+    conf = _linhas(SYS / "auto-unlock-pacman.service.d" / "bigwm-sem-disputar-o-disco.conf")
+    assert "Nice=19" in conf and "IOSchedulingClass=idle" in conf
+    assert not any(l.startswith(("Exec", "Condition")) for l in conf)  # continua a cada boot
+
+
 def test_nada_no_shared():
     # Os arquivos novos são da edição: nenhum caminho passa pelo shared/
     # (o desktop-overlay/usr da edição é link para o shared/).
@@ -50,5 +64,7 @@ def test_nada_no_shared():
     for p in [SYS / "ModemManager.service.d",
               OV / "etc" / "udev" / "rules.d" / "90-bigwm-modemmanager.rules",
               OV / "etc" / "systemd" / "user" / "render-menu-options-user.service.d",
-              OV / "etc" / "systemd" / "user" / "biglinux-snapshot-detect.service.d"]:
+              OV / "etc" / "systemd" / "user" / "biglinux-snapshot-detect.service.d",
+              SYS / "big-driver-manager-gpu.service.d",
+              SYS / "auto-unlock-pacman.service.d"]:
         assert shared not in p.resolve().parents, p
