@@ -5,6 +5,11 @@ big-wm-session
 big-wm-name
 big-wm-themes
 big-wm-wayland
+# Boas-vindas do primeiro login (e no menu raiz) e a lupa/zoom de
+# acessibilidade (Ctrl+Alt+rolagem, menu raiz): pacotes à parte do big-wm,
+# que a ISO de 14/11 deixou de fora (o menu chamava programas ausentes).
+big-wm-welcome
+big-wm-zoom
 # Dock horizontal com abas (estilo OPENSTEP 4.0 beta), nas duas sessões
 big-wm-tabbed-dock
 # Teclado na tela, digitação pelo controle e controle na tela de toque
@@ -70,8 +75,9 @@ wmtz
 wmweather
 wmeyes
 
-# Firewall: ligado no sistema instalado (desktop-overlay/etc/ufw),
-# negando entradas exceto Samba (CIFS) e mDNS.
+# Firewall: instalado e desligado (desktop-overlay/etc/ufw/ufw.conf,
+# ENABLED=no); "sudo ufw enable" o liga negando entradas exceto Samba (CIFS)
+# e mDNS.
 ufw
 
 # Window Maker session services (Monitores: o big-wm-display-resolution, que
