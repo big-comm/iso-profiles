@@ -10,6 +10,10 @@ big-wm-wayland
 # que a ISO de 14/11 deixou de fora (o menu chamava programas ausentes).
 big-wm-welcome
 big-wm-zoom
+# Intel Gen4 (GMA X3000/4500, G45/GM45/Q45/G41): o modesetting com glamor
+# trava a GPU e derruba o Xorg (na OptiPlex 760, no meio da instalação); o
+# big-wm-intel-gen4.service usa este driver (SNA) só nessas placas.
+xf86-video-intel
 # Dock horizontal com abas (estilo OPENSTEP 4.0 beta), nas duas sessões
 big-wm-tabbed-dock
 # Teclado na tela, digitação pelo controle e controle na tela de toque

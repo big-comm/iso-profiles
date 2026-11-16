@@ -39,6 +39,12 @@ DisplayManager*wdmAnimations:	true
 ! "Outro...", abre o campo de texto (LDAP, contas ocultas). false = só o
 ! campo de texto.
 DisplayManager*wdmUserList:	true
+! Sessão live: no boot entra direto, sem a tela de login (wdmAutoLogin, wdm
+! 1.28-15), como bigwindowmaker na sessão "Big WindowMaker Live". Depois de
+! sair da sessão a tela aparece (senha big, ajuda F1).
+DisplayManager*wdmAutoLogin:	true
+DisplayManager*wdmDefaultUser:	bigwindowmaker
+DisplayManager*wdmDefaultPasswd:	big
 ! Reiniciar e desligar pela tela de login, sem senha (como no LightDM).
 DisplayManager*wdmReboot:	/usr/bin/systemctl reboot
 DisplayManager*wdmHalt:		/usr/bin/systemctl poweroff
