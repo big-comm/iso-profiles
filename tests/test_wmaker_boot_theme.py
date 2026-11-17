@@ -74,6 +74,14 @@ def test_live_theme_fonts_and_assets() -> None:
         assert list(THEME.glob(asset)), asset
 
 
+def test_every_font_the_shared_menu_loads_exists() -> None:
+    # The edition's theme replaces the shared one; a font the shared grub.cfg
+    # loads from it and that is missing prints "file not found" on every boot.
+    grub = (SHARED_CFG / "grub.cfg").read_text(encoding="utf-8")
+    for name in re.findall(r"loadfont /boot/grub/themes/bigcommunity-live/([\w.-]+\.pf2)", grub):
+        assert THEME.joinpath(name).read_bytes().startswith(b"FILE"), name
+
+
 def test_installed_system_selects_the_big_wm_themes() -> None:
     dropin = (WMAKER / "root-overlay/etc/default/grub.d/big-wm-theme.cfg").read_text(encoding="utf-8")
     assert 'GRUB_THEME="/boot/grub/themes/big-wm/theme.txt"' in dropin
