@@ -88,6 +88,9 @@ ufw
 # vem com o big-wm-session nas duas sessões; ARandR e wdisplays saíram)
 picom
 polkit-gnome
+# Chaveiro (Secret Service): senhas de Wi-Fi, navegadores, Big Remote Play;
+# o PAM do wdm/lightdm o abre com a senha do login (sem perguntas)
+gnome-keyring
 rofi
 snixembed
 xss-lock
