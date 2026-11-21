@@ -14,6 +14,10 @@ big-wm-zoom
 # trava a GPU e derruba o Xorg (na OptiPlex 760, no meio da instalação); o
 # big-wm-intel-gen4.service usa este driver (SNA) só nessas placas.
 xf86-video-intel
+# Placa sem driver KMS (Proxmox/QEMU "VMware compatible": o vmwgfx recusa o
+# QEMU e não cria /dev/dri): sem este driver o Xorg não abre nenhuma tela e o
+# login gráfico não sobe. É o último que o Xorg tenta (BIOS/SeaBIOS).
+xf86-video-vesa
 # Dock horizontal com abas (estilo OPENSTEP 4.0 beta), nas duas sessões
 big-wm-tabbed-dock
 # Teclado na tela, digitação pelo controle e controle na tela de toque
