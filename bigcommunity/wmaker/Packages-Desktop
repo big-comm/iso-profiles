@@ -337,7 +337,6 @@ onlykey-udev
 openrgb
 signal-hound-udev
 trezor-udev
-usb-dirty-pages-udev
 usbasp-udev
 usbtinyisp-udev
 
