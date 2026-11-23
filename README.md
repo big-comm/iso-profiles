@@ -104,7 +104,7 @@ find bigcommunity/wmaker -type l -printf '%p -> %l\n'
 
 ## Pacotes da edição
 
-`Packages-Desktop` tem 268 pacotes, agrupados por comentários. Os do Big
+`Packages-Desktop` tem 267 pacotes, agrupados por comentários. Os do Big
 WindowMaker vêm do repositório local montado pelo
 [build-iso](https://github.com/big-windowmaker/build-iso) com os artefatos
 de CI dos repositórios da organização; o resto, dos repositórios
