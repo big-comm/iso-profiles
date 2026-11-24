@@ -26,6 +26,9 @@
 ### tuple ### allow udp 5353 0.0.0.0/0 any 0.0.0.0/0 in comment=6d444e5320284176616869293a20646573636f626572746120646520696d70726573736f726173206520636f6d70617274696c68616d656e746f73
 -A ufw-user-input -p udp --dport 5353 -j ACCEPT
 
+### tuple ### allow tcp 22 0.0.0.0/0 any 0.0.0.0/0 SSH - in comment=41636573736f2072656d6f746f2028535348293a2073c3b320726573706f6e6465207365206f207373686420666f72206c696761646f
+-A ufw-user-input -p tcp --dport 22 -j ACCEPT -m comment --comment 'dapp_SSH'
+
 ### END RULES ###
 
 ### LOGGING ###
