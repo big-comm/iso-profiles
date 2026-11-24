@@ -32,14 +32,32 @@ def test_ufw_service_is_enabled() -> None:
     assert enabled and "'ufw'" in enabled.group(1)
 
 
+def _active_rules(text: str, chain: str) -> list[tuple[str, str, str]]:
+    """(action proto ports) of each tuple, checked against the -A line under it."""
+    lines = [line for line in text.splitlines() if line.strip()]
+    rules = []
+    for i, line in enumerate(lines):
+        if line.startswith(f"-A {chain} "):
+            assert lines[i - 1].startswith("### tuple ### "), f"rule without tuple: {line}"
+        if not line.startswith("### tuple ### "):
+            continue
+        action, proto, ports = line.split()[3:6]
+        rule = lines[i + 1].split()
+        assert rule[:2] == ["-A", chain], f"tuple without rule: {line}"
+        assert rule[rule.index("-p") + 1] == proto
+        flag = "--dports" if "," in ports else "--dport"
+        assert rule[rule.index(flag) + 1] == ports
+        assert rule[rule.index("-j") + 1] == {"allow": "ACCEPT"}[action]
+        rules.append((action, proto, ports))
+    return rules
+
+
 def test_ufw_allows_samba_mdns_and_ssh_on_ipv4_and_ipv6() -> None:
+    expected = {("allow", "udp", "137,138"), ("allow", "tcp", "139,445"),
+                ("allow", "udp", "5353"), ("allow", "tcp", "22")}
     for name, chain in (("user.rules", "ufw-user-input"), ("user6.rules", "ufw6-user-input")):
         rules = (EDITION / "desktop-overlay/etc/ufw" / name).read_text(encoding="utf-8")
-        assert f"-A {chain} -p tcp -m multiport --dports 139,445 -j ACCEPT" in rules
-        assert f"-A {chain} -p udp --dport 5353 -j ACCEPT" in rules
-        assert f"-A {chain} -p tcp --dport 22 -j ACCEPT -m comment --comment 'dapp_SSH'" in rules
-        # every rule has the tuple line "ufw status" and "ufw delete" read
-        assert rules.count("### tuple ###") == rules.count(f"-A {chain} ")
+        assert set(_active_rules(rules, chain)) == expected, name
 
 
 def test_split_packages_called_by_the_menus_are_installed() -> None:
