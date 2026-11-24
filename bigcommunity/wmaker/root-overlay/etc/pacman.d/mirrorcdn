@@ -1,1 +1,12 @@
-../../../../../shared/root-overlay/etc/pacman.d/mirrorcdn
+## Static mirrors from CDNs
+
+## CDN from CDN77
+Server = https://mirrors.manjaro.org/repo/stable/$repo/$arch
+
+## CDN from CDN77 too
+Server = https://mirrors2.manjaro.org/stable/$repo/$arch
+
+## CDN from cloudflare
+#Server = http://mirrors.cicku.me/manjaro/stable/$repo/$arch
+
+Include=/etc/pacman.d/mirrorlist

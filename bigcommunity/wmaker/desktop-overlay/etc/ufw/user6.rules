@@ -13,6 +13,8 @@
 :ufw6-after-logging-forward - [0:0]
 :ufw6-logging-deny - [0:0]
 :ufw6-logging-allow - [0:0]
+:ufw6-user-limit - [0:0]
+:ufw6-user-limit-accept - [0:0]
 ### RULES ###
 
 ### tuple ### allow udp 137,138 ::/0 any ::/0 CIFS - in comment=436f6d70617274696c68616d656e746f206465206172717569766f73202853616d6261292c20686162696c697461646f2070656c6f20696e7374616c61646f72
@@ -24,6 +26,9 @@
 ### tuple ### allow udp 5353 ::/0 any ::/0 in comment=6d444e5320284176616869293a20646573636f626572746120646520696d70726573736f726173206520636f6d70617274696c68616d656e746f73
 -A ufw6-user-input -p udp --dport 5353 -j ACCEPT
 
+### tuple ### allow tcp 22 ::/0 any ::/0 SSH - in comment=41636573736f2072656d6f746f2028535348293a2073c3b320726573706f6e6465207365206f207373686420666f72206c696761646f
+-A ufw6-user-input -p tcp --dport 22 -j ACCEPT -m comment --comment 'dapp_SSH'
+
 ### END RULES ###
 
 ### LOGGING ###
@@ -33,4 +38,10 @@
 -A ufw6-logging-deny -j LOG --log-prefix "[UFW BLOCK] " -m limit --limit 3/min --limit-burst 10
 -A ufw6-logging-allow -j LOG --log-prefix "[UFW ALLOW] " -m limit --limit 3/min --limit-burst 10
 ### END LOGGING ###
+
+### RATE LIMITING ###
+-A ufw6-user-limit -m limit --limit 3/minute -j LOG --log-prefix "[UFW LIMIT BLOCK] "
+-A ufw6-user-limit -j REJECT
+-A ufw6-user-limit-accept -j ACCEPT
+### END RATE LIMITING ###
 COMMIT

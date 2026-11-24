@@ -83,9 +83,8 @@ wmtz
 wmweather
 wmeyes
 
-# Firewall: instalado e desligado (desktop-overlay/etc/ufw/ufw.conf,
-# ENABLED=no); "sudo ufw enable" o liga negando entradas exceto Samba (CIFS)
-# e mDNS.
+# Firewall: ligado (desktop-overlay/etc/ufw/ufw.conf, ENABLED=yes), nega
+# entradas exceto Samba (CIFS), mDNS e SSH; "sudo ufw disable" o desliga.
 ufw
 
 # Window Maker session services (Monitores: o big-wm-display-resolution, que

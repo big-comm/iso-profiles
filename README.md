@@ -68,8 +68,8 @@ sessão live e no sistema instalado e o instalador Calamares com o perfil
 | `live-overlay/usr/share/grub/` | `cfg/*.cfg` são **links** para `shared/`, exceto `kernels.cfg` e `profile.cfg`; `themes/` e `locales/` são da edição | o menu do GRUB da live com o nome e o tema do Big WindowMaker |
 | `grub-i18n/gerar.sh` | arquivo da edição | regenera `kernels.cfg` e os `.mo` da edição a partir de `shared/` |
 | `live-overlay/usr/{bin,lib}`, `live-overlay/usr/share/{calamares,libalpm}`, `live-overlay/etc/{fstab,localtime,systemd,pacman.conf}` | **links** para `shared/` | arquivos comuns da live |
-| `root-overlay/etc/` | arquivos da edição (exceto `default/grub` e `pacman.d/mirrorcdn`, **links**) | `pacman.conf` com `IgnorePkg = windowmaker`, `default/grub.d/big-wm-theme.cfg`, `plymouth/plymouthd.conf`, configuração do LightDM, `mkinitcpio.conf`, `pamac.conf` |
-| `desktop-overlay/etc/` | arquivos da edição (exceto `default`, `environment` e `pam.d`, **links**) | `gtk-3.0`/`gtk-4.0` e Kvantum para programas como root, firewall (`ufw`), ModemManager sob demanda e drop-ins de serviços do usuário |
+| `root-overlay/etc/` | arquivos da edição (exceto `default/grub`, **link**) | `pacman.conf` com `IgnorePkg = windowmaker`, `pacman.d/mirrorcdn` com os espelhos por HTTPS, `default/grub.d/big-wm-theme.cfg`, `plymouth/plymouthd.conf`, configuração do LightDM, `mkinitcpio.conf`, `pamac.conf` |
+| `desktop-overlay/etc/` | arquivos da edição (exceto `default`, `environment` e `pam.d`, **links**) | `gtk-3.0`/`gtk-4.0` e Kvantum para programas como root, firewall (`ufw` ligado: entra só Samba, mDNS e SSH), ModemManager sob demanda e drop-ins de serviços do usuário |
 | `desktop-overlay/usr` | **link** para `shared/` | arquivos comuns do desktop |
 
 Para listar os links da edição e para onde apontam:
