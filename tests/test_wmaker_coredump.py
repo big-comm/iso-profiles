@@ -8,6 +8,9 @@ ETC = ROOT / "bigcommunity" / "wmaker" / "root-overlay" / "etc"
 SYSCTL = ETC / "sysctl.d" / "99-zz-big-wm-coredump.conf"
 COREDUMP = ETC / "systemd" / "coredump.conf.d" / "zz-big-wm.conf"
 SYSTEMD_DEFAULT = Path("/usr/lib/sysctl.d/50-coredump.conf")
+# Só o systemd do Arch/Manjaro é o da ISO; o do runner Ubuntu é mais velho
+# e tem outro formato.
+ARCH = Path("/etc/arch-release").exists()
 
 
 def _ativas(path):
@@ -23,7 +26,7 @@ def test_vem_depois_dos_que_desligam():
 def test_core_pattern_do_systemd():
     linha = [l for l in _ativas(SYSCTL) if l.startswith("kernel.core_pattern")]
     assert linha and linha[0].startswith("kernel.core_pattern=|/usr/lib/systemd/systemd-coredump ")
-    if SYSTEMD_DEFAULT.exists():  # a mesma linha do systemd instalado
+    if ARCH and SYSTEMD_DEFAULT.exists():  # a mesma linha do systemd da ISO
         assert linha[0] in _ativas(SYSTEMD_DEFAULT)
 
 
