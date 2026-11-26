@@ -192,8 +192,11 @@ Os testes também rodam no lint do build-iso antes de cada ISO.
   ele também entra em `PACKAGE_SOURCES`/`EXPECTED_PACKAGES` do build-iso.
 - Arquivo só do Big WindowMaker: dentro de `bigcommunity/wmaker/*-overlay/`,
   nunca pelo link para `shared/`.
-- Mudança que vale para todas as edições: proponha ao
-  [projeto original](https://github.com/big-comm/iso-profiles).
+- Este fork é mantido só no big-windowmaker (decisão de 2026-11-26): nada
+  daqui é enviado ao [projeto original](https://github.com/big-comm/iso-profiles).
+  Uma mudança em `shared/` vale para as edições que linkam o caminho
+  alterado. No `wmaker`, o `kernels.cfg` e os catálogos do GRUB são gerados:
+  rode `bigcommunity/wmaker/grub-i18n/gerar.sh` depois de mudar `shared/`.
 - Problemas da ISO: [build-iso](https://github.com/big-windowmaker/build-iso/issues);
   guia: [CONTRIBUTING](https://github.com/big-windowmaker/.github/blob/main/CONTRIBUTING.md).
 
