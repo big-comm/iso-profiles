@@ -68,7 +68,7 @@ sessão live e no sistema instalado e o instalador Calamares com o perfil
 | `live-overlay/usr/share/grub/` | `cfg/*.cfg` são **links** para `shared/`, exceto `kernels.cfg` e `profile.cfg`; `themes/` e `locales/` são da edição | o menu do GRUB da live com o nome e o tema do Big WindowMaker |
 | `grub-i18n/gerar.sh` | arquivo da edição | regenera `kernels.cfg` e os `.mo` da edição a partir de `shared/` |
 | `live-overlay/usr/{bin,lib}`, `live-overlay/usr/share/{calamares,libalpm}`, `live-overlay/etc/{fstab,localtime,systemd,pacman.conf}` | **links** para `shared/` | arquivos comuns da live |
-| `root-overlay/etc/` | arquivos da edição (exceto `default/grub`, **link**) | `pacman.conf` com `IgnorePkg = windowmaker`, `pacman.d/mirrorcdn` com os espelhos por HTTPS, `default/grub.d/big-wm-theme.cfg`, `plymouth/plymouthd.conf`, configuração do LightDM, `mkinitcpio.conf`, `pamac.conf` |
+| `root-overlay/etc/` | arquivos da edição (exceto `default/grub`, **link**) | `pacman.conf` com o repositório assinado `[big-wm]` antes de todos, `pacman.d/mirrorcdn` com os espelhos por HTTPS, `default/grub.d/big-wm-theme.cfg`, `plymouth/plymouthd.conf`, configuração do LightDM, `mkinitcpio.conf`, `pamac.conf` |
 | `desktop-overlay/etc/` | arquivos da edição (exceto `default`, `environment` e `pam.d`, **links**) | `gtk-3.0`/`gtk-4.0` e Kvantum para programas como root, firewall (`ufw` ligado: entra só Samba, mDNS e SSH), ModemManager sob demanda e drop-ins de serviços do usuário |
 | `desktop-overlay/usr` | **link** para `shared/` | arquivos comuns do desktop |
 
@@ -125,9 +125,13 @@ o `vim`/`vi` e as bibliotecas do FFADO; `Root-remove` tira
 `plymouth-theme-community` e `bigcommunity-name`, que trocariam o tema do
 Plymouth e o nome do sistema a cada atualização.
 
-O `root-overlay/etc/pacman.conf` é o `shared/pacman.conf` mais
-`IgnorePkg = windowmaker`: o pamac trocava o `windowmaker` do Big WindowMaker
-pelo do `[extra]` e removia a sessão.
+O `root-overlay/etc/pacman.conf` é o `shared/pacman.conf` mais o repositório
+assinado [`[big-wm]`](https://github.com/big-windowmaker/repo), antes de
+todos os outros. É por ele que o sistema instalado recebe as atualizações
+do Big WindowMaker. A chave vem do `big-wm-keyring` (em `Packages-Desktop`),
+e o Calamares a popula no sistema instalado. O `IgnorePkg = windowmaker`
+saiu: o `windowmaker` do Big WindowMaker tem `epoch=1`, e o do `[extra]`
+não parece mais novo.
 
 ## Da lista de pacotes à ISO
 
@@ -173,7 +177,7 @@ python -m pytest tests     # 76 testes, menos de 1 s
 | `test_wmaker_boot_theme.py` | temas do GRUB e do Plymouth do sistema instalado |
 | `test_wmaker_login_live.py` | login da live pelo wdm: `displaymanager`, usuário e senha, sessão padrão e ajuda |
 | `test_wmaker_nome.py` | nome do sistema (`big-wm-name` no lugar do `bigcommunity-name`) e perfil `bigwindowmaker` do instalador |
-| `test_wmaker_pacman_conf.py` | o `pacman.conf` da edição é o do `shared/` mais o `IgnorePkg` do `windowmaker` |
+| `test_wmaker_pacman_conf.py` | o `pacman.conf` da edição é o do `shared/` mais o `[big-wm]` antes de todos, sem `IgnorePkg`; o `big-wm-keyring` está na lista de pacotes |
 | `test_wmaker_root_theme.py` | programas como root (GParted, Timeshift) com o visual do Window Maker |
 | `test_wmaker_sob_demanda.py` | ModemManager sob demanda e serviços do usuário que não seguram o login |
 | `test_wmaker_thunar.py` | `thunar-git` no lugar do `thunar`, com os plugins |
