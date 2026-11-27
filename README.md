@@ -12,7 +12,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/edi%C3%A7%C3%A3o-bigcommunity%2Fwmaker-2d85c6" alt="Edição bigcommunity/wmaker">
   <a href="https://github.com/big-comm/iso-profiles"><img src="https://img.shields.io/badge/upstream-BigCommunity-2d85c6" alt="Upstream: BigCommunity"></a>
-  <img src="https://img.shields.io/badge/ISO-Alpha-8a2be2" alt="ISO Alpha">
+  <img src="https://img.shields.io/badge/ISO-Beta%201-2d85c6" alt="ISO Beta 1">
 </p>
 
 <p align="center">
