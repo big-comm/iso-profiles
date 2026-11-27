@@ -362,3 +362,29 @@ def test_uefi_memtest_uses_chainloader() -> None:
 def test_legacy_backups_are_removed() -> None:
     assert not CFG.joinpath("kernels.cfg.bak").exists()
     assert not SHARED.parent.joinpath("boot/grub.bak").exists()
+
+
+def test_root_menu_numbers_never_skip() -> None:
+    """Items 5 (EFI only) and 6 (memtest on the medium) are optional: the
+    entries from 5 on take ${n}, which advances only past an item shown, so
+    the menu never jumps from 4 or 5 to 7 (Beta 1: 1-5, then 7)."""
+    kernels = CFG.joinpath("kernels.cfg").read_text(encoding="utf-8")
+    root = kernels.split('elif [ "${bigcommunity_menu}" = "language" ]')[0]
+    fixed = re.findall(r'menuentry \$"([5-9]) - ', root)
+    assert fixed == [], fixed
+    titles = re.findall(r'menuentry \$"\$\{n\} - ([^"]+)"', root)
+    assert titles == [
+        "Detect EFI bootloaders  >>",
+        "Run memory test",
+        "Run memory test",
+        "Restart computer",
+        "Clear extra boot parameters",
+    ]
+    assert root.index("set n=5") < root.index('$"${n} - Detect EFI')
+    for po in I18N.joinpath("po").glob("*.po"):
+        text = po.read_text(encoding="utf-8")
+        for title in set(titles):
+            msgstr = re.search(
+                rf'msgid "\$\{{n\}} - {re.escape(title)}"\nmsgstr "([^"]*)"', text
+            )
+            assert msgstr and msgstr.group(1).startswith("${n} - "), (po.name, title)
