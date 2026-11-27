@@ -78,3 +78,16 @@ def test_cdn_mirrors_use_https() -> None:
     assert not mirrorcdn.is_symlink()
     servers = re.findall(r"^Server\s*=\s*(\S+)", mirrorcdn.read_text(encoding="utf-8"), re.M)
     assert servers and all(s.startswith("https://") for s in servers)
+
+
+def test_mirrorlist_and_pacman_mirrors_use_https_only() -> None:
+    # The installer (pacman-mirrors -f3/-f 5) and the pamac timer regenerate
+    # the mirrorlist; with the package default (no Protocols) they sometimes
+    # picked an http mirror (openQA installed_security, ISO r72). The static
+    # list is what an offline install copies from the live session.
+    etc = EDITION / "root-overlay/etc"
+    conf = (etc / "pacman-mirrors.conf").read_text(encoding="utf-8")
+    assert re.findall(r"^Protocols\s*=\s*(.+?)\s*$", conf, re.M) == ["https"]
+    mirrorlist = (etc / "pacman.d/mirrorlist").read_text(encoding="utf-8")
+    servers = re.findall(r"^\s*Server\s*=\s*(\S+)", mirrorlist, re.M)
+    assert servers and all(s.startswith("https://") for s in servers)

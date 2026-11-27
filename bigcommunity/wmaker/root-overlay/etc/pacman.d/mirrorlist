@@ -1,0 +1,9 @@
+##
+## Big WindowMaker: lista inicial só com HTTPS (os CDNs da Manjaro).
+## O instalador, com internet, e o pamac a refazem com o pacman-mirrors,
+## que aqui só aceita https (/etc/pacman-mirrors.conf, Protocols = https).
+## Para refazer à mão: sudo pacman-mirrors -f 5
+##
+
+Server = https://mirrors.manjaro.org/repo/stable/$repo/$arch
+Server = https://mirrors2.manjaro.org/stable/$repo/$arch
